@@ -29,10 +29,16 @@ img {
 nav {
     padding: 20px;
     box-shadow: 0 2px 10px #af7777;
+    font-family: 'Reenie Beanie';
+    font-size: 2rem;
 }
 
 .row {
     display: flex;
+}
+
+.hide {
+    display: none;
 }
 
 .text-center {
@@ -60,8 +66,6 @@ nav {
 }
 
 .nav-intro {
-    font-size: 2rem;
-    font-family: 'Reenie Beanie';
     justify-content: center;
 }
 
@@ -105,6 +109,45 @@ nav {
     top: 22%;
 }
 
+.navbar-brand,
+.navbar-auction {
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    left: 5%;
+    top: 5px;
+    width: 80px;
+}
+
+.nav-visitor span {
+    padding-left: 8%;
+}
+
+.auction-icon {
+    position: absolute;
+    right: 5%;
+    top: 10px;
+    width: 55px;
+}
+
+.visitor-page .img-wrapper {
+    height: 200px;
+    padding-top: 15px;
+}
+
+.visitor-page .img-wrapper img {
+    height: 100%;
+    opacity: 0.2;
+}
+
+@media (min-width: 1440px) {
+    .nav-visitor span {
+        padding-left: 6%;
+    }
+}
+
 @media (max-width: 992px) and (min-width: 768px) {
     .polygon {
         height: 550px;
@@ -146,9 +189,18 @@ nav {
     .polygon-reverse p {
         top: 16%;
     }
+
+    .nav-visitor span {
+        padding-left: 9%;
+    }
 }
 
 @media (max-width: 599px) {
+    nav {
+        padding: 15px;
+        font-size: 1.7rem;
+    }
+
     .intro {
         width: 70%;
         padding-bottom: 180px;
@@ -175,9 +227,26 @@ nav {
     .polygon-reverse p {
         top: 14%;
     }
+
+    .logo {
+        width: 60px;
+    }
+
+    .auction-icon {
+        top: 15px;
+        width: 40px;
+    }
+
+    .nav-visitor span {
+        padding-left: 10%;
+    }
 }
 
 @media (max-width: 425px) {
+    nav {
+        font-size: 1.4rem;
+    }
+
     .intro {
         padding-bottom: 130px;
     }
@@ -189,5 +258,19 @@ nav {
 
     .polygon p {
         font-size: 2.7rem;
+    }
+
+    .logo {
+        left: 4%;
+        width: 54px;
+    }
+
+    .auction-icon {
+        top: 13px;
+        width: 35px;
+    }
+
+    .nav-visitor span {
+        padding-left: 10%;
     }
 }
