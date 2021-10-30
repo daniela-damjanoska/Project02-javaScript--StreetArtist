@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
+    background-color: #fcebd5;
+    font-family: 'Roboto', 'Times New Roman', Times, serif;
 }
 
 h1,
@@ -17,4 +24,170 @@ ul {
 img {
     display: block;
     width: 100%;
+}
+
+nav {
+    padding: 20px;
+    box-shadow: 0 2px 10px #af7777;
+}
+
+.row {
+    display: flex;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light-pink {
+    background-color: #fcebd5;
+}
+
+.bg-light-grey {
+    background-color: #edd5bb;
+}
+
+.bg-dark-braun {
+    background-color: #a16a5e;
+}
+
+.dark-braun {
+    color: #a16a5e;
+}
+
+.light-grey {
+    color: #edd5bb;
+}
+
+.nav-intro {
+    font-size: 2rem;
+    font-family: 'Reenie Beanie';
+    justify-content: center;
+}
+
+.intro {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 250px;
+}
+
+.logo-img {
+    width: 35%;
+    margin: 100px auto;
+}
+
+.polygon {
+    height: 700px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 300px);
+}
+
+.polygon-reverse {
+    transform: rotate(180deg);
+    margin-top: -400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.polygon p {
+    font-family: 'Reenie Beanie';
+    font-size: 6rem;
+}
+
+.polygon p.dark-braun {
+    padding-top: 10%;
+}
+
+.polygon-reverse p {
+    transform: rotate(180deg);
+    position: absolute;
+    top: 22%;
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    .polygon {
+        height: 550px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 180px);
+    }
+
+    .polygon-reverse {
+        margin-top: -371px;
+    }
+
+    .polygon p {
+        font-size: 4rem;
+    }
+
+    .polygon-reverse p {
+        top: 18%;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 600px) {
+    .intro {
+        width: 60%;
+        padding-bottom: 210px;
+    }
+
+    .polygon {
+        height: 450px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 120px);
+    }
+
+    .polygon-reverse {
+        margin-top: -331px;
+    }
+
+    .polygon p {
+        font-size: 3.5rem;
+    }
+
+    .polygon-reverse p {
+        top: 16%;
+    }
+}
+
+@media (max-width: 599px) {
+    .intro {
+        width: 70%;
+        padding-bottom: 180px;
+    }
+
+    .logo-img {
+        margin-top: 65px;
+        margin-bottom: 65px;
+    }
+
+    .polygon {
+        height: 300px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80px);
+    }
+
+    .polygon-reverse {
+        margin-top: -222px;
+    }
+
+    .polygon p {
+        font-size: 3rem;
+    }
+
+    .polygon-reverse p {
+        top: 14%;
+    }
+}
+
+@media (max-width: 425px) {
+    .intro {
+        padding-bottom: 130px;
+    }
+
+    .logo-img {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+
+    .polygon p {
+        font-size: 2.7rem;
+    }
 }
