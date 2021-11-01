@@ -37,6 +37,10 @@ nav {
     display: flex;
 }
 
+.col-50 {
+    flex: 0 1 50%;
+}
+
 .hide {
     display: none;
 }
@@ -57,23 +61,35 @@ nav {
     margin-bottom: 0px;
 }
 
-.bg-light-pink {
+.bg-light {
     background-color: #fcebd5;
 }
 
-.bg-light-grey {
+.bg-normal {
     background-color: #edd5bb;
 }
 
-.bg-dark-braun {
-    background-color: #a16a5e;
+.bg-primary-default {
+    background-color: #a26a5e;
 }
 
-.dark-braun {
-    color: #a16a5e;
+.bg-primary-contrast {
+    background-color: #d54c2e;
 }
 
-.light-grey {
+.bg-primary-blue {
+    background-color: #1b59ac;
+}
+
+.bg-primary-green {
+    background-color: #1bac6f;
+}
+
+.c-text-primary-default {
+    color: #a26a5e;
+}
+
+.c-text-normal {
     color: #edd5bb;
 }
 
@@ -96,12 +112,22 @@ nav {
 .polygon {
     height: 700px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 300px);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.polygon.normal:hover {
+    background-color: #e7c6a1;
 }
 
 .polygon-reverse {
     transform: rotate(180deg);
     margin-top: -400px;
     justify-content: center;
+}
+
+.polygon-reverse:hover {
+    background-color: #924b3a;
 }
 
 .polygon p {
@@ -137,6 +163,11 @@ nav {
     right: 5%;
     top: 10px;
     width: 55px;
+    transition: all 0.3s ease-in-out;
+}
+
+.auction-icon:hover {
+    transform: scale(1.1);
 }
 
 .visitor-page .img-wrapper {
@@ -170,6 +201,12 @@ nav {
     padding: 10px 30px;
     border-radius: 4px;
     box-shadow: 3px 4px 8px #8a8484;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.visitor-page .content-wrapper button:hover {
+    background-color: #924b3a;
 }
 
 /*photo slider*/
@@ -225,6 +262,83 @@ nav {
     }
 }
 
+/* ------------carousel--------------- */
+.carousel {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.carousel .carousel-container {
+    transform: translate(0);
+}
+
+.carousel .left-part,
+.carousel .right-part {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    align-items: center;
+}
+
+.carousel .left-part {
+    border-right: 3px solid #a16a5e;
+    padding-right: 80px;
+    justify-content: flex-end;
+}
+
+.carousel .content-box {
+    width: 70%;
+    font-size: 1.4rem;
+    padding: 15px;
+}
+
+.carousel .left-part .content-box {
+    background-color: #e09686;
+    color: #f1dcd8;
+}
+
+.carousel .left-part .content-box .img-circle {
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    line-height: 74px;
+    border-radius: 50%;
+    border: 3px solid #a16a5e;
+}
+
+.carousel .left-part .content-box p {
+    padding-top: 40px;
+}
+
+.carousel .right-part {
+    padding-left: 80px;
+}
+
+.carousel .carousel-slide img {
+    border-radius: 50%;
+}
+
+.carousel .carousel-buttons {
+    justify-content: space-between;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel .carousel-buttons img {
+    width: 50px;
+}
+
+.carousel .carousel-buttons img:hover {
+    cursor: pointer;
+}
+
+.carousel .carousel-buttons #arrowNext {
+    transform: rotate(180deg);
+}
+
 /*-----------------*/
 
 @media (min-width: 1440px) {
@@ -278,6 +392,28 @@ nav {
 
     .visitor-page .content-wrapper button {
         font-size: 1.3rem;
+    }
+
+    .carousel .content-box {
+        font-size: 1.2rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .carousel .left-part {
+        padding-right: 60px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 45px;
+    }
+
+    .carousel .right-part {
+        padding-left: 60px;
     }
 }
 
@@ -353,6 +489,40 @@ nav {
     .slide img {
         width: 250px;
         height: 180px;
+    }
+
+    .carousel .content-box {
+        font-size: 1rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .carousel .left-part {
+        padding-right: 50px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -30px;
+        width: 65px;
+        height: 65px;
+        line-height: 61px;
+        border-width: 2px;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 30px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 38px;
+    }
+
+    .carousel .right-part {
+        padding-left: 50px;
     }
 }
 
@@ -434,6 +604,44 @@ nav {
         height: 120px;
         box-shadow: 3px 3px 8px #8a8484;
     }
+
+    .carousel {
+        padding: 40px 0;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .carousel .left-part {
+        border-width: 2px;
+        padding-right: 30px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -25px;
+        width: 50px;
+        height: 50px;
+        line-height: 46px;
+    }
+
+    .carousel .content-box {
+        font-size: 0.8rem;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 20px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 25px;
+    }
+
+    .carousel .right-part {
+        padding-left: 30px;
+    }
 }
 
 @media (max-width: 425px) {
@@ -475,5 +683,42 @@ nav {
 
     .visitor-page .content-wrapper button {
         font-size: 0.8rem;
+    }
+
+    .carousel {
+        padding: 30px 0;
+    }
+
+    .carousel .content-box {
+        font-size: 0.7rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .carousel .left-part {
+        padding-right: 20px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -20px;
+        width: 40px;
+        height: 40px;
+        line-height: 36px;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 15px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 20px;
+    }
+
+    .carousel .right-part {
+        padding-left: 20px;
     }
 }
