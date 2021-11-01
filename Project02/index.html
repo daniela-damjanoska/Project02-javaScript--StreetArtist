@@ -17,7 +17,7 @@
             <div class="nav-visitor">
                 <span class="navbar-brand">
                     <img
-                        class="logo bg-light-pink"
+                        class="logo bg-light-pink p-absolute"
                         src="./img/Logo.png"
                         alt="Logo"
                     />
@@ -26,7 +26,7 @@
                 <span class="navbar-auction">
                     <img
                         src="./img/auction.svg"
-                        class="auction-icon"
+                        class="auction-icon p-absolute"
                         alt="auction-icon"
                     />
                 </span>
@@ -37,14 +37,27 @@
             <div class="polygon bg-light-grey">
                 <p class="dark-braun">Join as Artist</p>
             </div>
-            <div class="polygon polygon-reverse bg-dark-braun">
-                <p class="light-grey">Join as Visitor</p>
+            <div class="polygon polygon-reverse bg-dark-braun row p-relative">
+                <p class="light-grey p-absolute">Join as Visitor</p>
             </div>
         </div>
         <div class="visitor-page">
-            <div class="img-wrapper">
+            <div class="img-wrapper p-relative row">
                 <img src="./img/brick-bg.png" alt="" />
-                <p class="dark-braun">Looking for masterpiece</p>
+                <!-- <img src="./img/brick-1.png" alt="" />
+                <img src="./img/brick-1.png" alt="" /> -->
+                <div class="content-wrapper p-absolute row">
+                    <p class="dark-braun mb-0">Looking for a masterpiece?</p>
+                    <button class="bg-dark-braun">Find one now!</button>
+                </div>
+            </div>
+            <div class="bg-light-grey slider-div">
+                <div class="slide-area row slide-center">
+                    <div class="slide-track-one row slide-left"></div>
+                </div>
+                <div class="slide-area row slide-top">
+                    <div class="slide-track-two row slide-right"></div>
+                </div>
             </div>
         </div>
 
@@ -53,6 +66,6 @@
             crossorigin="anonymous"
         ></script>
         <script src="./assets/js/main.js" defer></script>
-        <script src="./assets/js/data.js" defer></script>
+        <script src="./assets/js/data.js"></script>
     </body>
 </html>
