@@ -37,31 +37,59 @@ nav {
     display: flex;
 }
 
+.col-50 {
+    flex: 0 1 50%;
+}
+
 .hide {
     display: none;
+}
+
+.p-relative {
+    position: relative;
+}
+
+.p-absolute {
+    position: absolute;
 }
 
 .text-center {
     text-align: center;
 }
 
-.bg-light-pink {
+.mb-0 {
+    margin-bottom: 0px;
+}
+
+.bg-light {
     background-color: #fcebd5;
 }
 
-.bg-light-grey {
+.bg-normal {
     background-color: #edd5bb;
 }
 
-.bg-dark-braun {
-    background-color: #a16a5e;
+.bg-primary-default {
+    background-color: #a26a5e;
 }
 
-.dark-braun {
-    color: #a16a5e;
+.bg-primary-contrast {
+    background-color: #d54c2e;
 }
 
-.light-grey {
+.bg-primary-blue {
+    background-color: #1b59ac;
+}
+
+.bg-primary-green {
+    background-color: #1bac6f;
+}
+
+.c-text-primary-default {
+    color: #a26a5e;
+}
+
+.c-text-normal {
     color: #edd5bb;
 }
 
@@ -84,14 +112,22 @@ nav {
 .polygon {
     height: 700px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 300px);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.polygon.normal:hover {
+    background-color: #e7c6a1;
 }
 
 .polygon-reverse {
     transform: rotate(180deg);
     margin-top: -400px;
-    position: relative;
-    display: flex;
     justify-content: center;
+}
+
+.polygon-reverse:hover {
+    background-color: #924b3a;
 }
 
 .polygon p {
@@ -105,7 +141,6 @@ nav {
 
 .polygon-reverse p {
     transform: rotate(180deg);
-    position: absolute;
     top: 22%;
 }
 
@@ -115,7 +150,6 @@ nav {
 }
 
 .logo {
-    position: absolute;
     left: 5%;
     top: 5px;
     width: 80px;
@@ -126,15 +160,20 @@ nav {
 }
 
 .auction-icon {
-    position: absolute;
     right: 5%;
     top: 10px;
     width: 55px;
+    transition: all 0.3s ease-in-out;
+}
+
+.auction-icon:hover {
+    transform: scale(1.1);
 }
 
 .visitor-page .img-wrapper {
     height: 200px;
     padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 .visitor-page .img-wrapper img {
@@ -142,9 +181,189 @@ nav {
     opacity: 0.2;
 }
 
+.visitor-page .content-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.visitor-page .content-wrapper p {
+    font-size: 4rem;
+}
+
+.visitor-page .content-wrapper button {
+    font-size: 2rem;
+    border: none;
+    color: #fcebd5;
+    padding: 10px 30px;
+    border-radius: 4px;
+    box-shadow: 3px 4px 8px #8a8484;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in;
+}
+
+.visitor-page .content-wrapper button:hover {
+    background-color: #924b3a;
+}
+
+/*photo slider*/
+.slider-div {
+    padding: 45px 0;
+}
+
+.slide-area {
+    height: 320px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slide {
+    padding: 25px;
+    perspective: 140px;
+}
+
+.slide-left {
+    animation: scroll 70s linear infinite;
+}
+
+.slide-right {
+    animation: scroll 70s linear infinite;
+    animation-direction: reverse;
+}
+
+.slide-track-one:hover,
+.slide-track-two:hover {
+    animation-play-state: paused;
+}
+
+.slide img {
+    transition: transform 0.7s;
+    box-shadow: 4px 5px 8px #8a8484;
+    width: 450px;
+    height: 270px;
+}
+
+.slide img:hover {
+    transform: translateZ(15px);
+    filter: brightness(1.1);
+}
+
+@keyframes scroll {
+    /*to adapt for all browsers*/
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100px * 60));
+        /* how to change the number in js to be connected with arr.length */
+    }
+}
+
+/* ------------carousel--------------- */
+.carousel {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.carousel .carousel-container {
+    transform: translate(0);
+}
+
+.carousel .left-part,
+.carousel .right-part {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    align-items: center;
+}
+
+.carousel .left-part {
+    border-right: 3px solid #a16a5e;
+    padding-right: 80px;
+    justify-content: flex-end;
+}
+
+.carousel .content-box {
+    width: 70%;
+    font-size: 1.4rem;
+    padding: 15px;
+}
+
+.carousel .left-part .content-box {
+    background-color: #e09686;
+    color: #f1dcd8;
+}
+
+.carousel .left-part .content-box .img-circle {
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    line-height: 74px;
+    border-radius: 50%;
+    border: 3px solid #a16a5e;
+}
+
+.carousel .left-part .content-box p {
+    padding-top: 40px;
+}
+
+.carousel .right-part {
+    padding-left: 80px;
+}
+
+.carousel .carousel-slide img {
+    border-radius: 50%;
+}
+
+.carousel .carousel-buttons {
+    justify-content: space-between;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel .carousel-buttons img {
+    width: 50px;
+}
+
+.carousel .carousel-buttons img:hover {
+    cursor: pointer;
+}
+
+.carousel .carousel-buttons #arrowNext {
+    transform: rotate(180deg);
+}
+
+/*-----------------*/
+
 @media (min-width: 1440px) {
     .nav-visitor span {
         padding-left: 6%;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1025px) {
+    .visitor-page .content-wrapper p {
+        font-size: 3.5rem;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 993px) {
+    .visitor-page .content-wrapper p {
+        font-size: 3rem;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 1.3rem;
     }
 }
 
@@ -164,6 +383,57 @@ nav {
 
     .polygon-reverse p {
         top: 18%;
+    }
+
+    .visitor-page .content-wrapper p {
+        font-size: 3rem;
+        width: 65%;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 1.3rem;
+    }
+
+    .carousel .content-box {
+        font-size: 1.2rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .carousel .left-part {
+        padding-right: 60px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 45px;
+    }
+
+    .carousel .right-part {
+        padding-left: 60px;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+    .slider-div {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    .slide-area {
+        height: 290px;
+    }
+
+    .slide {
+        padding: 17px;
+    }
+
+    .slide img {
+        width: 300px;
+        height: 240px;
     }
 }
 
@@ -192,6 +462,67 @@ nav {
 
     .nav-visitor span {
         padding-left: 9%;
+    }
+
+    .visitor-page .content-wrapper p {
+        font-size: 3rem;
+        width: 65%;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 1.2rem;
+    }
+
+    .slider-div {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .slide-area {
+        height: 215px;
+    }
+
+    .slide {
+        padding: 15px;
+    }
+
+    .slide img {
+        width: 250px;
+        height: 180px;
+    }
+
+    .carousel .content-box {
+        font-size: 1rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .carousel .left-part {
+        padding-right: 50px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -30px;
+        width: 65px;
+        height: 65px;
+        line-height: 61px;
+        border-width: 2px;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 30px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 38px;
+    }
+
+    .carousel .right-part {
+        padding-left: 50px;
     }
 }
 
@@ -240,6 +571,77 @@ nav {
     .nav-visitor span {
         padding-left: 10%;
     }
+
+    .visitor-page .img-wrapper {
+        height: 150px;
+    }
+
+    .visitor-page .content-wrapper p {
+        font-size: 2rem;
+        width: 60%;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    .slider-div {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .slide-area {
+        height: 140px;
+    }
+
+    .slide {
+        padding: 10px;
+    }
+
+    .slide img {
+        width: 150px;
+        height: 120px;
+        box-shadow: 3px 3px 8px #8a8484;
+    }
+
+    .carousel {
+        padding: 40px 0;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .carousel .left-part {
+        border-width: 2px;
+        padding-right: 30px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -25px;
+        width: 50px;
+        height: 50px;
+        line-height: 46px;
+    }
+
+    .carousel .content-box {
+        font-size: 0.8rem;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 20px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 25px;
+    }
+
+    .carousel .right-part {
+        padding-left: 30px;
+    }
 }
 
 @media (max-width: 425px) {
@@ -272,5 +674,51 @@ nav {
 
     .nav-visitor span {
         padding-left: 10%;
+    }
+
+    .visitor-page .content-wrapper p {
+        font-size: 1.5rem;
+        width: 55%;
+    }
+
+    .visitor-page .content-wrapper button {
+        font-size: 0.8rem;
+    }
+
+    .carousel {
+        padding: 30px 0;
+    }
+
+    .carousel .content-box {
+        font-size: 0.7rem;
+    }
+
+    .carousel .left-part,
+    .carousel .right-part {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .carousel .left-part {
+        padding-right: 20px;
+    }
+
+    .carousel .left-part .content-box .img-circle {
+        top: -20px;
+        width: 40px;
+        height: 40px;
+        line-height: 36px;
+    }
+
+    .carousel .left-part .content-box p {
+        padding-top: 15px;
+    }
+
+    .carousel .carousel-buttons img {
+        width: 20px;
+    }
+
+    .carousel .right-part {
+        padding-left: 20px;
     }
 }

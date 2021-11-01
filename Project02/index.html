@@ -10,23 +10,23 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body>
-        <nav class="bg-light-pink">
+        <nav class="bg-light">
             <div class="nav-intro row hide">
-                <span class="dark-braun"><b>Street ARTist</b></span>
+                <span class="c-text-primary-default"><b>Street ARTist</b></span>
             </div>
             <div class="nav-visitor">
                 <span class="navbar-brand">
                     <img
-                        class="logo bg-light-pink"
+                        class="logo bg-light p-absolute"
                         src="./img/Logo.png"
                         alt="Logo"
                     />
                 </span>
-                <span class="dark-braun"><b>Street ARTist</b></span>
+                <span class="c-text-primary-default"><b>Street ARTist</b></span>
                 <span class="navbar-auction">
                     <img
                         src="./img/auction.svg"
-                        class="auction-icon"
+                        class="auction-icon p-absolute"
                         alt="auction-icon"
                     />
                 </span>
@@ -34,17 +34,58 @@
         </nav>
         <div class="intro text-center hide">
             <img src="./img/Logo1.png" class="logo-img" alt="logo" />
-            <div class="polygon bg-light-grey">
-                <p class="dark-braun">Join as Artist</p>
+            <div class="polygon normal bg-normal">
+                <p class="c-text-primary-default">Join as Artist</p>
             </div>
-            <div class="polygon polygon-reverse bg-dark-braun">
-                <p class="light-grey">Join as Visitor</p>
+            <div
+                class="
+                    polygon polygon-reverse
+                    bg-primary-default
+                    row
+                    p-relative
+                "
+            >
+                <p class="c-text-normal p-absolute">Join as Visitor</p>
             </div>
         </div>
         <div class="visitor-page">
-            <div class="img-wrapper">
+            <div class="img-wrapper p-relative row">
                 <img src="./img/brick-bg.png" alt="" />
-                <p class="dark-braun">Looking for masterpiece</p>
+                <!-- <img src="./img/brick-1.png" alt="" />
+                <img src="./img/brick-1.png" alt="" /> -->
+                <div class="content-wrapper p-absolute row">
+                    <p class="c-text-primary-default mb-0">
+                        Looking for a masterpiece?
+                    </p>
+                    <button class="bg-primary-default">Find one now!</button>
+                </div>
+            </div>
+            <div class="bg-normal slider-div">
+                <div class="slide-area row slide-center">
+                    <div class="slide-track-one row slide-left"></div>
+                </div>
+                <div class="slide-area row slide-top">
+                    <div class="slide-track-two row slide-right"></div>
+                </div>
+            </div>
+            <div class="carousel p-relative row">
+                <div class="carousel-container row">
+                    <div class="carousel-buttons p-absolute row">
+                        <img
+                            src="./img/arrow.png"
+                            alt="left-arrow"
+                            id="arrowPrev"
+                            class="arrow-prev"
+                        />
+
+                        <img
+                            src="./img/arrow.png"
+                            alt="right-arrow"
+                            id="arrowNext"
+                            class="arrow-next"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -52,7 +93,7 @@
             src="https://kit.fontawesome.com/c308de0b2c.js"
             crossorigin="anonymous"
         ></script>
-        <script src="./assets/js/main.js" defer></script>
-        <script src="./assets/js/data.js" defer></script>
+        <script src="./assets/js/data.js"></script>
+        <script src="./assets/js/main.js"></script>
     </body>
 </html>
