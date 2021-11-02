@@ -10,31 +10,17 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body>
+        <!-- -------------------------navbar-------------------------- -->
         <nav class="bg-light">
-            <div class="nav-intro row hide">
+            <div class="navbar-landing-page row">
                 <span class="c-text-primary-default"><b>Street ARTist</b></span>
-            </div>
-            <div class="nav-visitor">
-                <span class="navbar-brand">
-                    <img
-                        class="logo bg-light p-absolute"
-                        src="./img/Logo.png"
-                        alt="Logo"
-                    />
-                </span>
-                <span class="c-text-primary-default"><b>Street ARTist</b></span>
-                <span class="navbar-auction">
-                    <img
-                        src="./img/auction.svg"
-                        class="auction-icon p-absolute"
-                        alt="auction-icon"
-                    />
-                </span>
             </div>
         </nav>
-        <div class="intro text-center hide">
+
+        <!-- -----------------------landing page---------------------- -->
+        <section id="landing-page" class="landing-page text-center hide">
             <img src="./img/Logo1.png" class="logo-img" alt="logo" />
-            <div class="polygon normal bg-normal">
+            <div class="polygon bg-normal">
                 <p class="c-text-primary-default">Join as Artist</p>
             </div>
             <div
@@ -47,8 +33,10 @@
             >
                 <p class="c-text-normal p-absolute">Join as Visitor</p>
             </div>
-        </div>
-        <div class="visitor-page">
+        </section>
+
+        <!-- -----------------------visitor home page----------------- -->
+        <section id="visitor-home-page" class="visitor-home-page">
             <div class="img-wrapper p-relative row">
                 <img src="./img/brick-bg.png" alt="" />
                 <!-- <img src="./img/brick-1.png" alt="" />
@@ -87,13 +75,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <script
             src="https://kit.fontawesome.com/c308de0b2c.js"
             crossorigin="anonymous"
         ></script>
         <script src="./assets/js/data.js"></script>
+        <script src="./assets/js/render.js"></script>
+        <script src="./assets/js/carousel.js"></script>
         <script src="./assets/js/main.js"></script>
     </body>
 </html>
