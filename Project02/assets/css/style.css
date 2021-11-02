@@ -13,7 +13,6 @@ body {
     font-family: 'Roboto', 'Times New Roman', Times, serif;
 }
 
-h1,
 h2,
 h3,
 p,
@@ -27,9 +26,9 @@ img {
 }
 
 nav {
-    padding: 20px;
-    box-shadow: 0 2px 10px #af7777;
+    height: 70px;
     font-family: 'Reenie Beanie';
+    box-shadow: 0 2px 10px #af7777;
     font-size: 2rem;
 }
 
@@ -93,95 +92,104 @@ nav {
     color: #edd5bb;
 }
 
-.nav-intro {
+.navbar-landing-page {
+    height: 100%;
     justify-content: center;
+    align-items: center;
 }
 
-.intro {
+.navbar-visitor-artist {
+    height: 100%;
+}
+
+.navbar-visitor-artist .navbar-wrapper {
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-visitor-artist .navbar-brand,
+.navbar-visitor-artist .navbar-icon {
+    cursor: pointer;
+}
+
+.navbar-visitor-artist .navbar-brand .logo {
+    left: 5%;
+    top: 5px;
+    width: 80px;
+}
+
+.navbar-visitor-artist .navbar-icon img {
+    width: 60px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-visitor-artist .navbar-icon img:hover {
+    transform: scale(1.1);
+}
+
+.landing-page {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 250px;
 }
 
-.logo-img {
+.landing-page .logo-img {
     width: 35%;
     margin: 100px auto;
 }
 
-.polygon {
+.landing-page .polygon {
     height: 700px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 300px);
     cursor: pointer;
     transition: background-color 0.3s ease-in;
 }
 
-.polygon.normal:hover {
+.landing-page .polygon:first-of-type:hover {
     background-color: #e7c6a1;
 }
 
-.polygon-reverse {
+.landing-page .polygon-reverse {
     transform: rotate(180deg);
     margin-top: -400px;
     justify-content: center;
 }
 
-.polygon-reverse:hover {
+.landing-page .polygon-reverse:hover {
     background-color: #924b3a;
 }
 
-.polygon p {
+.landing-page .polygon p {
     font-family: 'Reenie Beanie';
     font-size: 6rem;
 }
 
-.polygon p.dark-braun {
+.landing-page .polygon p.dark-braun {
     padding-top: 10%;
 }
 
-.polygon-reverse p {
+.landing-page .polygon-reverse p {
     transform: rotate(180deg);
     top: 22%;
 }
 
-.navbar-brand,
-.navbar-auction {
-    cursor: pointer;
-}
-
-.logo {
-    left: 5%;
-    top: 5px;
-    width: 80px;
-}
-
-.nav-visitor span {
-    padding-left: 8%;
-}
-
-.auction-icon {
-    right: 5%;
-    top: 10px;
-    width: 55px;
-    transition: all 0.3s ease-in-out;
-}
-
-.auction-icon:hover {
-    transform: scale(1.1);
-}
-
-.visitor-page .img-wrapper {
+.visitor-home-page .img-wrapper {
     height: 200px;
     padding-top: 15px;
     padding-bottom: 10px;
 }
 
-.visitor-page .img-wrapper img {
+.visitor-home-page .img-wrapper img {
     height: 100%;
     opacity: 0.2;
 }
 
-.visitor-page .content-wrapper {
+.visitor-home-page .content-wrapper {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -190,11 +198,11 @@ nav {
     width: 90%;
 }
 
-.visitor-page .content-wrapper p {
+.visitor-home-page .content-wrapper p {
     font-size: 4rem;
 }
 
-.visitor-page .content-wrapper button {
+.visitor-home-page .content-wrapper button {
     font-size: 2rem;
     border: none;
     color: #fcebd5;
@@ -205,48 +213,48 @@ nav {
     transition: background-color 0.3s ease-in;
 }
 
-.visitor-page .content-wrapper button:hover {
+.visitor-home-page .content-wrapper button:hover {
     background-color: #924b3a;
 }
 
-/*photo slider*/
-.slider-div {
+/*------photo slider-------*/
+.visitor-home-page .slider-div {
     padding: 45px 0;
 }
 
-.slide-area {
+.visitor-home-page .slide-area {
     height: 320px;
     align-items: center;
     overflow: hidden;
 }
 
-.slide {
+.visitor-home-page .slide {
     padding: 25px;
     perspective: 140px;
 }
 
-.slide-left {
+.visitor-home-page .slide-left {
     animation: scroll 70s linear infinite;
 }
 
-.slide-right {
+.visitor-home-page .slide-right {
     animation: scroll 70s linear infinite;
     animation-direction: reverse;
 }
 
-.slide-track-one:hover,
-.slide-track-two:hover {
+.visitor-home-page .slide-track-one:hover,
+.visitor-home-page .slide-track-two:hover {
     animation-play-state: paused;
 }
 
-.slide img {
+.visitor-home-page .slide img {
     transition: transform 0.7s;
     box-shadow: 4px 5px 8px #8a8484;
     width: 450px;
     height: 270px;
 }
 
-.slide img:hover {
+.visitor-home-page .slide img:hover {
     transform: translateZ(15px);
     filter: brightness(1.1);
 }
@@ -263,42 +271,42 @@ nav {
 }
 
 /* ------------carousel--------------- */
-.carousel {
+.visitor-home-page .carousel {
     margin-left: auto;
     margin-right: auto;
     padding: 60px 0;
     overflow: hidden;
 }
 
-.carousel .carousel-container {
+.visitor-home-page .carousel .carousel-container {
     transform: translate(0);
 }
 
-.carousel .left-part,
-.carousel .right-part {
+.visitor-home-page .carousel .left-part,
+.visitor-home-page .carousel .right-part {
     padding-top: 70px;
     padding-bottom: 70px;
     align-items: center;
 }
 
-.carousel .left-part {
+.visitor-home-page .carousel .left-part {
     border-right: 3px solid #a16a5e;
     padding-right: 80px;
     justify-content: flex-end;
 }
 
-.carousel .content-box {
+.visitor-home-page .carousel .content-box {
     width: 70%;
     font-size: 1.4rem;
     padding: 15px;
 }
 
-.carousel .left-part .content-box {
+.visitor-home-page .carousel .left-part .content-box {
     background-color: #e09686;
     color: #f1dcd8;
 }
 
-.carousel .left-part .content-box .img-circle {
+.visitor-home-page .carousel .left-part .content-box .img-circle {
     left: 50%;
     top: -40px;
     transform: translateX(-50%);
@@ -309,203 +317,230 @@ nav {
     border: 3px solid #a16a5e;
 }
 
-.carousel .left-part .content-box p {
+.visitor-home-page .carousel .left-part .content-box p {
     padding-top: 40px;
 }
 
-.carousel .right-part {
+.visitor-home-page .carousel .right-part {
     padding-left: 80px;
 }
 
-.carousel .carousel-slide img {
+.visitor-home-page .carousel .carousel-slide img {
     border-radius: 50%;
 }
 
-.carousel .carousel-buttons {
+.visitor-home-page .carousel .carousel-buttons {
     justify-content: space-between;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.carousel .carousel-buttons img {
+.visitor-home-page .carousel .carousel-buttons img {
     width: 50px;
 }
 
-.carousel .carousel-buttons img:hover {
+.visitor-home-page .carousel .carousel-buttons img:hover {
     cursor: pointer;
 }
 
-.carousel .carousel-buttons #arrowNext {
+.visitor-home-page .carousel .carousel-buttons .arrow-next {
     transform: rotate(180deg);
 }
 
-/*-----------------*/
+/*============================================================*/
 
 @media (min-width: 1440px) {
-    .nav-visitor span {
-        padding-left: 6%;
+    nav {
+        font-size: 2.5rem;
+        height: 80px;
+    }
+
+    .navbar-visitor-artist .navbar-brand .logo {
+        width: 100px;
     }
 }
 
+/*============================================================*/
+
+@media (max-width: 1440px) {
+    .navbar-visitor-artist .navbar-icon img {
+        width: 45px;
+    }
+}
+
+/*============================================================*/
+
+@media (max-width: 1024px) {
+    .navbar-visitor-artist .navbar-wrapper {
+        width: 75%;
+    }
+}
+
+/*============================================================*/
+
 @media (max-width: 1200px) and (min-width: 1025px) {
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 3.5rem;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 1.7rem;
     }
 }
 
+/*============================================================*/
+
 @media (max-width: 1024px) and (min-width: 993px) {
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 3rem;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 1.3rem;
     }
 }
 
+/*============================================================*/
+
 @media (max-width: 992px) and (min-width: 768px) {
-    .polygon {
+    .landing-page .polygon {
         height: 550px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 180px);
     }
 
-    .polygon-reverse {
+    .landing-page .polygon-reverse {
         margin-top: -371px;
     }
 
-    .polygon p {
+    .landing-page .polygon p {
         font-size: 4rem;
     }
 
-    .polygon-reverse p {
+    .landing-page .polygon-reverse p {
         top: 18%;
     }
 
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 3rem;
         width: 65%;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 1.3rem;
     }
 
-    .carousel .content-box {
+    .visitor-home-page .carousel .content-box {
         font-size: 1.2rem;
     }
 
-    .carousel .left-part,
-    .carousel .right-part {
+    .visitor-home-page .carousel .left-part,
+    .visitor-home-page .carousel .right-part {
         padding-top: 60px;
         padding-bottom: 60px;
     }
 
-    .carousel .left-part {
+    .visitor-home-page .carousel .left-part {
         padding-right: 60px;
     }
 
-    .carousel .carousel-buttons img {
-        width: 45px;
+    .visitor-home-page .carousel .right-part {
+        padding-left: 60px;
     }
 
-    .carousel .right-part {
-        padding-left: 60px;
+    .visitor-home-page .carousel .carousel-buttons img {
+        width: 45px;
     }
 }
 
+/*============================================================*/
+
 @media (max-width: 900px) and (min-width: 768px) {
-    .slider-div {
+    .visitor-home-page .slider-div {
         padding-top: 35px;
         padding-bottom: 35px;
     }
 
-    .slide-area {
+    .visitor-home-page .slide-area {
         height: 290px;
     }
 
-    .slide {
+    .visitor-home-page .slide {
         padding: 17px;
     }
 
-    .slide img {
+    .visitor-home-page .slide img {
         width: 300px;
         height: 240px;
     }
 }
 
+/*============================================================*/
+
 @media (max-width: 767px) and (min-width: 600px) {
-    .intro {
+    .landing-page {
         width: 60%;
         padding-bottom: 210px;
     }
 
-    .polygon {
+    .landing-page .polygon {
         height: 450px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 120px);
     }
 
-    .polygon-reverse {
+    .landing-page .polygon-reverse {
         margin-top: -331px;
     }
 
-    .polygon p {
+    .landing-page .polygon p {
         font-size: 3.5rem;
     }
 
-    .polygon-reverse p {
+    .landing-page .polygon-reverse p {
         top: 16%;
     }
 
-    .nav-visitor span {
-        padding-left: 9%;
-    }
-
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 3rem;
         width: 65%;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 1.2rem;
     }
 
-    .slider-div {
+    .visitor-home-page .slider-div {
         padding-top: 30px;
         padding-bottom: 30px;
     }
 
-    .slide-area {
+    .visitor-home-page .slide-area {
         height: 215px;
     }
 
-    .slide {
+    .visitor-home-page .slide {
         padding: 15px;
     }
 
-    .slide img {
+    .visitor-home-page .slide img {
         width: 250px;
         height: 180px;
     }
 
-    .carousel .content-box {
+    .visitor-home-page .carousel .content-box {
         font-size: 1rem;
     }
 
-    .carousel .left-part,
-    .carousel .right-part {
+    .visitor-home-page .carousel .left-part,
+    .visitor-home-page .carousel .right-part {
         padding-top: 50px;
         padding-bottom: 50px;
     }
 
-    .carousel .left-part {
+    .visitor-home-page .carousel .left-part {
         padding-right: 50px;
     }
 
-    .carousel .left-part .content-box .img-circle {
+    .visitor-home-page .carousel .left-part .content-box .img-circle {
         top: -30px;
         width: 65px;
         height: 65px;
@@ -513,212 +548,214 @@ nav {
         border-width: 2px;
     }
 
-    .carousel .left-part .content-box p {
+    .visitor-home-page .carousel .left-part .content-box p {
         padding-top: 30px;
     }
 
-    .carousel .carousel-buttons img {
+    .visitor-home-page .carousel .carousel-buttons img {
         width: 38px;
     }
 
-    .carousel .right-part {
+    .visitor-home-page .carousel .right-part {
         padding-left: 50px;
     }
 }
 
+/*============================================================*/
+
 @media (max-width: 599px) {
     nav {
-        padding: 15px;
         font-size: 1.7rem;
+        height: 55px;
     }
 
-    .intro {
+    .navbar-visitor-artist .navbar-brand .logo {
+        width: 50px;
+    }
+
+    .navbar-visitor-artist .navbar-icon img {
+        width: 40px;
+    }
+
+    .landing-page {
         width: 70%;
         padding-bottom: 180px;
     }
 
-    .logo-img {
+    .landing-page .logo-img {
         margin-top: 65px;
         margin-bottom: 65px;
     }
 
-    .polygon {
+    .landing-page .polygon {
         height: 300px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80px);
     }
 
-    .polygon-reverse {
+    .landing-page .polygon-reverse {
         margin-top: -222px;
     }
 
-    .polygon p {
+    .landing-page .polygon p {
         font-size: 3rem;
     }
 
-    .polygon-reverse p {
+    .landing-page .polygon-reverse p {
         top: 14%;
     }
 
-    .logo {
-        width: 60px;
-    }
-
-    .auction-icon {
-        top: 15px;
-        width: 40px;
-    }
-
-    .nav-visitor span {
-        padding-left: 10%;
-    }
-
-    .visitor-page .img-wrapper {
+    .visitor-home-page .img-wrapper {
         height: 150px;
     }
 
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 2rem;
         width: 60%;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 1rem;
         padding: 8px 15px;
     }
 
-    .slider-div {
+    .visitor-home-page .slider-div {
         padding-top: 20px;
         padding-bottom: 20px;
     }
 
-    .slide-area {
+    .visitor-home-page .slide-area {
         height: 140px;
     }
 
-    .slide {
+    .visitor-home-page .slide {
         padding: 10px;
     }
 
-    .slide img {
+    .visitor-home-page .slide img {
         width: 150px;
         height: 120px;
         box-shadow: 3px 3px 8px #8a8484;
     }
 
-    .carousel {
+    .visitor-home-page .carousel {
         padding: 40px 0;
     }
 
-    .carousel .left-part,
-    .carousel .right-part {
+    .visitor-home-page .carousel .left-part,
+    .visitor-home-page .carousel .right-part {
         padding-top: 40px;
         padding-bottom: 40px;
     }
 
-    .carousel .left-part {
+    .visitor-home-page .carousel .left-part {
         border-width: 2px;
         padding-right: 30px;
     }
 
-    .carousel .left-part .content-box .img-circle {
+    .visitor-home-page .carousel .left-part .content-box .img-circle {
         top: -25px;
         width: 50px;
         height: 50px;
         line-height: 46px;
     }
 
-    .carousel .content-box {
+    .visitor-home-page .carousel .content-box {
         font-size: 0.8rem;
     }
 
-    .carousel .left-part .content-box p {
+    .visitor-home-page .carousel .left-part .content-box p {
         padding-top: 20px;
     }
 
-    .carousel .carousel-buttons img {
+    .visitor-home-page .carousel .carousel-buttons img {
         width: 25px;
     }
 
-    .carousel .right-part {
+    .visitor-home-page .carousel .right-part {
         padding-left: 30px;
     }
 }
+
+/*============================================================*/
 
 @media (max-width: 425px) {
     nav {
         font-size: 1.4rem;
     }
 
-    .intro {
+    .navbar-visitor-artist .navbar-wrapper {
+        margin-right: 4%;
+    }
+
+    .navbar-visitor-artist .navbar-brand .logo {
+        width: 20px;
+    }
+
+    .landing-page {
         padding-bottom: 130px;
     }
 
-    .logo-img {
+    .landing-page .logo-img {
         margin-top: 45px;
         margin-bottom: 45px;
     }
 
-    .polygon p {
+    .landing-page .polygon p {
         font-size: 2.7rem;
     }
 
-    .logo {
+    .navbar-visitor-artist .navbar-brand .logo {
         left: 4%;
         width: 54px;
     }
 
-    .auction-icon {
-        top: 13px;
+    .navbar-visitor-artist .navbar-icon img {
         width: 35px;
     }
 
-    .nav-visitor span {
-        padding-left: 10%;
-    }
-
-    .visitor-page .content-wrapper p {
+    .visitor-home-page .content-wrapper p {
         font-size: 1.5rem;
         width: 55%;
     }
 
-    .visitor-page .content-wrapper button {
+    .visitor-home-page .content-wrapper button {
         font-size: 0.8rem;
     }
 
-    .carousel {
+    .visitor-home-page .carousel {
         padding: 30px 0;
     }
 
-    .carousel .content-box {
+    .visitor-home-page .carousel .content-box {
         font-size: 0.7rem;
     }
 
-    .carousel .left-part,
-    .carousel .right-part {
+    .visitor-home-page .carousel .left-part,
+    .visitor-home-page .carousel .right-part {
         padding-top: 25px;
         padding-bottom: 25px;
     }
 
-    .carousel .left-part {
+    .visitor-home-page .carousel .left-part {
         padding-right: 20px;
     }
 
-    .carousel .left-part .content-box .img-circle {
+    .visitor-home-page .carousel .left-part .content-box .img-circle {
         top: -20px;
         width: 40px;
         height: 40px;
         line-height: 36px;
     }
 
-    .carousel .left-part .content-box p {
+    .visitor-home-page .carousel .left-part .content-box p {
         padding-top: 15px;
     }
 
-    .carousel .carousel-buttons img {
+    .visitor-home-page .carousel .carousel-buttons img {
         width: 20px;
     }
 
-    .carousel .right-part {
+    .visitor-home-page .carousel .right-part {
         padding-left: 20px;
     }
 }
