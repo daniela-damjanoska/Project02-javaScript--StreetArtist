@@ -19,3 +19,27 @@ const makeSliderImg = (slideTrack, src) => {
     <img src="${src}" alt="" />
     </div>`;
 };
+
+const makeVisitorListingPhotos = (
+    src,
+    artistName,
+    price,
+    title,
+    desc,
+    cssClassOne,
+    cssClassTwo
+) => {
+    document.querySelector('.visitor-listing-page-inner').innerHTML += `
+        <div class="col-47 ${cssClassOne}">
+            <img src="${src}"/>
+            <div class="text-box">
+                <div class="row">
+                    <span>${artistName}</span>
+                    <button class="${cssClassTwo}">$${price}</button>
+                </div>
+                <p>${title}</p>
+                <p class="mb-0">${desc}</p>
+            </div>
+        </div>
+    `;
+};
