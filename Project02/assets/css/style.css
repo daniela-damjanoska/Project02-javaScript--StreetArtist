@@ -69,7 +69,7 @@ nav {
 }
 
 .bg-primary-default {
-    background-color: #a26a5e;
+    background-color: #a16a5e;
 }
 
 .bg-primary-contrast {
@@ -90,6 +90,10 @@ nav {
 
 .c-text-normal {
     color: #edd5bb;
+}
+
+.c-text-light {
+    color: #fcebd5;
 }
 
 .navbar-landing-page {
@@ -169,7 +173,7 @@ nav {
     font-size: 6rem;
 }
 
-.landing-page .polygon p.dark-braun {
+.landing-page .polygon p.c-text-primary-default {
     padding-top: 10%;
 }
 
@@ -266,7 +270,6 @@ nav {
     }
     100% {
         transform: translateX(calc(-100px * 60));
-        /* how to change the number in js to be connected with arr.length */
     }
 }
 
@@ -347,17 +350,64 @@ nav {
     transform: rotate(180deg);
 }
 
-/*============================================================*/
+.visitor-listing-page {
+    margin-top: 4px;
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
 
-@media (min-width: 1440px) {
-    nav {
-        font-size: 2.5rem;
-        height: 80px;
-    }
+.visitor-listing-page .filter-icon {
+    width: 130px;
+    position: fixed;
+    right: 2%;
+    bottom: 4%;
+    cursor: pointer;
+    box-shadow: 0 2px 7px #8a8484;
+}
 
-    .navbar-visitor-artist .navbar-brand .logo {
-        width: 100px;
-    }
+.visitor-listing-page .filter-icon:hover {
+    filter: brightness(1.2);
+}
+
+.visitor-listing-page .visitor-listing-page-inner {
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .col-47 {
+    flex: 0 1 47%;
+    box-shadow: 3px 3px 8px #8a8484;
+    margin-bottom: 50px;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .text-box {
+    padding: 10px 20px;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .text-box .row {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+    font-family: 'Reenie Beanie';
+    font-size: 4rem;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .text-box .row button {
+    border: none;
+    padding: 4px 6px;
+    border-radius: 3px;
+    box-shadow: 0 2px 7px #8a8484;
+    font-size: 1.5rem;
+}
+
+.visitor-listing-page .visitor-listing-page-inner .text-box p:first-of-type {
+    font-size: 1.3rem;
 }
 
 /*============================================================*/
@@ -365,6 +415,26 @@ nav {
 @media (max-width: 1440px) {
     .navbar-visitor-artist .navbar-icon img {
         width: 45px;
+    }
+
+    .visitor-home-page .content-wrapper p {
+        font-size: 3.4rem;
+    }
+
+    .visitor-home-page .content-wrapper button {
+        font-size: 1.6rem;
+    }
+
+    .visitor-listing-page .filter-icon {
+        width: 110px;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+        font-size: 2.6rem;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner .text-box .row button {
+        font-size: 1.1rem;
     }
 }
 
@@ -374,35 +444,7 @@ nav {
     .navbar-visitor-artist .navbar-wrapper {
         width: 75%;
     }
-}
 
-/*============================================================*/
-
-@media (max-width: 1200px) and (min-width: 1025px) {
-    .visitor-home-page .content-wrapper p {
-        font-size: 3.5rem;
-    }
-
-    .visitor-home-page .content-wrapper button {
-        font-size: 1.7rem;
-    }
-}
-
-/*============================================================*/
-
-@media (max-width: 1024px) and (min-width: 993px) {
-    .visitor-home-page .content-wrapper p {
-        font-size: 3rem;
-    }
-
-    .visitor-home-page .content-wrapper button {
-        font-size: 1.3rem;
-    }
-}
-
-/*============================================================*/
-
-@media (max-width: 992px) and (min-width: 768px) {
     .landing-page .polygon {
         height: 550px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 180px);
@@ -421,12 +463,30 @@ nav {
     }
 
     .visitor-home-page .content-wrapper p {
-        font-size: 3rem;
         width: 65%;
+        font-size: 3rem;
     }
 
     .visitor-home-page .content-wrapper button {
         font-size: 1.3rem;
+    }
+
+    .visitor-home-page .slider-div {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    .visitor-home-page .slide-area {
+        height: 290px;
+    }
+
+    .visitor-home-page .slide {
+        padding: 17px;
+    }
+
+    .visitor-home-page .slide img {
+        width: 300px;
+        height: 240px;
     }
 
     .visitor-home-page .carousel .content-box {
@@ -450,33 +510,24 @@ nav {
     .visitor-home-page .carousel .carousel-buttons img {
         width: 45px;
     }
-}
 
-/*============================================================*/
-
-@media (max-width: 900px) and (min-width: 768px) {
-    .visitor-home-page .slider-div {
-        padding-top: 35px;
-        padding-bottom: 35px;
+    .visitor-listing-page .visitor-listing-page-inner {
+        width: 95%;
     }
 
-    .visitor-home-page .slide-area {
-        height: 290px;
+    .visitor-listing-page .filter-icon {
+        width: 100px;
+        right: 4%;
     }
 
-    .visitor-home-page .slide {
-        padding: 17px;
-    }
-
-    .visitor-home-page .slide img {
-        width: 300px;
-        height: 240px;
+    .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+        font-size: 2.4rem;
     }
 }
 
-/*============================================================*/
+/* ============================================================ */
 
-@media (max-width: 767px) and (min-width: 600px) {
+@media (max-width: 768px) {
     .landing-page {
         width: 60%;
         padding-bottom: 210px;
@@ -497,11 +548,6 @@ nav {
 
     .landing-page .polygon-reverse p {
         top: 16%;
-    }
-
-    .visitor-home-page .content-wrapper p {
-        font-size: 3rem;
-        width: 65%;
     }
 
     .visitor-home-page .content-wrapper button {
@@ -559,22 +605,47 @@ nav {
     .visitor-home-page .carousel .right-part {
         padding-left: 50px;
     }
+
+    .visitor-listing-page {
+        padding-top: 60px;
+        padding-bottom: 15px;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner .col-47 {
+        margin-bottom: 45px;
+    }
+
+    .visitor-listing-page
+        .visitor-listing-page-inner
+        .text-box
+        p:first-of-type {
+        margin-bottom: 12px;
+    }
 }
 
 /*============================================================*/
 
-@media (max-width: 599px) {
+@media (max-width: 600px) {
     nav {
         font-size: 1.7rem;
         height: 55px;
     }
 
+    .navbar-visitor-artist .navbar-wrapper {
+        width: 70%;
+    }
+
     .navbar-visitor-artist .navbar-brand .logo {
-        width: 50px;
+        width: 60px;
     }
 
     .navbar-visitor-artist .navbar-icon img {
-        width: 40px;
+        width: 35px;
     }
 
     .landing-page {
@@ -674,6 +745,24 @@ nav {
     .visitor-home-page .carousel .right-part {
         padding-left: 30px;
     }
+
+    .visitor-listing-page {
+        padding-top: 50px;
+        padding-bottom: 10px;
+    }
+
+    .visitor-listing-page .filter-icon {
+        width: 90px;
+        right: 5%;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner {
+        width: 95%;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner .col-47 {
+        margin-bottom: 40px;
+    }
 }
 
 /*============================================================*/
@@ -683,12 +772,8 @@ nav {
         font-size: 1.4rem;
     }
 
-    .navbar-visitor-artist .navbar-wrapper {
-        margin-right: 4%;
-    }
-
     .navbar-visitor-artist .navbar-brand .logo {
-        width: 20px;
+        width: 55px;
     }
 
     .landing-page {
@@ -702,15 +787,6 @@ nav {
 
     .landing-page .polygon p {
         font-size: 2.7rem;
-    }
-
-    .navbar-visitor-artist .navbar-brand .logo {
-        left: 4%;
-        width: 54px;
-    }
-
-    .navbar-visitor-artist .navbar-icon img {
-        width: 35px;
     }
 
     .visitor-home-page .content-wrapper p {
@@ -757,5 +833,22 @@ nav {
 
     .visitor-home-page .carousel .right-part {
         padding-left: 20px;
+    }
+
+    .visitor-listing-page {
+        padding-top: 40px;
+        padding-bottom: 10px;
+    }
+
+    .visitor-listing-page .filter-icon {
+        width: 70px;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner {
+        width: 100%;
+    }
+
+    .visitor-listing-page .visitor-listing-page-inner .col-47 {
+        margin-bottom: 30px;
     }
 }
