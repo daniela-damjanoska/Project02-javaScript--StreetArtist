@@ -363,6 +363,7 @@ nav {
     bottom: 4%;
     cursor: pointer;
     box-shadow: 0 2px 7px #8a8484;
+    border-radius: 5px;
 }
 
 .visitor-listing-page .filter-icon:hover {
