@@ -12,13 +12,13 @@
     <body>
         <!-- -------------------------navbar-------------------------- -->
         <nav class="bg-light">
-            <div class="navbar-landing-page row">
+            <div class="navbar-landing-page row hide">
                 <span class="c-text-primary-default"><b>Street ARTist</b></span>
             </div>
         </nav>
 
         <!-- -----------------------landing page---------------------- -->
-        <section id="landing-page" class="landing-page text-center hide">
+        <section id="landingPage" class="landing-page text-center hide">
             <img src="./img/Logo1.png" class="logo-img" alt="logo" />
             <div class="polygon bg-normal">
                 <p class="c-text-primary-default">Join as Artist</p>
@@ -36,7 +36,7 @@
         </section>
 
         <!-- -----------------------visitor home page----------------- -->
-        <section id="visitor-home-page" class="visitor-home-page hide">
+        <section id="visitorHomePage" class="visitor-home-page hide">
             <div class="img-wrapper p-relative row">
                 <img src="./img/brick-bg.png" alt="" />
                 <!-- <img src="./img/brick-1.png" alt="" />
@@ -78,21 +78,108 @@
         </section>
 
         <!-- -----------------------visitor listing page----------------- -->
-        <section
-            id="visitor-listing-page"
-            class="visitor-listing-page bg-normal"
-        >
-            <img src="./img/filter.png" class="filter-icon" alt="filter" />
+        <section id="visitorListingPage" class="visitor-listing-page bg-normal">
+            <img
+                src="./img/filter.png"
+                class="filter-icon"
+                id="filterIcon"
+                alt="filter"
+            />
             <div class="visitor-listing-page-inner row"></div>
+
+            <!-- -----------------------filter page----------------- -->
+            <div
+                class="filter-part bg-primary-default c-text-light"
+                id="filterPart"
+            >
+                <div class="filter-part-inner bg-primary-default c-text-light">
+                    <div class="row filter-by">
+                        <p class="mb-0"><b>Filter by</b></p>
+                        <img
+                            src="./img/close.png"
+                            class="close"
+                            id="close"
+                            alt="close"
+                        />
+                    </div>
+                    <div class="filter">
+                        <p>By Item Title</p>
+                        <input
+                            type="text"
+                            id="filterTitle"
+                            class="filter-title"
+                            placeholder="Search by Item title"
+                        />
+                    </div>
+                    <div class="filter">
+                        <p>By Artist</p>
+                        <button
+                            class="
+                                row
+                                choose-button
+                                bg-primary-default
+                                c-text-light
+                            "
+                            id="filterArtist"
+                        >
+                            <span>Choose</span>
+                            <img src="./img/choose-arrow.png" alt="" />
+                        </button>
+                    </div>
+                    <div class="filter">
+                        <p>By Price</p>
+                        <div class="filter-price-inner row">
+                            <div class="col-50">
+                                <label for="filter-price-min">Min: </label>
+                                <input
+                                    type="number"
+                                    id="filter-price-min"
+                                    placeholder="Min price"
+                                />
+                            </div>
+                            <div class="col-50 row">
+                                <label for="filter-price-max">Max: </label>
+                                <input
+                                    type="number"
+                                    id="filter-price-max"
+                                    placeholder="Max Price"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <p>By Type</p>
+                        <button
+                            class="
+                                row
+                                choose-button
+                                bg-primary-default
+                                c-text-light
+                            "
+                            id="filterType"
+                        >
+                            <span>Choose</span>
+                            <img src="./img/choose-arrow.png" alt="" />
+                        </button>
+                    </div>
+                    <div class="img-check-wrapper">
+                        <img src="./img/check.png" class="check" alt="check" />
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- -------------------------body overlay---------------------- -->
+        <div class="overlay hide p-absolute"></div>
+
+        <script src="./assets/js/data.js"></script>
+        <script src="./assets/js/render.js"></script>
+        <script src="./assets/js/carousel.js"></script>
+        <script src="./assets/js/main.js"></script>
 
         <script
             src="https://kit.fontawesome.com/c308de0b2c.js"
             crossorigin="anonymous"
         ></script>
-        <script src="./assets/js/data.js"></script>
-        <script src="./assets/js/render.js"></script>
-        <script src="./assets/js/carousel.js"></script>
-        <script src="./assets/js/main.js"></script>
     </body>
 </html>
