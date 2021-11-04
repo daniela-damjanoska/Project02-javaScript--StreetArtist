@@ -1,5 +1,9 @@
 'use strict';
 
+const filterSection = document.querySelector('#filterPart'),
+    filterIcon = document.querySelector('#filterIcon'),
+    filterOverlay = document.querySelector('.overlay');
+
 makeNavbar('Street ARTist', 'auction');
 
 items.forEach(el => {
@@ -52,4 +56,28 @@ filteredPublished.forEach((item, idx) => {
                 'c-text-primary-default bg-light'
             );
     }
+});
+
+filterIcon.addEventListener('click', function () {
+    const filterPartHeight = filterSection.offsetHeight,
+        windowHeight = window.innerHeight;
+
+    filterSection.style.right = 0;
+    this.style.display = 'none';
+    filterOverlay.style.display = 'block';
+    document.body.classList.add('p-fixed-0');
+
+    if (filterPartHeight < windowHeight) {
+        filterSection.style.overflowY = 'hidden';
+    } else {
+        filterSection.style.overflowY = 'scroll';
+        filterSection.style.height = `${windowHeight}px`;
+    }
+});
+
+document.querySelector('#close').addEventListener('click', () => {
+    filterSection.style.right = '-600px';
+    filterIcon.style.display = 'block';
+    filterOverlay.style.display = 'none';
+    document.body.classList.remove('p-fixed-0');
 });
