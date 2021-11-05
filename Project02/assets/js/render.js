@@ -21,6 +21,7 @@ const makeSliderImg = (slideTrack, src) => {
 };
 
 const makeVisitorListingPhotos = (
+    id,
     src,
     artistName,
     price,
@@ -30,7 +31,7 @@ const makeVisitorListingPhotos = (
     cssClassTwo
 ) => {
     document.querySelector('.visitor-listing-page-inner').innerHTML += `
-        <div class="col-47 ${cssClassOne}">
+        <div class="col-47 ${cssClassOne}" id="${id}">
             <img src="${src}"/>
             <div class="text-box">
                 <div class="row">

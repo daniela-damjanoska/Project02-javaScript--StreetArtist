@@ -255,13 +255,12 @@ nav {
 /* ----------------------------visitor-home-styles------------------------- */
 .visitor-home-page .img-wrapper {
     height: 200px;
-    padding-top: 15px;
-    padding-bottom: 10px;
+    padding-top: 5px;
 }
 
 .visitor-home-page .img-wrapper img {
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.08;
 }
 
 .visitor-home-page .content-wrapper {
@@ -484,7 +483,7 @@ nav {
 }
 
 /* ----------------------------filter-part-styles------------------------- */
-.filter-part {
+.visitor-listing-page .filter-part {
     width: 600px;
     position: fixed;
     right: -600px;
@@ -495,7 +494,7 @@ nav {
     height: 930px;
 }
 
-.filter-part .filter-part-inner {
+.visitor-listing-page .filter-part .filter-part-inner {
     position: absolute;
     left: 0;
     top: 0;
@@ -504,36 +503,36 @@ nav {
     padding: 20px;
 }
 
-.filter-part .filter .choose-button {
+.visitor-listing-page .filter-part .filter .choose-button {
     border: 1px solid #edd5bb;
 }
 
-.filter-part .filter-by {
+.visitor-listing-page .filter-part .filter-by {
     justify-content: space-between;
     align-items: center;
 }
 
-.filter-part .filter-by .close {
+.visitor-listing-page .filter-part .filter-by .close {
     width: 50px;
     cursor: pointer;
     transition: 0.3s ease-in;
 }
 
-.filter-part .filter-by .close:hover {
+.visitor-listing-page .filter-part .filter-by .close:hover {
     transform: scale(1.1);
 }
 
-.filter-part .filter-by p {
+.visitor-listing-page .filter-part .filter-by p {
     font-size: 2rem;
 }
 
-.filter-part .filter {
+.visitor-listing-page .filter-part .filter {
     padding-bottom: 35px;
     padding-top: 45px;
     border-bottom: 3px solid #edd5bb;
 }
 
-.filter-part .filter input {
+.visitor-listing-page .filter-part .filter input {
     border: 1px solid #edd5bb;
     border-radius: 3px;
     padding: 10px;
@@ -541,42 +540,42 @@ nav {
     color: #fcebd5;
 }
 
-.filter-part .filter input::placeholder {
+.visitor-listing-page .filter-part .filter input::placeholder {
     color: #edd5bb;
 }
 
-.filter-part .filter input:focus {
+.visitor-listing-page .filter-part .filter input:focus {
     outline: none;
     border: 2px solid #edd5bb;
 }
 
-.filter-part .filter .filter-title {
+.visitor-listing-page .filter-part .filter .filter-title {
     width: 100%;
 }
 
-.filter-part .filter .filter-price-inner {
+.visitor-listing-page .filter-part .filter .filter-price-inner {
     justify-content: space-between;
     align-items: center;
 }
 
-.filter-part .filter .filter-price-inner .col-50.row {
+.visitor-listing-page .filter-part .filter .filter-price-inner .col-50.row {
     justify-content: flex-end;
     align-items: center;
 }
 
-.filter-part .filter .filter-price-inner .col-50 label {
+.visitor-listing-page .filter-part .filter .filter-price-inner .col-50 label {
     margin-right: 5px;
 }
 
-.filter-part .filter .filter-price-inner .col-50 input {
+.visitor-listing-page .filter-part .filter .filter-price-inner .col-50 input {
     width: 130px;
 }
 
-.filter-part .img-check-wrapper {
+.visitor-listing-page .filter-part .img-check-wrapper {
     padding-bottom: 20px;
 }
 
-.filter-part .check {
+.visitor-listing-page .filter-part .check {
     width: 50px;
     cursor: pointer;
     transition: 0.3s ease-in;
@@ -586,11 +585,11 @@ nav {
     box-shadow: 0 2px 7px #474242;
 }
 
-.filter-part .check:hover {
+.visitor-listing-page .filter-part .check:hover {
     filter: brightness(1.2);
 }
 
-/*============================================================*/
+/*===============================================================================================================*/
 
 @media (max-width: 1440px) {
     .navbar-visitor-artist .navbar-icon img {
@@ -640,7 +639,7 @@ nav {
     }
 }
 
-/*============================================================*/
+/*===============================================================================================================*/
 
 @media (max-width: 1024px) {
     .navbar-visitor-artist .navbar-wrapper {
@@ -753,7 +752,7 @@ nav {
     }
 }
 
-/* ============================================================ */
+/* ============================================================================================================== */
 
 @media (max-width: 768px) {
     .landing-page {
@@ -887,7 +886,7 @@ nav {
     }
 }
 
-/*============================================================*/
+/*===============================================================================================================*/
 
 @media (max-width: 600px) {
     nav {
@@ -901,6 +900,7 @@ nav {
 
     .navbar-visitor-artist .navbar-brand .logo {
         width: 60px;
+        z-index: 6;
     }
 
     .navbar-visitor-artist .navbar-icon img {
@@ -1046,12 +1046,17 @@ nav {
     }
 
     /* ----------------------------filter-part-styles------------------------- */
-    .filter-part {
+    .visitor-listing-page .filter-part {
         width: 100vw;
+        top: 55px;
+    }
+
+    .overlay {
+        background: transparent;
     }
 }
 
-/*============================================================*/
+/*===============================================================================================================*/
 
 @media (max-width: 425px) {
     nav {
@@ -1177,11 +1182,16 @@ nav {
     }
 
     /* ----------------------------filter-part-styles------------------------- */
-    .filter-part .filter .filter-price-inner .col-50 input {
+    .visitor-listing-page
+        .filter-part
+        .filter
+        .filter-price-inner
+        .col-50
+        input {
         width: 90px;
     }
 
-    .filter-part .filter-by .close {
+    .visitor-listing-page .filter-part .filter-by .close {
         width: 30px;
     }
 }

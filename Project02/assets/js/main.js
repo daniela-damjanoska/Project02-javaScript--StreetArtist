@@ -1,23 +1,23 @@
 'use strict';
 
-const chooseBtnLanding = document.querySelector('#chooseArtistBtn'),
+const windowWidth = window.innerWidth,
+    chooseBtnLanding = document.querySelector('#chooseArtistBtn'),
     chooseArtistWrapper = document.querySelector('.chooseArtistWrapper'),
     filterSection = document.querySelector('#filterPart'),
     filterIcon = document.querySelector('#filterIcon'),
     filterOverlay = document.querySelector('.overlay');
 
-// makeNavbar('Street ARTist', 'auction');
-
-items.forEach(el => {
-    makeSliderImg(document.querySelector('.slide-track-one'), el.image);
-    makeSliderImg(document.querySelector('.slide-track-two'), el.image);
-});
+makeNavbar('Street ARTist', 'auction');
 
 const filteredPublished = items.filter(item => item.isPublished === true);
 filteredPublished.forEach((item, idx) => {
-    if (window.innerWidth <= 768) {
+    makeSliderImg(document.querySelector('.slide-track-one'), item.image);
+    makeSliderImg(document.querySelector('.slide-track-two'), item.image);
+
+    if (windowWidth <= 768) {
         if (idx % 2 === 0)
             makeVisitorListingPhotos(
+                item.id,
                 item.image,
                 item.artist,
                 item.price,
@@ -28,6 +28,7 @@ filteredPublished.forEach((item, idx) => {
             );
         else
             makeVisitorListingPhotos(
+                item.id,
                 item.image,
                 item.artist,
                 item.price,
@@ -39,6 +40,7 @@ filteredPublished.forEach((item, idx) => {
     } else {
         if (idx === 0 || (idx + 1) % 4 === 0 || (idx + 1) % 4 === 1)
             makeVisitorListingPhotos(
+                item.id,
                 item.image,
                 item.artist,
                 item.price,
@@ -49,6 +51,7 @@ filteredPublished.forEach((item, idx) => {
             );
         else
             makeVisitorListingPhotos(
+                item.id,
                 item.image,
                 item.artist,
                 item.price,
@@ -73,7 +76,9 @@ filterIcon.addEventListener('click', function () {
         filterSection.style.overflowY = 'hidden';
     } else {
         filterSection.style.overflowY = 'scroll';
-        filterSection.style.height = `${windowHeight}px`;
+        if (windowWidth < 600)
+            filterSection.style.height = `${windowHeight - 50}px`;
+        else filterSection.style.height = `${windowHeight}px`;
     }
 });
 
