@@ -12,27 +12,44 @@
     <body>
         <!-- -------------------------navbar-------------------------- -->
         <nav class="bg-light">
-            <div class="navbar-landing-page row hide">
+            <div class="navbar-landing-page row">
                 <span class="c-text-primary-default"><b>Street ARTist</b></span>
             </div>
         </nav>
 
         <!-- -----------------------landing page---------------------- -->
-        <section id="landingPage" class="landing-page text-center hide">
+        <section id="landingPage" class="landing-page p-relative">
             <img src="./img/Logo1.png" class="logo-img" alt="logo" />
             <div class="polygon bg-normal">
-                <p class="c-text-primary-default">Join as Artist</p>
+                <div class="text-center p-relative">
+                    <p class="c-text-primary-default">Join as Artist</p>
+                    <button
+                        class="
+                            row
+                            choose-button
+                            c-text-primary-default
+                            bg-normal
+                            p-absolute
+                        "
+                        id="chooseArtistBtn"
+                    >
+                        <span>Choose</span>
+                        <img src="./img/choose-arrow-dark.png" alt="" />
+                    </button>
+                </div>
+            </div>
+            <div class="polygon polygon-reverse bg-primary-default text-center">
+                <p class="c-text-normal">Join as Visitor</p>
             </div>
             <div
                 class="
-                    polygon polygon-reverse
-                    bg-primary-default
-                    row
-                    p-relative
+                    chooseArtistWrapper
+                    p-absolute
+                    bg-normal
+                    c-text-primary-default
+                    hide
                 "
-            >
-                <p class="c-text-normal p-absolute">Join as Visitor</p>
-            </div>
+            ></div>
         </section>
 
         <!-- -----------------------visitor home page----------------- -->
@@ -78,7 +95,10 @@
         </section>
 
         <!-- -----------------------visitor listing page----------------- -->
-        <section id="visitorListingPage" class="visitor-listing-page bg-normal">
+        <section
+            id="visitorListingPage"
+            class="visitor-listing-page bg-normal hide"
+        >
             <img
                 src="./img/filter.png"
                 class="filter-icon"
