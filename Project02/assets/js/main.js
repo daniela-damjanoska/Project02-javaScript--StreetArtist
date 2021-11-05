@@ -1,10 +1,12 @@
 'use strict';
 
-const filterSection = document.querySelector('#filterPart'),
+const chooseBtnLanding = document.querySelector('#chooseArtistBtn'),
+    chooseArtistWrapper = document.querySelector('.chooseArtistWrapper'),
+    filterSection = document.querySelector('#filterPart'),
     filterIcon = document.querySelector('#filterIcon'),
     filterOverlay = document.querySelector('.overlay');
 
-makeNavbar('Street ARTist', 'auction');
+// makeNavbar('Street ARTist', 'auction');
 
 items.forEach(el => {
     makeSliderImg(document.querySelector('.slide-track-one'), el.image);
@@ -80,4 +82,25 @@ document.querySelector('#close').addEventListener('click', () => {
     filterIcon.style.display = 'block';
     filterOverlay.style.display = 'none';
     document.body.classList.remove('p-fixed-0');
+});
+
+chooseBtnLanding.addEventListener('click', function () {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(res => {
+            this.style.opacity = 0;
+            chooseArtistWrapper.style.display = 'block';
+            chooseArtistWrapper.innerHTML = '';
+
+            res.forEach(user => {
+                chooseArtistWrapper.innerHTML += `
+                    <span class="chooseArtist" id="${user.id}">${user.name}</span>
+                `;
+            });
+        });
+});
+
+document.addEventListener('click', () => {
+    chooseArtistWrapper.style.display = 'none';
+    chooseBtnLanding.style.opacity = 1;
 });

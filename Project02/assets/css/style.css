@@ -170,6 +170,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 250px;
+    perspective: 100px;
 }
 
 .landing-page .logo-img {
@@ -178,38 +179,77 @@ nav {
 }
 
 .landing-page .polygon {
-    height: 700px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 300px);
+    height: 550px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 57%);
     cursor: pointer;
-    transition: background-color 0.3s ease-in;
+    transition: transform 0.2s;
 }
 
-.landing-page .polygon:first-of-type:hover {
-    background-color: #e7c6a1;
+.landing-page .polygon:hover {
+    transform: translateZ(1px);
 }
 
 .landing-page .polygon-reverse {
-    transform: rotate(180deg);
-    margin-top: -400px;
-    justify-content: center;
-}
-
-.landing-page .polygon-reverse:hover {
-    background-color: #924b3a;
+    clip-path: polygon(0 0, 100% 43%, 100% 100%, 0 100%);
+    margin-top: -237.5px;
 }
 
 .landing-page .polygon p {
     font-family: 'Reenie Beanie';
-    font-size: 6rem;
+    font-size: 8rem;
 }
 
 .landing-page .polygon p.c-text-primary-default {
-    padding-top: 10%;
+    padding-top: 80px;
 }
 
 .landing-page .polygon-reverse p {
-    transform: rotate(180deg);
-    top: 22%;
+    padding-top: 300px;
+}
+
+.landing-page .choose-button {
+    border: 1px solid #a16a5e;
+    top: 240px;
+    right: 18%;
+    font-size: 2rem;
+    min-width: 190px;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.3s ease-in;
+}
+
+.landing-page .choose-button:hover {
+    border: 3px solid #a16a5e;
+}
+
+.landing-page .choose-button img {
+    width: 25px;
+}
+
+.landing-page .chooseArtistWrapper {
+    width: 400px;
+    border: 2px solid #a16a5e;
+    top: 41%;
+    right: 17.5%;
+    border-radius: 5px;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.landing-page .chooseArtist {
+    display: block;
+    border-bottom: 1px solid #a16a5e;
+    text-align: right;
+    font-size: 1.8rem;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.landing-page .chooseArtist:hover,
+.chooseArtist:focus {
+    background-color: #a16a5e;
+    color: #edd5bb;
 }
 
 /* ----------------------------visitor-home-styles------------------------- */
@@ -290,12 +330,11 @@ nav {
 }
 
 .visitor-home-page .slide img:hover {
-    transform: translateZ(15px);
+    transform: translateZ(10px);
     filter: brightness(1.1);
 }
 
 @keyframes scroll {
-    /*to adapt for all browsers*/
     0% {
         transform: translateX(0);
     }
@@ -558,6 +597,26 @@ nav {
         width: 45px;
     }
 
+    .landing-page .polygon p {
+        font-size: 6rem;
+    }
+
+    .landing-page .choose-button {
+        top: 210px;
+        right: 15%;
+        font-size: 1.5rem;
+    }
+
+    .landing-page .chooseArtistWrapper {
+        width: 300px;
+        top: 35%;
+        right: 14.5%;
+    }
+
+    .landing-page .chooseArtist {
+        font-size: 1.3rem;
+    }
+
     /* ----------------------------visitor-home-styles------------------------- */
     .visitor-home-page .content-wrapper p {
         font-size: 3.4rem;
@@ -589,21 +648,44 @@ nav {
     }
 
     /* ----------------------------landing-page-styles------------------------- */
+    .landing-page {
+        width: 60%;
+    }
+
     .landing-page .polygon {
-        height: 550px;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 180px);
+        height: 450px;
     }
 
     .landing-page .polygon-reverse {
-        margin-top: -371px;
+        margin-top: -194px;
     }
 
     .landing-page .polygon p {
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
 
-    .landing-page .polygon-reverse p {
-        top: 18%;
+    .landing-page .choose-button {
+        top: 175px;
+        right: 20%;
+        font-size: 1.2rem;
+        min-width: 160px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .landing-page .choose-button img {
+        width: 20px;
+    }
+
+    .landing-page .chooseArtistWrapper {
+        height: 180px;
+        width: 230px;
+        top: 36%;
+        right: 19.5%;
+    }
+
+    .landing-page .chooseArtist {
+        font-size: 1.1rem;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
@@ -675,17 +757,24 @@ nav {
 
 @media (max-width: 768px) {
     .landing-page {
-        width: 60%;
-        padding-bottom: 210px;
+        width: 70%;
+    }
+
+    .landing-page {
+        padding-bottom: 150px;
+    }
+
+    .landing-page .logo-img {
+        margin-top: 65px;
+        margin-bottom: 65px;
     }
 
     .landing-page .polygon {
-        height: 450px;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 120px);
+        height: 400px;
     }
 
     .landing-page .polygon-reverse {
-        margin-top: -331px;
+        margin-top: -172.5px;
     }
 
     .landing-page .polygon p {
@@ -693,7 +782,29 @@ nav {
     }
 
     .landing-page .polygon-reverse p {
-        top: 16%;
+        padding-top: 240px;
+    }
+
+    .landing-page .choose-button {
+        top: 150px;
+        right: 23%;
+        font-size: 1rem;
+        min-width: 140px;
+        padding: 7px 10px;
+    }
+
+    .landing-page .choose-button img {
+        width: 18px;
+    }
+
+    .landing-page .chooseArtistWrapper {
+        width: 200px;
+        top: 37%;
+        right: 22.5%;
+    }
+
+    .landing-page .chooseArtist {
+        font-size: 1rem;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
@@ -798,30 +909,50 @@ nav {
 
     /* ----------------------------landing-page-styles------------------------- */
     .landing-page {
-        width: 70%;
-        padding-bottom: 180px;
+        padding-bottom: 120px;
     }
 
     .landing-page .logo-img {
-        margin-top: 65px;
-        margin-bottom: 65px;
+        margin-top: 55px;
+        margin-bottom: 55px;
     }
 
     .landing-page .polygon {
         height: 300px;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80px);
     }
 
     .landing-page .polygon-reverse {
-        margin-top: -222px;
+        margin-top: -129.5px;
     }
 
-    .landing-page .polygon p {
-        font-size: 3rem;
+    .landing-page .polygon p.c-text-primary-default {
+        padding-top: 60px;
     }
 
     .landing-page .polygon-reverse p {
-        top: 14%;
+        padding-top: 180px;
+    }
+
+    .landing-page .choose-button {
+        top: 130px;
+        right: 18%;
+        font-size: 0.8rem;
+        min-width: 120px;
+    }
+
+    .landing-page .choose-button img {
+        width: 15px;
+    }
+
+    .landing-page .chooseArtistWrapper {
+        height: 120px;
+        width: 150px;
+        top: 40%;
+        right: 17.5%;
+    }
+
+    .landing-page .chooseArtist {
+        font-size: 0.8rem;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
@@ -933,16 +1064,51 @@ nav {
 
     /* ----------------------------landing-page-styles------------------------- */
     .landing-page {
-        padding-bottom: 130px;
+        padding-bottom: 80px;
     }
 
     .landing-page .logo-img {
-        margin-top: 45px;
-        margin-bottom: 45px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .landing-page .polygon {
+        height: 220px;
+    }
+
+    .landing-page .polygon-reverse {
+        margin-top: -95px;
     }
 
     .landing-page .polygon p {
         font-size: 2.7rem;
+    }
+
+    .landing-page .polygon p.c-text-primary-default {
+        padding-top: 40px;
+    }
+
+    .landing-page .polygon-reverse p {
+        padding-top: 110px;
+    }
+
+    .landing-page .choose-button {
+        top: 90px;
+        right: 16%;
+        min-width: 100px;
+        padding: 5px 8px;
+    }
+
+    .landing-page .chooseArtistWrapper {
+        height: 110px;
+        width: 130px;
+        top: 39%;
+        right: 15.5%;
+    }
+
+    .landing-page .chooseArtist {
+        font-size: 0.7rem;
+        padding: 1px 4px;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
