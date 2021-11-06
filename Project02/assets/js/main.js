@@ -63,6 +63,16 @@ filteredPublished.forEach((item, idx) => {
                 'c-text-primary-default bg-light'
             );
     }
+
+    // example
+    makeArtistItemsListing(
+        item.id,
+        item.image,
+        item.title,
+        item.price,
+        item.dateCreated,
+        item.description
+    );
 });
 
 filterIcon.addEventListener('click', function () {
@@ -107,12 +117,22 @@ chooseBtnLanding.addEventListener('click', function () {
         });
 });
 
+document.querySelector('.add-items').addEventListener('click', function () {
+    const overlayHeight =
+        document.querySelector('#artistItemsPage').offsetHeight;
+
+    document.querySelector('#addEditPart').style.display = 'block';
+    bodyOverlay.style.display = 'block';
+    bodyOverlay.style.height = `${overlayHeight + 75}px`;
+    document.body.style.overflowX = 'hidden';
+});
+
 document.addEventListener('click', function (e) {
     chooseArtistWrapper.style.display = 'none';
     chooseBtnLanding.style.opacity = 1;
 
     if (e.target.classList.contains('menuIcon')) {
-        document.querySelector('.artist-menu').style.display = 'block';
+        document.querySelector('.artist-menu-page').style.display = 'block';
         bodyOverlay.style.display = 'block';
     }
 });
