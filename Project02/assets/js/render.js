@@ -44,3 +44,25 @@ const makeVisitorListingPhotos = (
         </div>
     `;
 };
+
+const makeArtistItemsListing = (id, src, title, price, date, desc) => {
+    document.querySelector('.artist-items-listing').innerHTML += `
+        <div class="col-47" id="${id}">
+            <img src="${src}"/>
+            <div class="text-box bg-light c-text-primary-default">
+                <div class="row">
+                    <p class="mb-0">${title}</p>
+                    <button class="bg-primary-default c-text-normal">$${price}</button>
+                </div>
+                <p>${date}</p>
+                <p class="mb-0">${desc}</p>
+            </div>
+            <div class="bg-primary-default row buttons-wrapper">
+                <button class="bg-primary-blue">Send to auction</button>
+                <button class="bg-primary-green">Unpublish</button>
+                <button class="bg-primary-contrast">Remove</button>
+                <button class="bg-light c-text-primary-default">Edit</button>
+            </div>
+        </div>
+    `;
+};

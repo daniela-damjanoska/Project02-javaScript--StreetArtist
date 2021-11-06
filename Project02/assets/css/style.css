@@ -13,8 +13,6 @@ body {
     font-family: 'Roboto', 'Times New Roman', Times, serif;
 }
 
-h2,
-h3,
 p,
 ul {
     margin-top: 0;
@@ -31,6 +29,10 @@ img {
 
 .col-50 {
     flex: 0 1 50%;
+}
+
+.col-47 {
+    flex: 0 1 47%;
 }
 
 .choose-button {
@@ -420,6 +422,8 @@ nav {
 }
 
 /* ----------------------------visitor-styles------------------------- */
+/* ------------------------artist-items-listing-styles---------------- */
+
 .visitor-listing-page {
     margin-top: 4px;
     padding-top: 70px;
@@ -441,7 +445,8 @@ nav {
     filter: brightness(1.2);
 }
 
-.visitor-listing-page .visitor-listing-page-inner {
+.visitor-listing-page .visitor-listing-page-inner,
+.artist-items-page .artist-items-listing {
     width: 85%;
     margin-right: auto;
     margin-left: auto;
@@ -449,17 +454,19 @@ nav {
     flex-wrap: wrap;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .col-47 {
-    flex: 0 1 47%;
+.visitor-listing-page .visitor-listing-page-inner .col-47,
+.artist-items-page .artist-items-listing .col-47 {
     box-shadow: 3px 3px 8px #8a8484;
     margin-bottom: 50px;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box {
+.visitor-listing-page .visitor-listing-page-inner .text-box,
+.artist-items-page .artist-items-listing .text-box {
     padding: 10px 20px;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box .row {
+.visitor-listing-page .visitor-listing-page-inner .text-box .row,
+.artist-items-page .artist-items-listing .text-box .row {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
@@ -470,7 +477,8 @@ nav {
     font-size: 4rem;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box .row button {
+.visitor-listing-page .visitor-listing-page-inner .text-box .row button,
+.artist-items-page .artist-items-listing .text-box .row button {
     border: none;
     padding: 4px 6px;
     border-radius: 3px;
@@ -478,11 +486,49 @@ nav {
     font-size: 1.5rem;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box p:first-of-type {
+.visitor-listing-page .visitor-listing-page-inner .text-box p:first-of-type,
+.artist-items-page .artist-items-listing .text-box .row p {
     font-size: 1.3rem;
 }
 
-/* ----------------------------filter-part-styles------------------------- */
+.artist-items-page .artist-items-listing {
+    padding-top: 50px;
+}
+
+.artist-items-page .artist-items-listing .text-box p:nth-child(2) {
+    color: #e09686;
+}
+
+.artist-items-page .artist-items-listing .col-47 .buttons-wrapper {
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
+.artist-items-page .add-edit-part .buttons-wrapper button {
+    padding: 8px 20px;
+    border-color: transparent;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 3px 4px 8px #575151;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.artist-items-page .artist-items-listing .col-47 .buttons-wrapper button:hover {
+    transform: scale(1.05);
+}
+
+.artist-items-page
+    .artist-items-listing
+    .col-47
+    .buttons-wrapper
+    button:not(:last-child) {
+    color: #ffffff;
+}
+
+/* ----------------------------filter-part-styles-------------------------------- */
+/* ----------------------------artist-items-page add-edit-part------------------ */
 .visitor-listing-page .filter-part {
     width: 600px;
     position: fixed;
@@ -532,7 +578,9 @@ nav {
     border-bottom: 3px solid #edd5bb;
 }
 
-.visitor-listing-page .filter-part .filter input {
+.visitor-listing-page .filter-part .filter input,
+.artist-items-page .add-edit-part input,
+.artist-items-page .add-edit-part textarea {
     border: 1px solid #edd5bb;
     border-radius: 3px;
     padding: 10px;
@@ -540,16 +588,24 @@ nav {
     color: #fcebd5;
 }
 
-.visitor-listing-page .filter-part .filter input::placeholder {
+.visitor-listing-page .filter-part .filter input::placeholder,
+.artist-items-page .add-edit-part input::placeholder,
+.artist-items-page .add-edit-part textarea::placeholder {
     color: #edd5bb;
 }
 
-.visitor-listing-page .filter-part .filter input:focus {
+.visitor-listing-page .filter-part .filter input:focus,
+.artist-items-page .add-edit-part input:focus,
+.artist-items-page .add-edit-part textarea:focus {
     outline: none;
     border: 2px solid #edd5bb;
 }
 
-.visitor-listing-page .filter-part .filter .filter-title {
+.visitor-listing-page .filter-part .filter .filter-title,
+.artist-items-page .add-edit-part .add-title,
+.artist-items-page .add-edit-part textarea,
+.artist-items-page .add-edit-part .type-price-inner .col-50 input,
+.artist-items-page .add-edit-part .image-url {
     width: 100%;
 }
 
@@ -589,8 +645,62 @@ nav {
     filter: brightness(1.2);
 }
 
+.artist-items-page .add-edit-part {
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 45px;
+    z-index: 3;
+    padding: 40px 20px;
+}
+
+.artist-items-page .add-edit-part .title-check {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.artist-items-page .add-edit-part .title-check p:first-child {
+    font-size: 1.5rem;
+}
+
+.artist-items-page .add-edit-part input:not(.image-url),
+.artist-items-page .add-edit-part textarea {
+    margin-bottom: 40px;
+}
+
+.artist-items-page .add-edit-part .type-price-inner .col-50:first-child {
+    margin-right: 30px;
+}
+
+.artist-items-page .add-edit-part p.text-center {
+    margin: 10px 0;
+}
+
+.artist-items-page .add-edit-part .snapshot {
+    border: 3px dashed #fcebd5;
+    padding: 100px;
+    margin-bottom: 20px;
+}
+
+.artist-items-page .add-edit-part .snapshot img {
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.artist-items-page .add-edit-part .buttons-wrapper {
+    justify-content: space-between;
+}
+
+.artist-items-page .add-edit-part .buttons-wrapper button:last-child {
+    background-color: #e5e5e5;
+    color: #5a5a5a;
+}
+
 /* ----------------------------artist-home-page-styles------------------------- */
-.artist-home-page {
+.artist-home-page .artist-home-page-wrapper {
     display: flex;
     width: 85%;
     margin-left: auto;
@@ -665,7 +775,9 @@ nav {
     transform: scale(1.1);
 }
 
-.artist-home-page .artist-menu {
+/* -------------------------------artist-menu-page-------------------------------- */
+
+.artist-menu-page {
     width: 600px;
     position: absolute;
     top: 70px;
@@ -675,7 +787,7 @@ nav {
     border-radius: 4px;
 }
 
-.artist-home-page .artist-menu ul {
+.artist-menu-page ul {
     margin-bottom: 0;
     padding-left: 0;
     list-style-type: none;
@@ -684,14 +796,33 @@ nav {
     cursor: pointer;
 }
 
-.artist-home-page .artist-menu ul li {
+.artist-menu-page ul li {
     transition: 0.3s ease-in;
 }
 
-.artist-home-page .artist-menu ul li:hover {
+.artist-menu-page ul li:hover {
     background-color: #fcebd5;
     color: #a16a5e;
     border-radius: 4px;
+}
+
+/* ----------------------------artist-items-page------------------------- */
+.artist-items-page {
+    margin-top: 5px;
+    padding: 40px 0;
+}
+
+.artist-items-page .add-items {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.artist-items-page .add-items .add-items-inner {
+    border: 3px dashed #a16a5e;
+    padding: 50px;
 }
 
 /*===============================================================================================================*/
@@ -750,6 +881,12 @@ nav {
 
     .artist-home-page .chart-wrapper .chart-btn-wrapper button {
         padding: 7px 20px;
+    }
+
+    /* ------------------------artist-items-listing-styles---------------- */
+
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+        padding: 5px 15px;
     }
 }
 
@@ -852,7 +989,8 @@ nav {
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
-    .visitor-listing-page .visitor-listing-page-inner {
+    .visitor-listing-page .visitor-listing-page-inner,
+    .artist-items-page .artist-items-listing {
         width: 95%;
     }
 
@@ -866,7 +1004,7 @@ nav {
     }
 
     /* ----------------------------artist-home-page-styles------------------------- */
-    .artist-home-page {
+    .artist-home-page .artist-home-page-wrapper {
         width: 100%;
         display: block;
     }
@@ -879,6 +1017,11 @@ nav {
     .artist-home-page .chart-wrapper {
         padding: 40px 30px;
         width: 100%;
+    }
+
+    /* ------------------------artist-items-listing-styles---------------- */
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+        padding: 5px 15px;
     }
 }
 
@@ -999,7 +1142,8 @@ nav {
         padding-bottom: 15px;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner {
+    .visitor-listing-page .visitor-listing-page-inner,
+    .artist-items-page .artist-items-listing {
         flex-direction: column;
         width: 80%;
     }
@@ -1016,7 +1160,7 @@ nav {
     }
 
     /* ----------------------------artist-home-page-styles------------------------- */
-    .artist-home-page {
+    .artist-home-page .artist-home-page-wrapper {
         width: 80%;
     }
 
@@ -1170,6 +1314,8 @@ nav {
         padding-left: 30px;
     }
 
+    /* ----------------------------visitor-listing-page-styles------------------------- */
+
     .visitor-listing-page {
         padding-top: 50px;
         padding-bottom: 10px;
@@ -1180,16 +1326,19 @@ nav {
         right: 5%;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner {
+    .visitor-listing-page .visitor-listing-page-inner,
+    .artist-items-page .artist-items-listing {
         width: 95%;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner .col-47 {
+    .visitor-listing-page .visitor-listing-page-inner .col-47,
+    .artist-items-page .artist-items-listing .col-47 {
         margin-bottom: 40px;
     }
 
     /* ----------------------------filter-part-styles------------------------- */
-    .visitor-listing-page .filter-part {
+    .visitor-listing-page .filter-part,
+    .artist-items-page .add-edit-part {
         width: 100vw;
         top: 55px;
     }
@@ -1199,8 +1348,9 @@ nav {
     }
 
     /* ----------------------------artist-home-page-styles------------------------- */
-    .artist-home-page,
-    .artist-home-page .artist-menu {
+    .artist-home-page .artist-home-page-wrapper,
+    .artist-menu-page,
+    .artist-items-page .add-items {
         width: 100%;
         font-size: 1rem;
     }
@@ -1221,8 +1371,20 @@ nav {
         padding: 3px 17px;
     }
 
-    .artist-home-page .artist-menu {
+    /* -------------------------------artist-menu-page-------------------------------- */
+    .artist-menu-page {
         top: 55px;
+        box-shadow: 0 2px 10px #5e4343;
+        border-radius: 0;
+    }
+
+    /* ------------------------artist-items-listing-styles---------------- */
+    .artist-items-page .artist-items-listing {
+        padding-top: 35px;
+    }
+
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+        padding: 5px 11.5px;
     }
 }
 
@@ -1343,7 +1505,8 @@ nav {
         width: 70px;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner {
+    .visitor-listing-page .visitor-listing-page-inner,
+    .artist-items-page .artist-items-listing {
         width: 100%;
     }
 
@@ -1376,5 +1539,11 @@ nav {
 
     .artist-home-page .chart-wrapper .chart-btn-wrapper {
         width: 100%;
+    }
+
+    /* ------------------------artist-items-listing-styles---------------- */
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+        padding: 3px 7px;
+        font-size: 0.8rem;
     }
 }
