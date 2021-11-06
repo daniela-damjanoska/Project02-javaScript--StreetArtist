@@ -93,7 +93,10 @@
         </section>
 
         <!-- -----------------------visitor listing page----------------- -->
-        <section id="visitorListingPage" class="visitor-listing-page bg-normal">
+        <section
+            id="visitorListingPage"
+            class="visitor-listing-page bg-normal hide"
+        >
             <img
                 src="./img/filter.png"
                 class="filter-icon"
@@ -184,12 +187,71 @@
             </div>
         </section>
 
+        <!-- -----------------------artist home page----------------- -->
+        <section class="artist-home-page" id="artistHomePage">
+            <div class="bg-normal artist-home-outer">
+                <div class="artist-home-inner c-text-light">
+                    <div class="items-info-wrapper row text-center">
+                        <div class="col-47 bg-primary-default">
+                            <p>Total Items Sold</p>
+                            <span id="soldItems"><b>12</b></span
+                            ><span>/</span
+                            ><span class="totalItems"><b>35</b></span>
+                        </div>
+                        <div class="col-47 bg-primary-default">
+                            <p>Total Income</p>
+                            <span id="totalIncome"><b>$1700</b></span>
+                        </div>
+                    </div>
+                    <div
+                        class="current-bid-box bg-primary-contrast text-center"
+                        id="currentBidBox"
+                    >
+                        <p>Live Auctioning Item</p>
+                        <span id="currentBidAmount" class="current-bid-amount"
+                            >$1200</span
+                        >
+                        <span>current bid</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-wrapper">
+                <p class="c-text-primary-default text-center">
+                    Display my income for the last
+                </p>
+                <div class="chart-btn-wrapper row">
+                    <button>7 days</button>
+                    <button>14 days</button>
+                    <button>1 month</button>
+                    <button>1 year</button>
+                </div>
+                <canvas id="artistChart"></canvas>
+            </div>
+            <div
+                class="
+                    artist-menu
+                    bg-primary-default
+                    c-text-light
+                    text-center
+                    hide
+                "
+            >
+                <ul class="mb-0">
+                    <li>Home</li>
+                    <li>Items</li>
+                    <li>Auction</li>
+                </ul>
+            </div>
+        </section>
+
         <!-- -------------------------body overlay---------------------- -->
         <div class="overlay hide p-absolute"></div>
 
         <script src="./assets/js/data.js"></script>
         <script src="./assets/js/render.js"></script>
         <script src="./assets/js/carousel.js"></script>
+        <script src="./vendors/chart.min.js"></script>
+        <script src="./assets/js/chart.js"></script>
         <script src="./assets/js/main.js"></script>
 
         <!-- <script

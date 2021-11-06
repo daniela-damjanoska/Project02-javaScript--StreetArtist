@@ -1,4 +1,4 @@
-const makeNavbar = (person, icon) => {
+const makeNavbar = (person, icon, elClass) => {
     document.querySelector('nav').innerHTML = `
         <div class="navbar-visitor-artist">
             <span class="navbar-brand">
@@ -7,7 +7,7 @@ const makeNavbar = (person, icon) => {
             <div class="navbar-wrapper row">
                 <span class="c-text-primary-default"><b>${person}</b></span>
                 <span class="navbar-icon">
-                        <img src="./img/${icon}.svg" alt="${icon}-icon"/>
+                        <img src="./img/${icon}.svg" class="${elClass}" alt="${icon}-icon"/>
                 </span>
             </div>
         </div>
