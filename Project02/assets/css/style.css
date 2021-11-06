@@ -589,6 +589,111 @@ nav {
     filter: brightness(1.2);
 }
 
+/* ----------------------------artist-home-page-styles------------------------- */
+.artist-home-page {
+    display: flex;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+}
+
+.artist-home-page .artist-home-inner {
+    padding: 30px 20px;
+}
+
+.artist-home-page .artist-home-outer {
+    width: 40%;
+    margin-top: 40px;
+}
+
+.artist-home-page .artist-home-inner .items-info-wrapper {
+    justify-content: space-between;
+}
+
+.artist-home-page .artist-home-inner .items-info-wrapper .col-47 {
+    width: 47%;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.artist-home-page .artist-home-inner .items-info-wrapper .col-47 span,
+.artist-home-page .current-bid-box .current-bid-amount {
+    font-size: 2rem;
+}
+
+.artist-home-page .current-bid-box {
+    margin-top: 20px;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.artist-home-page .current-bid-box span:first-of-type {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.artist-home-page .chart-wrapper {
+    padding: 50px 40px 30px 80px;
+    width: 60%;
+}
+
+.artist-home-page .chart-wrapper p:first-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.artist-home-page .chart-wrapper .chart-btn-wrapper {
+    justify-content: space-between;
+    padding-bottom: 40px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.artist-home-page .chart-wrapper .chart-btn-wrapper button {
+    padding: 10px 25px;
+    border: none;
+    color: #fcebd5;
+    background-color: #a16a5e;
+    box-shadow: 0 2px 7px #8a8484;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.artist-home-page .chart-wrapper .chart-btn-wrapper button:hover {
+    transform: scale(1.1);
+}
+
+.artist-home-page .artist-menu {
+    width: 600px;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    z-index: 6;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.artist-home-page .artist-menu ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.artist-home-page .artist-menu ul li {
+    transition: 0.3s ease-in;
+}
+
+.artist-home-page .artist-menu ul li:hover {
+    background-color: #fcebd5;
+    color: #a16a5e;
+    border-radius: 4px;
+}
+
 /*===============================================================================================================*/
 
 @media (max-width: 1440px) {
@@ -636,6 +741,15 @@ nav {
 
     .visitor-listing-page .visitor-listing-page-inner .text-box .row button {
         font-size: 1.1rem;
+    }
+
+    /* ----------------------------artist-home-page-styles------------------------- */
+    .artist-home-page {
+        font-size: 1.3rem;
+    }
+
+    .artist-home-page .chart-wrapper .chart-btn-wrapper button {
+        padding: 7px 20px;
     }
 }
 
@@ -749,6 +863,22 @@ nav {
 
     .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
         font-size: 2.4rem;
+    }
+
+    /* ----------------------------artist-home-page-styles------------------------- */
+    .artist-home-page {
+        width: 100%;
+        display: block;
+    }
+
+    .artist-home-page .artist-home-outer {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .artist-home-page .chart-wrapper {
+        padding: 40px 30px;
+        width: 100%;
     }
 }
 
@@ -884,6 +1014,19 @@ nav {
         p:first-of-type {
         margin-bottom: 12px;
     }
+
+    /* ----------------------------artist-home-page-styles------------------------- */
+    .artist-home-page {
+        width: 80%;
+    }
+
+    .artist-home-page .artist-home-outer {
+        margin-top: 40px;
+    }
+
+    .artist-home-page .chart-wrapper {
+        padding: 30px 10px;
+    }
 }
 
 /*===============================================================================================================*/
@@ -900,7 +1043,7 @@ nav {
 
     .navbar-visitor-artist .navbar-brand .logo {
         width: 60px;
-        z-index: 6;
+        z-index: 7;
     }
 
     .navbar-visitor-artist .navbar-icon img {
@@ -1054,6 +1197,33 @@ nav {
     .overlay {
         background: transparent;
     }
+
+    /* ----------------------------artist-home-page-styles------------------------- */
+    .artist-home-page,
+    .artist-home-page .artist-menu {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .artist-home-page .artist-home-outer {
+        margin-top: 5px;
+    }
+
+    .artist-home-page .chart-wrapper {
+        padding: 30px;
+    }
+
+    .artist-home-page .chart-wrapper p {
+        text-align: left;
+    }
+
+    .artist-home-page .chart-wrapper .chart-btn-wrapper button {
+        padding: 3px 17px;
+    }
+
+    .artist-home-page .artist-menu {
+        top: 55px;
+    }
 }
 
 /*===============================================================================================================*/
@@ -1193,5 +1363,18 @@ nav {
 
     .visitor-listing-page .filter-part .filter-by .close {
         width: 30px;
+    }
+
+    /* ----------------------------artist-home-page-styles------------------------- */
+    .artist-home-page {
+        font-size: 0.8rem;
+    }
+
+    .artist-home-page .chart-wrapper {
+        padding: 30px 20px;
+    }
+
+    .artist-home-page .chart-wrapper .chart-btn-wrapper {
+        width: 100%;
     }
 }

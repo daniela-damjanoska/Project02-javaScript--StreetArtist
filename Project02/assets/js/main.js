@@ -5,9 +5,11 @@ const windowWidth = window.innerWidth,
     chooseArtistWrapper = document.querySelector('.chooseArtistWrapper'),
     filterSection = document.querySelector('#filterPart'),
     filterIcon = document.querySelector('#filterIcon'),
-    filterOverlay = document.querySelector('.overlay');
+    bodyOverlay = document.querySelector('.overlay');
 
-makeNavbar('Street ARTist', 'auction');
+// makeNavbar('Street ARTist', 'auction');
+// example:
+makeNavbar('Leanne Graham', 'menu', 'menuIcon');
 
 const filteredPublished = items.filter(item => item.isPublished === true);
 filteredPublished.forEach((item, idx) => {
@@ -69,7 +71,7 @@ filterIcon.addEventListener('click', function () {
 
     filterSection.style.right = 0;
     this.style.display = 'none';
-    filterOverlay.style.display = 'block';
+    bodyOverlay.style.display = 'block';
     document.body.classList.add('p-fixed-0');
 
     if (filterPartHeight < windowHeight) {
@@ -85,7 +87,7 @@ filterIcon.addEventListener('click', function () {
 document.querySelector('#close').addEventListener('click', () => {
     filterSection.style.right = '-600px';
     filterIcon.style.display = 'block';
-    filterOverlay.style.display = 'none';
+    bodyOverlay.style.display = 'none';
     document.body.classList.remove('p-fixed-0');
 });
 
@@ -105,7 +107,12 @@ chooseBtnLanding.addEventListener('click', function () {
         });
 });
 
-document.addEventListener('click', () => {
+document.addEventListener('click', function (e) {
     chooseArtistWrapper.style.display = 'none';
     chooseBtnLanding.style.opacity = 1;
+
+    if (e.target.classList.contains('menuIcon')) {
+        document.querySelector('.artist-menu').style.display = 'block';
+        bodyOverlay.style.display = 'block';
+    }
 });
