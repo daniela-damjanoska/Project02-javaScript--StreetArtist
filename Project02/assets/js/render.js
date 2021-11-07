@@ -1,11 +1,21 @@
-const makeNavbar = (person, icon, elClass) => {
-    document.querySelector('nav').innerHTML = `
+const navbar = document.querySelector('nav');
+
+const makeLandingPageNav = () => {
+    navbar.innerHTML = `
+        <div class="navbar-landing-page row">
+            <span class="c-text-primary-default"><b>Street ARTist</b></span>
+        </div>
+    `;
+};
+
+const makeArtistVisitorNavbar = (person, icon, elClass) => {
+    navbar.innerHTML = `
         <div class="navbar-visitor-artist">
             <span class="navbar-brand">
                 <img class="logo bg-light p-absolute" src="./img/Logo.png" alt="logo"/>
             </span>
             <div class="navbar-wrapper row">
-                <span class="c-text-primary-default"><b>${person}</b></span>
+                <span class="c-text-primary-default artist-name"><b>${person}</b></span>
                 <span class="navbar-icon">
                         <img src="./img/${icon}.svg" class="${elClass}" alt="${icon}-icon"/>
                 </span>
@@ -16,11 +26,11 @@ const makeNavbar = (person, icon, elClass) => {
 
 const makeSliderImg = (slideTrack, src) => {
     slideTrack.innerHTML += `<div class="slide">
-    <img src="${src}" alt="" />
+    <img src="${src}" class="img-slide" alt="" />
     </div>`;
 };
 
-const makeVisitorListingPhotos = (
+const makeVisitorListingItems = (
     id,
     src,
     artistName,
@@ -30,7 +40,7 @@ const makeVisitorListingPhotos = (
     cssClassOne,
     cssClassTwo
 ) => {
-    document.querySelector('.visitor-listing-page-inner').innerHTML += `
+    visitorListingPageInner.innerHTML += `
         <div class="col-47 ${cssClassOne}" id="${id}">
             <img src="${src}"/>
             <div class="text-box">
@@ -45,8 +55,13 @@ const makeVisitorListingPhotos = (
     `;
 };
 
-const makeArtistItemsListing = (id, src, title, price, date, desc) => {
-    document.querySelector('.artist-items-listing').innerHTML += `
+const makeArtistListingItems = (id, src, title, price, date, desc) => {
+    const dateFormat = date.slice(0, 10),
+        year = dateFormat.slice(0, 4),
+        month = dateFormat.slice(5, 7),
+        day = dateFormat.slice(8);
+
+    artistItemsListing.innerHTML += `
         <div class="col-47" id="${id}">
             <img src="${src}"/>
             <div class="text-box bg-light c-text-primary-default">
@@ -54,7 +69,7 @@ const makeArtistItemsListing = (id, src, title, price, date, desc) => {
                     <p class="mb-0">${title}</p>
                     <button class="bg-primary-default c-text-normal">$${price}</button>
                 </div>
-                <p>${date}</p>
+                <p>${day}.${month}.${year}</p>
                 <p class="mb-0">${desc}</p>
             </div>
             <div class="bg-primary-default row buttons-wrapper">
@@ -65,4 +80,9 @@ const makeArtistItemsListing = (id, src, title, price, date, desc) => {
             </div>
         </div>
     `;
+};
+
+const makeAndManipulateMenuArtist = (menu, overlay) => {
+    document.querySelector('.artist-menu-page').style.display = menu;
+    bodyOverlay.style.display = overlay;
 };

@@ -11,11 +11,7 @@
     </head>
     <body>
         <!-- ---------------------------------navbar-------------------------------------- -->
-        <nav class="bg-light">
-            <div class="navbar-landing-page row hide">
-                <span class="c-text-primary-default"><b>Street ARTist</b></span>
-            </div>
-        </nav>
+        <nav class="bg-light"></nav>
 
         <!-- --------------------------------landing page--------------------------------- -->
         <section id="landingPage" class="landing-page p-relative hide">
@@ -60,7 +56,9 @@
                     <p class="c-text-primary-default mb-0">
                         Looking for a masterpiece?
                     </p>
-                    <button class="bg-primary-default">Find one now!</button>
+                    <button class="bg-primary-default findMasterpiece">
+                        Find one now!
+                    </button>
                 </div>
             </div>
             <div class="bg-normal slider-div">
@@ -99,7 +97,7 @@
         >
             <img
                 src="./img/filter.png"
-                class="filter-icon"
+                class="filter-icon p-fixed"
                 id="filterIcon"
                 alt="filter"
             />
@@ -107,7 +105,7 @@
 
             <!-- ----------------------------------filter page-------------------------------- -->
             <div
-                class="filter-part bg-primary-default c-text-light"
+                class="filter-part bg-primary-default c-text-light p-fixed"
                 id="filterPart"
             >
                 <div class="filter-part-inner bg-primary-default c-text-light">
@@ -115,8 +113,7 @@
                         <p class="mb-0"><b>Filter by</b></p>
                         <img
                             src="./img/close.png"
-                            class="close"
-                            id="close"
+                            class="close-filter"
                             alt="close"
                         />
                     </div>
@@ -180,8 +177,12 @@
                             <img src="./img/choose-arrow.png" alt="" />
                         </button>
                     </div>
-                    <div class="img-check-wrapper">
-                        <img src="./img/check.png" class="check" alt="check" />
+                    <div class="img-filter-done-wrapper">
+                        <img
+                            src="./img/check.png"
+                            class="filter-done"
+                            alt="check"
+                        />
                     </div>
                 </div>
             </div>
@@ -195,13 +196,12 @@
                         <div class="items-info-wrapper row text-center">
                             <div class="col-47 bg-primary-default">
                                 <p>Total Items Sold</p>
-                                <span id="soldItems"><b>12</b></span
-                                ><span>/</span
-                                ><span class="totalItems"><b>35</b></span>
+                                <span id="soldItems"><b></b></span><span>/</span
+                                ><span id="totalItems"><b></b></span>
                             </div>
                             <div class="col-47 bg-primary-default">
                                 <p>Total Income</p>
-                                <span id="totalIncome"><b>$1700</b></span>
+                                <span id="totalIncome"><b></b></span>
                             </div>
                         </div>
                         <div
@@ -209,6 +209,7 @@
                                 current-bid-box
                                 bg-primary-contrast
                                 text-center
+                                hide
                             "
                             id="currentBidBox"
                         >
@@ -248,14 +249,14 @@
             "
         >
             <ul class="mb-0">
-                <li>Home</li>
-                <li>Items</li>
-                <li>Auction</li>
+                <li class="menuHome">Home</li>
+                <li class="menuItems">Items</li>
+                <li class="menuAuction">Auction</li>
             </ul>
         </div>
 
         <!-- -------------------------------artist items page----------------------------- -->
-        <div class="artist-items-page bg-normal" id="artistItemsPage">
+        <div class="artist-items-page bg-normal hide" id="artistItemsPage">
             <div class="add-items bg-light">
                 <div class="add-items-inner text-center c-text-primary-default">
                     <p class="mb-0">+ Add new Item</p>
@@ -309,6 +310,9 @@
             </div>
         </div>
 
+        <!-- -------------------------------auction page----------------------------- -->
+        <div class="austion-page" id="auctionPage"></div>
+
         <!-- --------------------------------body overlay--------------------------------- -->
         <div class="overlay hide p-absolute"></div>
 
@@ -317,6 +321,7 @@
         <script src="./assets/js/carousel.js"></script>
         <script src="./vendors/chart.min.js"></script>
         <script src="./assets/js/chart.js"></script>
+        <script src="./assets/js/routing.js"></script>
         <script src="./assets/js/main.js"></script>
 
         <!-- <script

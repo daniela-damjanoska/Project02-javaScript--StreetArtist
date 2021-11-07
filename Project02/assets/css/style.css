@@ -57,12 +57,6 @@ img {
     z-index: 2;
 }
 
-.p-fixed-0 {
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
 .hide {
     display: none;
 }
@@ -73,6 +67,10 @@ img {
 
 .p-absolute {
     position: absolute;
+}
+
+.p-fixed {
+    position: fixed;
 }
 
 .text-center {
@@ -323,14 +321,14 @@ nav {
     animation-play-state: paused;
 }
 
-.visitor-home-page .slide img {
+.visitor-home-page .slide .img-slide {
     transition: transform 0.7s;
     box-shadow: 4px 5px 8px #8a8484;
     width: 450px;
     height: 270px;
 }
 
-.visitor-home-page .slide img:hover {
+.visitor-home-page .slide .img-slide:hover {
     transform: translateZ(10px);
     filter: brightness(1.1);
 }
@@ -432,7 +430,6 @@ nav {
 
 .visitor-listing-page .filter-icon {
     width: 130px;
-    position: fixed;
     right: 2%;
     bottom: 4%;
     cursor: pointer;
@@ -531,7 +528,6 @@ nav {
 /* ----------------------------artist-items-page add-edit-part------------------ */
 .visitor-listing-page .filter-part {
     width: 600px;
-    position: fixed;
     right: -600px;
     top: 0;
     z-index: 3;
@@ -558,13 +554,13 @@ nav {
     align-items: center;
 }
 
-.visitor-listing-page .filter-part .filter-by .close {
+.visitor-listing-page .filter-part .filter-by .close-filter {
     width: 50px;
     cursor: pointer;
     transition: 0.3s ease-in;
 }
 
-.visitor-listing-page .filter-part .filter-by .close:hover {
+.visitor-listing-page .filter-part .filter-by .close-filter:hover {
     transform: scale(1.1);
 }
 
@@ -627,11 +623,11 @@ nav {
     width: 130px;
 }
 
-.visitor-listing-page .filter-part .img-check-wrapper {
+.visitor-listing-page .filter-part .img-filter-done-wrapper {
     padding-bottom: 20px;
 }
 
-.visitor-listing-page .filter-part .check {
+.visitor-listing-page .filter-part .filter-done {
     width: 50px;
     cursor: pointer;
     transition: 0.3s ease-in;
@@ -641,7 +637,7 @@ nav {
     box-shadow: 0 2px 7px #474242;
 }
 
-.visitor-listing-page .filter-part .check:hover {
+.visitor-listing-page .filter-part .filter-done:hover {
     filter: brightness(1.2);
 }
 
@@ -800,7 +796,8 @@ nav {
     transition: 0.3s ease-in;
 }
 
-.artist-menu-page ul li:hover {
+.artist-menu-page ul li:hover,
+.artist-menu-page ul li.active {
     background-color: #fcebd5;
     color: #a16a5e;
     border-radius: 4px;
@@ -961,7 +958,7 @@ nav {
         padding: 17px;
     }
 
-    .visitor-home-page .slide img {
+    .visitor-home-page .slide .img-slide {
         width: 300px;
         height: 240px;
     }
@@ -1097,7 +1094,7 @@ nav {
         padding: 15px;
     }
 
-    .visitor-home-page .slide img {
+    .visitor-home-page .slide .img {
         width: 250px;
         height: 180px;
     }
@@ -1270,7 +1267,7 @@ nav {
         padding: 10px;
     }
 
-    .visitor-home-page .slide img {
+    .visitor-home-page .slide .slide-img {
         width: 150px;
         height: 120px;
         box-shadow: 3px 3px 8px #8a8484;
@@ -1524,7 +1521,7 @@ nav {
         width: 90px;
     }
 
-    .visitor-listing-page .filter-part .filter-by .close {
+    .visitor-listing-page .filter-part .filter-by .close-filter {
         width: 30px;
     }
 
