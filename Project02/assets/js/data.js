@@ -26,7 +26,7 @@ const carouselData = [
 
 const itemTypes = ['painting', 'sculpture', 'digital', 'custom'];
 
-const items = [
+let items = [
     {
         id: 1,
         title: 'Meet me where the wild things grow',
