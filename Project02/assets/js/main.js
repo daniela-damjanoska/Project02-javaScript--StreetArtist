@@ -16,17 +16,30 @@ const windowWidth = window.innerWidth,
     visitorBtnLanding = document.querySelector('.polygon-reverse'),
     filterSection = document.querySelector('#filterPart'),
     filterIcon = document.querySelector('#filterIcon'),
-    bodyOverlay = document.querySelector('.overlay');
+    bodyOverlay = document.querySelector('.overlay'),
+    itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+const manipulateOverlayHeight = section => {
+    const overlayHeight = section.offsetHeight;
+    bodyOverlay.style.height = `${overlayHeight + 75}px`;
+};
+
+const manipulateOverlayDisplay = (element, status, overlay) => {
+    element.style.display = status;
+    bodyOverlay.style.display = overlay;
+};
 
 const closeFilterSection = () => {
     location.hash = '#visitor/listing';
 
     filterSection.style.right = '-600px';
-    filterIcon.style.display = 'block';
     filterSection.style.overflowY = 'hidden';
-    bodyOverlay.style.display = 'none';
     document.body.classList.remove('p-fixed');
+    manipulateOverlayDisplay(filterIcon, 'block', 'none');
 };
+
+//updating the items array
+if (itemsLS) items = itemsLS;
 
 // click on choose button on landing-page to open the list of artist (from API)
 chooseBtnLanding.addEventListener('click', function () {
@@ -63,9 +76,9 @@ filterIcon.addEventListener('click', function () {
         windowHeight = window.innerHeight;
 
     filterSection.style.right = 0;
-    this.style.display = 'none';
-    bodyOverlay.style.display = 'block';
     document.body.classList.add('p-fixed');
+    manipulateOverlayDisplay(this, 'none', 'block');
+    bodyOverlay.style.height = '100vh';
 
     if (filterPartHeight < windowHeight) {
         filterSection.style.overflowY = 'hidden';
@@ -78,16 +91,17 @@ filterIcon.addEventListener('click', function () {
 });
 
 document.querySelector('.add-items').addEventListener('click', function () {
-    const overlayHeight =
-        document.querySelector('#artistItemsPage').offsetHeight;
+    const addEditSection = document.querySelector('#addEditPart');
 
-    document.querySelector('#addEditPart').style.display = 'block';
-    bodyOverlay.style.display = 'block';
-    bodyOverlay.style.height = `${overlayHeight + 75}px`;
+    manipulateOverlayDisplay(addEditSection, 'block', 'block');
+    manipulateOverlayHeight(artistItemsPage);
     document.body.style.overflowX = 'hidden';
 });
 
 document.addEventListener('click', function (e) {
+    const menuArtist = document.querySelector('.artist-menu-page'),
+        removeConfirmation = document.querySelector('.remove-confirmation');
+
     //click on chose artist options to go to the appropriate artist homepage
     if (e.target.classList.contains('chooseArtist')) {
         location.hash = '#artists';
@@ -105,25 +119,32 @@ document.addEventListener('click', function (e) {
 
     //click on menu icon to open the menu on artist pages
     if (e.target.classList.contains('menuIcon')) {
-        makeAndManipulateMenuArtist('block', 'block');
+        manipulateOverlayDisplay(menuArtist, 'block', 'block');
+
+        if (location.hash === '#artists/items') {
+            manipulateOverlayHeight(artistItemsPage);
+            document.body.style.overflowX = 'hidden';
+        } else {
+            bodyOverlay.style.height = '100vh';
+        }
     }
 
     //click on home from the menu-artist to go to the artist homepage
     if (e.target.classList.contains('menuHome')) {
         location.hash = '#artists';
-        makeAndManipulateMenuArtist('none', 'none');
+        manipulateOverlayDisplay(menuArtist, 'none', 'none');
     }
 
     //click on items from the menu-artist to go to the artist items page
     if (e.target.classList.contains('menuItems')) {
         location.hash = '#artists/items';
-        makeAndManipulateMenuArtist('none', 'none');
+        manipulateOverlayDisplay(menuArtist, 'none', 'none');
     }
 
     //click on auction from the menu-artist to go to the auction page
     if (e.target.classList.contains('menuAuction')) {
         location.hash = '#auction';
-        makeAndManipulateMenuArtist('none', 'none');
+        manipulateOverlayDisplay(menuArtist, 'none', 'none');
     }
 
     //click on slider img to go to visitor-listing-page
@@ -144,6 +165,40 @@ document.addEventListener('click', function (e) {
     //click on auction-icon on visitor pages to go to the auction page
     if (e.target.classList.contains('auctionIcon')) {
         location.hash = '#auction';
+    }
+
+    //click on remove button to open the confirmation popup
+    if (e.target.classList.contains('remove')) {
+        const itemToRemove = e.target.parentElement.parentElement;
+
+        manipulateOverlayDisplay(removeConfirmation, 'block', 'block');
+        manipulateOverlayHeight(artistItemsPage);
+
+        localStorage.setItem('itemToRemove', itemToRemove.id);
+
+        //click on confirm button to delete the item and also to update(filter) the items array
+        document
+            .querySelector('.confirm-remove')
+            .addEventListener('click', () => {
+                itemToRemove.remove();
+
+                const itemToRemoveId = localStorage.getItem('itemToRemove'),
+                    filteredArrayWithItems = items.filter(
+                        item => item.id !== +itemToRemoveId
+                    );
+
+                localStorage.setItem(
+                    'itemsLS',
+                    JSON.stringify(filteredArrayWithItems)
+                );
+
+                manipulateOverlayDisplay(removeConfirmation, 'none', 'none');
+            });
+    }
+
+    //click on cancel button to cancel the item deletion
+    if (e.target.classList.contains('cancel-remove')) {
+        manipulateOverlayDisplay(removeConfirmation, 'none', 'none');
     }
 });
 

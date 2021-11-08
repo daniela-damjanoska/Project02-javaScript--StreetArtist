@@ -75,14 +75,9 @@ const makeArtistListingItems = (id, src, title, price, date, desc) => {
             <div class="bg-primary-default row buttons-wrapper">
                 <button class="bg-primary-blue">Send to auction</button>
                 <button class="bg-primary-green">Unpublish</button>
-                <button class="bg-primary-contrast">Remove</button>
+                <button class="bg-primary-contrast remove">Remove</button>
                 <button class="bg-light c-text-primary-default">Edit</button>
             </div>
         </div>
     `;
-};
-
-const makeAndManipulateMenuArtist = (menu, overlay) => {
-    document.querySelector('.artist-menu-page').style.display = menu;
-    bodyOverlay.style.display = overlay;
 };

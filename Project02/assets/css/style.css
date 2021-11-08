@@ -52,7 +52,6 @@ img {
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
     background: rgba(88, 71, 71, 0.6);
     z-index: 2;
 }
@@ -502,7 +501,8 @@ nav {
 }
 
 .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
-.artist-items-page .add-edit-part .buttons-wrapper button {
+.artist-items-page .add-edit-part .buttons-wrapper button,
+.artist-items-page .remove-confirmation button {
     padding: 8px 20px;
     border-color: transparent;
     border-radius: 4px;
@@ -522,6 +522,31 @@ nav {
     .buttons-wrapper
     button:not(:last-child) {
     color: #ffffff;
+}
+
+.artist-items-page .remove-confirmation {
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 30px;
+    border: 4px double #a16a5e;
+    border-radius: 6px;
+    z-index: 4;
+}
+
+.artist-items-page .remove-confirmation p {
+    margin-bottom: 30px;
+}
+
+.artist-items-page .remove-confirmation button {
+    color: #a16a5e;
+    background-color: #edd5bb;
+    margin: 0 10px;
+}
+
+.artist-items-page .remove-confirmation button:hover {
+    color: #edd5bb;
+    background-color: #a16a5e;
 }
 
 /* ----------------------------filter-part-styles-------------------------------- */
@@ -1340,10 +1365,6 @@ nav {
         top: 55px;
     }
 
-    .overlay {
-        background: transparent;
-    }
-
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page .artist-home-page-wrapper,
     .artist-menu-page,
@@ -1380,8 +1401,21 @@ nav {
         padding-top: 35px;
     }
 
-    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
+    .artist-items-page .remove-confirmation button {
         padding: 5px 11.5px;
+    }
+
+    .artist-items-page .remove-confirmation {
+        padding: 25px;
+    }
+
+    .artist-items-page .remove-confirmation p {
+        margin-bottom: 25px;
+    }
+
+    .artist-items-page .remove-confirmation button {
+        margin: 0 7px;
     }
 }
 
@@ -1539,8 +1573,13 @@ nav {
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
-    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
+    .artist-items-page .remove-confirmation button {
         padding: 3px 7px;
         font-size: 0.8rem;
+    }
+
+    .artist-items-page .remove-confirmation p {
+        font-size: 0.9rem;
     }
 }
