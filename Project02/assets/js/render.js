@@ -42,7 +42,7 @@ const makeVisitorListingItems = (
 ) => {
     visitorListingPageInner.innerHTML += `
         <div class="col-47 ${cssClassOne}" id="${id}">
-            <img src="${src}"/>
+            <img src="${src}" class="img-item"/>
             <div class="text-box">
                 <div class="row">
                     <span>${artistName}</span>
@@ -55,7 +55,16 @@ const makeVisitorListingItems = (
     `;
 };
 
-const makeArtistListingItems = (id, src, title, price, date, desc) => {
+const makeArtistListingItems = (
+    id,
+    src,
+    title,
+    price,
+    date,
+    desc,
+    isPublished,
+    isPublishedText
+) => {
     const dateFormat = date.slice(0, 10),
         year = dateFormat.slice(0, 4),
         month = dateFormat.slice(5, 7),
@@ -63,21 +72,40 @@ const makeArtistListingItems = (id, src, title, price, date, desc) => {
 
     artistItemsListing.innerHTML += `
         <div class="col-47" id="${id}">
-            <img src="${src}"/>
+            <img src="${src}"/ class="img-item">
             <div class="text-box bg-light c-text-primary-default">
                 <div class="row">
                     <p class="mb-0">${title}</p>
-                    <button class="bg-primary-default c-text-normal">$${price}</button>
+                    <button class="bg-primary-default c-text-normal price">$${price}</button>
                 </div>
                 <p>${day}.${month}.${year}</p>
                 <p class="mb-0">${desc}</p>
             </div>
             <div class="bg-primary-default row buttons-wrapper">
                 <button class="bg-primary-blue">Send to auction</button>
-                <button class="bg-primary-green">Unpublish</button>
+                <button class="${isPublished} publishing">${isPublishedText}</button>
                 <button class="bg-primary-contrast remove">Remove</button>
                 <button class="bg-light c-text-primary-default">Edit</button>
             </div>
         </div>
     `;
+};
+
+const makeRequiredFeedback = (reqField, parent) => {
+    const feedbackPar = document.createElement('p');
+    feedbackPar.classList.add(reqField, 'required');
+    feedbackPar.textContent = '*required field';
+    document.querySelector(parent).appendChild(feedbackPar);
+};
+
+const makeDropdownTypeMenu = function () {
+    typeDropDown.classList.add('chooseTypeOpen');
+    changeTypeArrow.classList.add('rotate-arrow');
+    typeDropDown.innerHTML = '';
+    itemTypes.forEach(
+        type =>
+            (typeDropDown.innerHTML += `
+            <span class="chooseType">${type}</span>
+    `)
+    );
 };
