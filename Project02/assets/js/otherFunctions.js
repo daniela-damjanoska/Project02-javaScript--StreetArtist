@@ -46,3 +46,17 @@ const closeFilterSection = () => {
     document.body.classList.remove('p-fixed');
     manipulateOverlayDisplay(filterIcon, 'block', 'none');
 };
+
+const openNewEditSection = () => {
+    location.hash = '#artists/items/add';
+    manipulateOverlayDisplay(addEditSection, 'block', 'block');
+    manipulateOverlayHeight(artistItemsPage);
+    document.body.style.overflowX = 'hidden';
+};
+
+const closeNewEditSection = () => {
+    addEditSection.reset();
+    location.hash = '#artists/items';
+    manipulateOverlayDisplay(addEditSection, 'none', 'none');
+    removeElClass(imgCheckBox, 'hide');
+};
