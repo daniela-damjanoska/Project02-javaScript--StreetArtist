@@ -85,7 +85,7 @@ const makeArtistListingItems = (
                 <button class="bg-primary-blue">Send to auction</button>
                 <button class="${isPublished} publishing">${isPublishedText}</button>
                 <button class="bg-primary-contrast remove">Remove</button>
-                <button class="bg-light c-text-primary-default">Edit</button>
+                <button class="bg-light c-text-primary-default edit-item">Edit</button>
             </div>
         </div>
     `;

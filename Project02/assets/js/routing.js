@@ -99,12 +99,7 @@ const handleRoute = () => {
             //click on add-new-item to open the add-new/edit section
             document
                 .querySelector('.add-items')
-                .addEventListener('click', function () {
-                    location.hash = '#artists/items/add';
-                    manipulateOverlayDisplay(addEditSection, 'block', 'block');
-                    manipulateOverlayHeight(artistItemsPage);
-                    document.body.style.overflowX = 'hidden';
-                });
+                .addEventListener('click', openNewEditSection);
 
             document.addEventListener('click', e => {
                 const removeConfirmation = document.querySelector(
@@ -192,6 +187,39 @@ const handleRoute = () => {
                         'none'
                     );
                 }
+
+                //edit functionality
+                if (e.target.classList.contains('edit-item')) {
+                    isEditing = true;
+
+                    openNewEditSection();
+
+                    //change the button textContent
+                    document.querySelector('.add-edit-btn').textContent =
+                        'Add Item';
+
+                    const itemToEditId =
+                        +e.target.parentElement.parentElement.id;
+
+                    const itemToEdit = items.find(
+                        item => item.id === itemToEditId
+                    );
+
+                    localStorage.setItem('editItemIdLS', itemToEditId);
+
+                    if (itemToEdit.isPublished === true) {
+                        removeElClass(imgCheckBox, 'hide');
+                    } else {
+                        addElClass(imgCheckBox, 'hide');
+                        localStorage.setItem('isPublished', false);
+                    }
+
+                    addTitleInput.value = itemToEdit.title;
+                    addDescInput.value = itemToEdit.description;
+                    addTypeInput.value = itemToEdit.type;
+                    addPriceInput.value = itemToEdit.price;
+                    addImgUrlInput.value = itemToEdit.image;
+                }
             });
             break;
 
@@ -205,7 +233,7 @@ const handleRoute = () => {
                 toggleElClass(imgCheckBox, 'hide');
 
                 if (imgCheckBox.classList.contains('hide'))
-                    isPublishWrapper.setAttribute('data-checked');
+                    isPublishWrapper.removeAttribute('data-checked');
                 else isPublishWrapper.setAttribute('data-checked', true);
 
                 if (isPublishWrapper.getAttribute('data-checked')) {
@@ -266,7 +294,7 @@ const handleRoute = () => {
                             description: addDescInput.value,
                             type: addTypeInput.value,
                             image: addImgUrlInput.value,
-                            price: addPriceInput.value,
+                            price: addPriceInput.valueAsNumber,
                             artist: artistLS,
                             dateCreated: new Date().toISOString(),
                             isPublished: isPublishedLS,
@@ -280,27 +308,75 @@ const handleRoute = () => {
                         items.forEach((el, i) => (el.id = i + 1));
 
                         localStorage.setItem('itemsLS', JSON.stringify(items));
+                    } else {
+                        isEditing = true;
 
-                        addEditSection.reset();
-                        location.hash = '#artists/items';
-                        manipulateOverlayDisplay(
-                            addEditSection,
-                            'none',
-                            'none'
+                        const editItemIdLS = JSON.parse(
+                            localStorage.getItem('editItemIdLS')
                         );
+
+                        const isPublishedLS = JSON.parse(
+                            localStorage.getItem('isPublished')
+                        );
+
+                        items.forEach((item, idx) => {
+                            if (idx + 1 === editItemIdLS) {
+                                item.title = addTitleInput.value;
+                                item.description = addDescInput.value;
+                                item.type = addTypeInput.value;
+                                item.image = addImgUrlInput.value;
+                                item.price = addPriceInput.valueAsNumber;
+                                item.isPublished = isPublishedLS;
+                            }
+                        });
+
+                        localStorage.setItem('itemsLS', JSON.stringify(items));
+
+                        const itemsLS = JSON.parse(
+                            localStorage.getItem('itemsLS')
+                        );
+
+                        if (itemsLS) {
+                            artistItemsListing.innerHTML = '';
+
+                            //render the items with the appropriate publish/unpublish button
+                            itemsLS.forEach(item => {
+                                if (item.isPublished === true)
+                                    makeArtistListingItems(
+                                        item.id,
+                                        item.image,
+                                        item.title,
+                                        item.price,
+                                        item.dateCreated,
+                                        item.description,
+                                        'bg-primary-green',
+                                        'unpublish'
+                                    );
+                                else
+                                    makeArtistListingItems(
+                                        item.id,
+                                        item.image,
+                                        item.title,
+                                        item.price,
+                                        item.dateCreated,
+                                        item.description,
+                                        'btn-grey',
+                                        'publish'
+                                    );
+                            });
+                        }
+
+                        isEditing = false;
                     }
+
+                    closeNewEditSection();
                 }
             });
 
             //click on cancel button to close the add-new/edit section
             document
                 .querySelector('.cancelNewEdit')
-                .addEventListener('click', () => {
-                    location.hash = '#artists/items';
-                    manipulateOverlayDisplay(addEditSection, 'none', 'none');
-                    addEditSection.reset();
-                    removeElClass(imgCheckBox, 'hide');
-                });
+                .addEventListener('click', closeNewEditSection);
 
             //open the dropdown on inputType
             addTypeInput.addEventListener('click', makeDropdownTypeMenu);
