@@ -278,40 +278,73 @@
             </div>
             <div class="artist-items-listing row"></div>
             <!-- ----------------------------------add-edit-page-------------------------------- -->
-            <div
+            <form
                 class="add-edit-part bg-primary-default c-text-light hide"
                 id="addEditPart"
             >
                 <div class="title-check row">
                     <p><b>Add new Item</b></p>
-                    <p>Is published</p>
+                    <div class="row isPublishWrapper" data-checked="true">
+                        <p class="mb-0 isPublished">Is published</p>
+                        <div class="img-box">
+                            <img
+                                src="./img/Vector 5.png"
+                                alt=""
+                                class="checked"
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div class="add-edit">
                     <p class="mb-0">Title</p>
                     <input type="text" id="addTitle" class="add-title" />
+                    <div class="add-title-req req"></div>
                 </div>
                 <div class="add-edit">
                     <p class="mb-0">Description</p>
-                    <textarea id="itemDesc" cols="30" rows="6"></textarea>
+                    <textarea
+                        id="itemDesc"
+                        cols="30"
+                        rows="5"
+                        maxlength="250"
+                        placeholder="Max 250 characters....."
+                    ></textarea>
                 </div>
                 <div class="add-edit">
                     <div class="type-price-inner row">
-                        <div class="col-50">
+                        <div class="col-50 p-relative">
                             <p class="mb-0">Type</p>
-                            <input type="text" id="itemType" />
+                            <input
+                                type="text"
+                                id="itemType"
+                                readonly
+                                class="item-type"
+                            />
+                            <div class="add-type req"></div>
+                            <img
+                                src="./img/choose-arrow.png"
+                                alt=""
+                                class="chooseTypeArrow p-absolute"
+                            />
+                            <div
+                                id="chooseType"
+                                class="choose-type c-text-light p-absolute"
+                            ></div>
                         </div>
                         <div class="col-50">
                             <p class="mb-0">Price</p>
                             <input type="number" id="itemPrice" />
+                            <div class="add-price req"></div>
                         </div>
                     </div>
                 </div>
                 <div class="add-edit">
                     <p class="mb-0">Image URL</p>
                     <input type="text" id="imageUrl" class="image-url" />
+                    <div class="add-img req"></div>
                 </div>
-                <p class="text-center">or</p>
-                <div class="snapshot text-center">
+                <p class="text-center hide optional">or</p>
+                <div class="snapshot text-center hide">
                     <img src="./img/snapshot.png" alt="" />
                     <p>Take a snapshot</p>
                 </div>
@@ -319,9 +352,9 @@
                     <button class="bg-primary-contrast c-text-light">
                         Add New Item
                     </button>
-                    <button>Cancel</button>
+                    <button class="cancelNewEdit btn-grey">Cancel</button>
                 </div>
-            </div>
+            </form>
         </div>
 
         <!-- -------------------------------auction page----------------------------- -->
@@ -331,6 +364,7 @@
         <div class="overlay hide p-absolute"></div>
 
         <script src="./assets/js/data.js"></script>
+        <script src="./assets/js/otherFunctions.js"></script>
         <script src="./assets/js/render.js"></script>
         <script src="./assets/js/carousel.js"></script>
         <script src="./vendors/chart.min.js"></script>

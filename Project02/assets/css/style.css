@@ -56,6 +56,10 @@ img {
     z-index: 2;
 }
 
+.rotate-arrow {
+    transform: rotate(180deg);
+}
+
 .hide {
     display: none;
 }
@@ -108,12 +112,28 @@ img {
     color: #a26a5e;
 }
 
+.btn-grey {
+    background-color: #e5e5e5;
+    color: #5a5a5a !important;
+}
+
 .c-text-normal {
     color: #edd5bb;
 }
 
 .c-text-light {
     color: #fcebd5;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #a16a5e inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #fcebd5;
 }
 
 /* ----------------------------navbar-styles------------------------- */
@@ -676,48 +696,90 @@ nav {
     padding: 40px 20px;
 }
 
+.artist-items-page .add-edit-part input,
+.artist-items-page .add-edit-part textarea {
+    margin-bottom: 40px;
+}
+
 .artist-items-page .add-edit-part .title-check {
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
-.artist-items-page .add-edit-part .title-check p:first-child {
+.artist-items-page .add-edit-part .title-check p:not(.isPublished) {
     font-size: 1.5rem;
 }
 
-.artist-items-page .add-edit-part input:not(.image-url),
-.artist-items-page .add-edit-part textarea {
-    margin-bottom: 40px;
+.artist-items-page .add-edit-part .title-check .isPublishWrapper {
+    align-items: center;
+    cursor: pointer;
+}
+
+.artist-items-page .add-edit-part .title-check .isPublishWrapper p.isPublished {
+    margin-right: 15px;
+}
+
+.artist-items-page .add-edit-part .title-check .isPublishWrapper .checked,
+.artist-items-page .add-edit-part .title-check .isPublishWrapper .img-box {
+    background-color: #bd9c95;
+    width: 25px;
+    border-radius: 3px;
+}
+
+.artist-items-page .add-edit-part .title-check .isPublishWrapper .img-box {
+    height: 25px;
 }
 
 .artist-items-page .add-edit-part .type-price-inner .col-50:first-child {
     margin-right: 30px;
 }
 
+.artist-items-page .add-edit-part .chooseTypeArrow {
+    width: 20px;
+    right: 5px;
+    top: 33px;
+    cursor: pointer;
+}
+
+.artist-items-page .add-edit-part input.item-type {
+    cursor: pointer;
+}
+
+.artist-items-page .add-edit-part .choose-type {
+    margin-top: -35px;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 0;
+    max-height: 70px;
+    left: 0;
+    right: 0;
+    top: 97px;
+}
+
+.artist-items-page .add-edit-part .choose-type span {
+    cursor: pointer;
+    display: block;
+    padding: 0 5px;
+}
+
+.artist-items-page .add-edit-part .chooseTypeOpen {
+    border: 1px solid #fcebd5;
+    overflow-y: scroll;
+    background-color: #a16a5e;
+}
+
+.artist-items-page .add-edit-part .add-edit .required {
+    font-size: 0.8rem;
+    color: rgb(201, 15, 15);
+    margin-top: -40px;
+}
+
 .artist-items-page .add-edit-part p.text-center {
     margin: 10px 0;
 }
 
-.artist-items-page .add-edit-part .snapshot {
-    border: 3px dashed #fcebd5;
-    padding: 100px;
-    margin-bottom: 20px;
-}
-
-.artist-items-page .add-edit-part .snapshot img {
-    width: 90px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-}
-
 .artist-items-page .add-edit-part .buttons-wrapper {
     justify-content: space-between;
-}
-
-.artist-items-page .add-edit-part .buttons-wrapper button:last-child {
-    background-color: #e5e5e5;
-    color: #5a5a5a;
 }
 
 /* ----------------------------artist-home-page-styles------------------------- */
@@ -822,7 +884,8 @@ nav {
 }
 
 .artist-menu-page ul li:hover,
-.artist-menu-page ul li.active {
+.artist-menu-page ul li.active,
+.choose-type span:hover {
     background-color: #fcebd5;
     color: #a16a5e;
     border-radius: 4px;
@@ -895,7 +958,6 @@ nav {
     .visitor-listing-page .visitor-listing-page-inner .text-box .row button {
         font-size: 1.1rem;
     }
-
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page {
         font-size: 1.3rem;
@@ -906,6 +968,9 @@ nav {
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
+    .artist-items-page .price {
+        font-size: 1.2rem !important;
+    }
 
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
         padding: 5px 15px;
@@ -913,7 +978,6 @@ nav {
 }
 
 /*===============================================================================================================*/
-
 @media (max-width: 1024px) {
     .navbar-visitor-artist .navbar-wrapper {
         width: 75%;
@@ -1048,7 +1112,17 @@ nav {
 }
 
 /* ============================================================================================================== */
+@media (min-width: 769px) {
+    .visitor-listing-page .text-box {
+        height: 230px;
+    }
 
+    .artist-items-page .artist-items-listing .text-box {
+        height: 190px;
+    }
+}
+
+/* ============================================================================================================== */
 @media (max-width: 768px) {
     .landing-page {
         width: 70%;
@@ -1112,30 +1186,31 @@ nav {
     }
 
     .visitor-home-page .slide-area {
-        height: 215px;
+        height: 180px;
     }
 
     .visitor-home-page .slide {
-        padding: 15px;
+        padding: 13px;
     }
 
-    .visitor-home-page .slide .img {
-        width: 250px;
-        height: 180px;
+    .visitor-home-page .slide .img-slide {
+        width: 220px;
+        height: 150px;
     }
 
     .visitor-home-page .carousel .content-box {
         font-size: 1rem;
+        width: 80%;
     }
 
     .visitor-home-page .carousel .left-part,
     .visitor-home-page .carousel .right-part {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 
     .visitor-home-page .carousel .left-part {
-        padding-right: 50px;
+        padding-right: 40px;
     }
 
     .visitor-home-page .carousel .left-part .content-box .img-circle {
@@ -1155,7 +1230,7 @@ nav {
     }
 
     .visitor-home-page .carousel .right-part {
-        padding-left: 50px;
+        padding-left: 40px;
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
@@ -1284,28 +1359,18 @@ nav {
         padding-bottom: 20px;
     }
 
-    .visitor-home-page .slide-area {
-        height: 140px;
-    }
-
     .visitor-home-page .slide {
         padding: 10px;
     }
 
     .visitor-home-page .slide .slide-img {
-        width: 150px;
+        width: 180px;
         height: 120px;
         box-shadow: 3px 3px 8px #8a8484;
     }
 
     .visitor-home-page .carousel {
         padding: 40px 0;
-    }
-
-    .visitor-home-page .carousel .left-part,
-    .visitor-home-page .carousel .right-part {
-        padding-top: 40px;
-        padding-bottom: 40px;
     }
 
     .visitor-home-page .carousel .left-part {
@@ -1356,6 +1421,28 @@ nav {
     .visitor-listing-page .visitor-listing-page-inner .col-47,
     .artist-items-page .artist-items-listing .col-47 {
         margin-bottom: 40px;
+    }
+
+    .artist-items-page .add-edit-part input.image-url {
+        margin-bottom: 0;
+    }
+
+    .artist-items-page .add-edit-part .snapshot {
+        display: block;
+        border: 3px dashed #fcebd5;
+        padding: 100px;
+        margin-bottom: 20px;
+    }
+
+    .artist-items-page .add-edit-part .optional {
+        display: block;
+    }
+
+    .artist-items-page .add-edit-part .snapshot img {
+        width: 90px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
     }
 
     /* ----------------------------filter-part-styles------------------------- */
@@ -1499,12 +1586,12 @@ nav {
 
     .visitor-home-page .carousel .left-part,
     .visitor-home-page .carousel .right-part {
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .visitor-home-page .carousel .left-part {
-        padding-right: 20px;
+        padding-right: 15px;
     }
 
     .visitor-home-page .carousel .left-part .content-box .img-circle {
@@ -1523,7 +1610,7 @@ nav {
     }
 
     .visitor-home-page .carousel .right-part {
-        padding-left: 20px;
+        padding-left: 15px;
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */

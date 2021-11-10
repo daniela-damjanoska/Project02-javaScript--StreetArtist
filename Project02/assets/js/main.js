@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 const windowWidth = window.innerWidth,
     landingPage = document.querySelector('#landingPage'),
@@ -10,6 +10,7 @@ const windowWidth = window.innerWidth,
     artistHomePage = document.querySelector('#artistHomePage'),
     artistItemsPage = document.querySelector('#artistItemsPage'),
     artistItemsListing = document.querySelector('.artist-items-listing'),
+    addEditSection = document.querySelector('#addEditPart'),
     auctionPage = document.querySelector('#auctionPage'),
     chooseBtnLanding = document.querySelector('#chooseArtistBtn'),
     chooseArtistWrapper = document.querySelector('.chooseArtistWrapper'),
@@ -19,44 +20,13 @@ const windowWidth = window.innerWidth,
     bodyOverlay = document.querySelector('.overlay'),
     itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
 
-const manipulateOverlayHeight = section => {
-    const overlayHeight = section.offsetHeight;
-    bodyOverlay.style.height = `${overlayHeight + 75}px`;
-};
+const typeDropDown = document.querySelector('.choose-type');
+const changeTypeArrow = document.querySelector('.chooseTypeArrow');
 
-const manipulateOverlayDisplay = (element, status, overlay) => {
-    element.style.display = status;
-    bodyOverlay.style.display = overlay;
-};
-
-const closeFilterSection = () => {
-    location.hash = '#visitor/listing';
-
-    filterSection.style.right = '-600px';
-    filterSection.style.overflowY = 'hidden';
-    document.body.classList.remove('p-fixed');
-    manipulateOverlayDisplay(filterIcon, 'block', 'none');
-};
+let isEditing = false;
 
 //updating the items array
 if (itemsLS) items = itemsLS;
-
-// click on choose button on landing-page to open the list of artist (from API)
-chooseBtnLanding.addEventListener('click', function () {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res => res.json())
-        .then(res => {
-            this.style.opacity = 0;
-            chooseArtistWrapper.style.display = 'block';
-            chooseArtistWrapper.innerHTML = '';
-
-            res.forEach(user => {
-                chooseArtistWrapper.innerHTML += `
-                    <span class="chooseArtist" id="${user.id}">${user.name}</span>
-                `;
-            });
-        });
-});
 
 //click on 'Join as visitor' div to open visitor-home-page
 visitorBtnLanding.addEventListener('click', () => {
@@ -90,17 +60,8 @@ filterIcon.addEventListener('click', function () {
     }
 });
 
-document.querySelector('.add-items').addEventListener('click', function () {
-    const addEditSection = document.querySelector('#addEditPart');
-
-    manipulateOverlayDisplay(addEditSection, 'block', 'block');
-    manipulateOverlayHeight(artistItemsPage);
-    document.body.style.overflowX = 'hidden';
-});
-
 document.addEventListener('click', function (e) {
-    const menuArtist = document.querySelector('.artist-menu-page'),
-        removeConfirmation = document.querySelector('.remove-confirmation');
+    const menuArtist = document.querySelector('.artist-menu-page');
 
     //click on chose artist options to go to the appropriate artist homepage
     if (e.target.classList.contains('chooseArtist')) {
@@ -165,40 +126,6 @@ document.addEventListener('click', function (e) {
     //click on auction-icon on visitor pages to go to the auction page
     if (e.target.classList.contains('auctionIcon')) {
         location.hash = '#auction';
-    }
-
-    //click on remove button to open the confirmation popup
-    if (e.target.classList.contains('remove')) {
-        const itemToRemove = e.target.parentElement.parentElement;
-
-        manipulateOverlayDisplay(removeConfirmation, 'block', 'block');
-        manipulateOverlayHeight(artistItemsPage);
-
-        localStorage.setItem('itemToRemove', itemToRemove.id);
-
-        //click on confirm button to delete the item and also to update(filter) the items array
-        document
-            .querySelector('.confirm-remove')
-            .addEventListener('click', () => {
-                itemToRemove.remove();
-
-                const itemToRemoveId = localStorage.getItem('itemToRemove'),
-                    filteredArrayWithItems = items.filter(
-                        item => item.id !== +itemToRemoveId
-                    );
-
-                localStorage.setItem(
-                    'itemsLS',
-                    JSON.stringify(filteredArrayWithItems)
-                );
-
-                manipulateOverlayDisplay(removeConfirmation, 'none', 'none');
-            });
-    }
-
-    //click on cancel button to cancel the item deletion
-    if (e.target.classList.contains('cancel-remove')) {
-        manipulateOverlayDisplay(removeConfirmation, 'none', 'none');
     }
 });
 
