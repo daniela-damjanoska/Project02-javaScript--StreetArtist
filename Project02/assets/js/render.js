@@ -63,7 +63,8 @@ const makeArtistListingItems = (
     date,
     desc,
     isPublished,
-    isPublishedText
+    isPublishedText,
+    isSold
 ) => {
     const dateFormat = date.slice(0, 10),
         year = dateFormat.slice(0, 4),
@@ -82,7 +83,7 @@ const makeArtistListingItems = (
                 <p class="mb-0">${desc}</p>
             </div>
             <div class="bg-primary-default row buttons-wrapper">
-                <button class="bg-primary-blue">Send to auction</button>
+                <button class="bg-primary-blue ${isSold} sold-status">Send to auction</button>
                 <button class="${isPublished} publishing">${isPublishedText}</button>
                 <button class="bg-primary-contrast remove">Remove</button>
                 <button class="bg-light c-text-primary-default edit-item">Edit</button>

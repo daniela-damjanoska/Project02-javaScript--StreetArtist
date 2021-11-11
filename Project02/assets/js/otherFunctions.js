@@ -38,20 +38,24 @@ const closeDropdownMenu = () => {
     removeElClass(changeTypeArrow, 'rotate-arrow');
 };
 
-const closeFilterSection = () => {
-    location.hash = '#visitor/listing';
-
-    filterSection.style.right = '-600px';
-    filterSection.style.overflowY = 'hidden';
-    document.body.classList.remove('p-fixed');
-    manipulateOverlayDisplay(filterIcon, 'block', 'none');
-};
-
 const openNewEditSection = () => {
     location.hash = '#artists/items/add';
+
     manipulateOverlayDisplay(addEditSection, 'block', 'block');
-    manipulateOverlayHeight(artistItemsPage);
-    document.body.style.overflowX = 'hidden';
+    document.body.classList.add('p-fixed');
+    bodyOverlay.style.height = '100vh';
+
+    if (windowWidth < 769) {
+        document.querySelector('.logo').style.zIndex = 5;
+        addEditSection.style.overflowY = 'scroll';
+        addEditSection.style.height = '94vh';
+        bodyOverlay.style.backgroundColor = 'transparent';
+        if (windowWidth < 601) {
+            addEditSection.style.height = '93vh';
+        }
+    } else {
+        addEditSection.style.height = '560px';
+    }
 };
 
 const closeNewEditSection = () => {
@@ -59,6 +63,7 @@ const closeNewEditSection = () => {
     location.hash = '#artists/items';
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
     removeElClass(imgCheckBox, 'hide');
+    document.body.classList.remove('p-fixed');
 };
 
 const openFilterSection = () => {
@@ -81,4 +86,13 @@ const openFilterSection = () => {
             bodyOverlay.style.backgroundColor = 'transparent';
         } else filterSection.style.height = `${windowHeight}px`;
     }
+};
+
+const closeFilterSection = () => {
+    location.hash = '#visitor/listing';
+
+    filterSection.style.right = '-600px';
+    filterSection.style.overflowY = 'hidden';
+    document.body.classList.remove('p-fixed');
+    manipulateOverlayDisplay(filterIcon, 'block', 'none');
 };

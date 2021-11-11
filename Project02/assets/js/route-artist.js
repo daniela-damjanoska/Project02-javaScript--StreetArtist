@@ -14,7 +14,9 @@ const initArtistHomePage = () => {
     removeElClass(menuItems, 'active');
     removeElClass(menuAuction, 'active');
 
-    const soldItems = totalItems.filter(itemSold => itemSold.priceSold !== 0);
+    const soldItems = totalItems.filter(
+        itemSold => itemSold.dateSold !== undefined
+    );
 
     let sum = 0;
     for (let i = 0; i < soldItems.length; i++) {
