@@ -2,7 +2,7 @@ const initArtistAddEditPage = () => {
     const isPublishWrapper = document.querySelector('.isPublishWrapper'),
         totalItems = items.filter(item => item.artist === artistLS);
 
-    //if the user click on reload render tne navbar, open the items and edit/new section
+    //if the user click on reload render tne navbar, open the items and edit/new section ----------------
     makeArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
@@ -11,9 +11,11 @@ const initArtistAddEditPage = () => {
     dBlock(artistItemsPage);
     dNone(auctionPage);
 
-    //render the items with the appropriate publish/unpublish button
+    artistItemsListing.innerHTML = '';
+
+    //render the items with the appropriate publish/unpublish button and send/not sent to auction button
     totalItems.forEach(item => {
-        if (item.isPublished === true)
+        if (item.isPublished === true && item.priceSold === undefined)
             makeArtistListingItems(
                 item.id,
                 item.image,
@@ -22,9 +24,22 @@ const initArtistAddEditPage = () => {
                 item.dateCreated,
                 item.description,
                 'bg-primary-green',
-                'unpublish'
+                'unpublish',
+                'sold-no'
             );
-        else
+        else if (item.isPublished === true && item.priceSold !== undefined)
+            makeArtistListingItems(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'bg-primary-green',
+                'unpublish',
+                'sold-yes'
+            );
+        else if (item.isPublished === false && item.priceSold === undefined)
             makeArtistListingItems(
                 item.id,
                 item.image,
@@ -33,11 +48,33 @@ const initArtistAddEditPage = () => {
                 item.dateCreated,
                 item.description,
                 'btn-grey',
-                'publish'
+                'publish',
+                'sold-no'
+            );
+        else if (item.isPublished === false && item.priceSold !== undefined)
+            makeArtistListingItems(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'bg-primary-green',
+                'unpublish',
+                'sold-yes'
             );
     });
 
+    //make go to auction buttons disabled when the item is sold
+    const soldBtns = document.querySelectorAll('.sold-status');
+    soldBtns.forEach(btn => {
+        if (btn.classList.contains('sold-yes')) {
+            btn.setAttribute('disabled', true);
+        }
+    });
+
     openNewEditSection();
+    //-----------------------------------------------------------------------------------------------------
 
     //manipulating the isPublished checkbox
     isPublishWrapper.addEventListener('click', e => {

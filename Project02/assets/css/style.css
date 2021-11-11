@@ -48,11 +48,18 @@ img {
     width: 15px;
 }
 
+button:disabled,
+button[disabled] {
+    background-color: #cccccc;
+    color: #666666 !important;
+    cursor: not-allowed !important;
+}
+
 .overlay {
     left: 0;
     top: 0;
     width: 100vw;
-    background: rgba(88, 71, 71, 0.6);
+    background: #58474799;
     z-index: 2;
 }
 
@@ -688,17 +695,17 @@ nav {
 
 .artist-items-page .add-edit-part {
     width: 600px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    top: 45px;
+    top: 100px;
     z-index: 3;
     padding: 40px 20px;
 }
 
 .artist-items-page .add-edit-part input,
 .artist-items-page .add-edit-part textarea {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .artist-items-page .add-edit-part .title-check {
@@ -771,7 +778,8 @@ nav {
 .artist-items-page .add-edit-part .add-edit .required {
     font-size: 0.8rem;
     color: rgb(201, 15, 15);
-    margin-top: -40px;
+    margin-top: -30px;
+    margin-bottom: 15.6px;
 }
 
 .artist-items-page .add-edit-part p.text-center {
@@ -975,6 +983,11 @@ nav {
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
         padding: 5px 15px;
     }
+
+    /* ----------------------------add/edit part styles------------------------- */
+    .artist-items-page .add-edit-part {
+        top: 40px;
+    }
 }
 
 /*===============================================================================================================*/
@@ -1108,6 +1121,11 @@ nav {
     /* ------------------------artist-items-listing-styles---------------- */
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
         padding: 5px 15px;
+    }
+
+    /* ----------------------------add/edit part styles------------------------- */
+    .artist-items-page .add-edit-part {
+        top: 120px;
     }
 }
 
@@ -1268,6 +1286,43 @@ nav {
     .artist-home-page .chart-wrapper {
         padding: 30px 10px;
     }
+
+    /* ----------------------------add/edit part styles------------------------- */
+    .artist-items-page .add-edit-part {
+        width: 100%;
+        top: 70px;
+    }
+
+    .artist-items-page .add-edit-part input,
+    .artist-items-page .add-edit-part textarea {
+        margin-bottom: 20px;
+    }
+
+    .artist-items-page .add-edit-part .add-edit .required {
+        margin-top: -20px;
+        margin-bottom: 10.6px;
+    }
+
+    /* to work on mobile landscape */
+    .artist-items-page .add-edit-part .snapshot {
+        display: block;
+        border: 3px dashed #fcebd5;
+        padding: 100px;
+        margin-bottom: 20px;
+    }
+
+    .artist-items-page .add-edit-part .optional {
+        display: block;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .artist-items-page .add-edit-part .snapshot img {
+        width: 90px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
 }
 
 /*===============================================================================================================*/
@@ -1423,32 +1478,11 @@ nav {
         margin-bottom: 40px;
     }
 
-    .artist-items-page .add-edit-part input.image-url {
-        margin-bottom: 0;
-    }
-
-    .artist-items-page .add-edit-part .snapshot {
-        display: block;
-        border: 3px dashed #fcebd5;
-        padding: 100px;
-        margin-bottom: 20px;
-    }
-
-    .artist-items-page .add-edit-part .optional {
-        display: block;
-    }
-
-    .artist-items-page .add-edit-part .snapshot img {
-        width: 90px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
-    }
-
     /* ----------------------------filter-part-styles------------------------- */
+    /* ----------------------------add/edit part styles------------------------- */
     .visitor-listing-page .filter-part,
     .artist-items-page .add-edit-part {
-        width: 100vw;
+        width: 100%;
         top: 55px;
     }
 

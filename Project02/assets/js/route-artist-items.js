@@ -15,9 +15,12 @@ const initArtistItemsPage = () => {
     removeElClass(menuAuction, 'active');
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
 
-    //render the items with the appropriate publish/unpublish button
+    artistItemsListing.innerHTML = '';
+
+    //render the items with the appropriate publish/unpublish button and send/not sent to auction button
     totalItems.forEach(item => {
-        if (item.isPublished === true)
+        //render the items with the appropriate publish/unpublish button
+        if (item.isPublished === true && item.priceSold === undefined)
             makeArtistListingItems(
                 item.id,
                 item.image,
@@ -26,9 +29,22 @@ const initArtistItemsPage = () => {
                 item.dateCreated,
                 item.description,
                 'bg-primary-green',
-                'unpublish'
+                'unpublish',
+                'sold-no'
             );
-        else
+        else if (item.isPublished === true && item.priceSold !== undefined)
+            makeArtistListingItems(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'bg-primary-green',
+                'unpublish',
+                'sold-yes'
+            );
+        else if (item.isPublished === false && item.priceSold === undefined)
             makeArtistListingItems(
                 item.id,
                 item.image,
@@ -37,8 +53,29 @@ const initArtistItemsPage = () => {
                 item.dateCreated,
                 item.description,
                 'btn-grey',
-                'publish'
+                'publish',
+                'sold-no'
             );
+        else if (item.isPublished === false && item.priceSold !== undefined)
+            makeArtistListingItems(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'bg-primary-green',
+                'unpublish',
+                'sold-yes'
+            );
+    });
+
+    //make go to auction buttons disabled when the item is sold
+    const soldBtns = document.querySelectorAll('.sold-status');
+    soldBtns.forEach(btn => {
+        if (btn.classList.contains('sold-yes')) {
+            btn.setAttribute('disabled', true);
+        }
     });
 
     //set the default isPublished checked
@@ -95,6 +132,8 @@ const initArtistItemsPage = () => {
 
             manipulateOverlayDisplay(removeConfirmation, 'block', 'block');
             manipulateOverlayHeight(artistItemsPage);
+            bodyOverlay.style.background = '#58474799';
+            document.querySelector('.logo').style.zIndex = 1;
 
             localStorage.setItem('itemToRemove', itemToRemove.id);
 

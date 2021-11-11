@@ -1,6 +1,7 @@
 const initVisitorItemsFilterPage = () => {
     const filteredPublished = items.filter(item => item.isPublished === true);
 
+    //if the user click on reload render tne navbar, open the items and filter section ----------------
     makeArtistVisitorNavbar('Street ARTist', 'auction', 'auctionIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
@@ -64,6 +65,7 @@ const initVisitorItemsFilterPage = () => {
 
     // click on filter icon to open filter-section
     openFilterSection();
+    //----------------------------------------------------------------------------------------------------
 
     document.addEventListener('click', e => {
         //click on done-filter icon to close the filter section
