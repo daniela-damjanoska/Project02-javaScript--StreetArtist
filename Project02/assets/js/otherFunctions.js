@@ -60,3 +60,25 @@ const closeNewEditSection = () => {
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
     removeElClass(imgCheckBox, 'hide');
 };
+
+const openFilterSection = () => {
+    const filterPartHeight = filterSection.offsetHeight,
+        windowHeight = window.innerHeight;
+
+    location.hash = '#visitor/listing/filter';
+
+    filterSection.style.right = 0;
+    document.body.classList.add('p-fixed');
+    manipulateOverlayDisplay(filterIcon, 'none', 'block');
+    bodyOverlay.style.height = '100vh';
+
+    if (filterPartHeight < windowHeight) {
+        filterSection.style.overflowY = 'hidden';
+    } else {
+        filterSection.style.overflowY = 'scroll';
+        if (windowWidth <= 600) {
+            filterSection.style.height = `${windowHeight - 50}px`;
+            bodyOverlay.style.backgroundColor = 'transparent';
+        } else filterSection.style.height = `${windowHeight}px`;
+    }
+};
