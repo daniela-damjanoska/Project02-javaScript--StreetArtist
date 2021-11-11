@@ -17,35 +17,58 @@
         <section id="landingPage" class="landing-page p-relative hide">
             <img src="./img/Logo1.png" class="logo-img" alt="logo" />
             <div class="polygon bg-normal">
-                <div class="text-center p-relative">
-                    <p class="c-text-primary-default">Join as Artist</p>
-                    <button
-                        class="
-                            row
-                            choose-button
-                            c-text-primary-default
-                            bg-normal
-                            p-absolute
-                        "
-                        id="chooseArtistBtn"
-                    >
-                        <span>Choose</span>
-                        <img src="./img/choose-arrow-dark.png" alt="" />
-                    </button>
-                </div>
+                <p class="c-text-primary-default text-center">Join as Artist</p>
             </div>
             <div class="polygon polygon-reverse bg-primary-default text-center">
                 <p class="c-text-normal">Join as Visitor</p>
             </div>
-            <div
-                class="
-                    chooseArtistWrapper
-                    p-absolute
-                    bg-normal
-                    c-text-primary-default
-                    hide
-                "
-            ></div>
+            <div class="p-absolute chooseArtistLanding">
+                <button
+                    class="row choose-button c-text-primary-default bg-normal"
+                    id="chooseArtistBtn"
+                >
+                    <span>Choose</span>
+                    <img
+                        src="./img/choose-arrow-dark.png"
+                        alt=""
+                        class="chooseArtistDropDown"
+                    />
+                </button>
+                <div
+                    class="
+                        chooseArtistWrapper
+                        bg-normal
+                        c-text-primary-default
+                        hide
+                    "
+                ></div>
+            </div>
+            <!-- <div class="p-absolute chooseArtistLandingMain">
+                <div
+                    class="
+                        p-relative
+                        c-text-primary-default
+                        chooseArtistLandingWrapper
+                    "
+                >
+                    <input
+                        type="text"
+                        id="chooseArtistLandingInput"
+                        readonly
+                        class="chooseArtistLanding"
+                        value="choose"
+                    />
+                    <img
+                        src="./img/choose-arrow-dark.png"
+                        alt=""
+                        class="chooseArtistArrow p-absolute"
+                    />
+                    <div
+                        id="chooseArtistWrapper"
+                        class="choose-artist c-text-primary-default p-absolute"
+                    ></div>
+                </div>
+            </div> -->
         </section>
 
         <!-- ---------------------------------visitor home page--------------------------- -->

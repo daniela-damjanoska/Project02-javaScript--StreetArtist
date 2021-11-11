@@ -1,4 +1,6 @@
 const initLandingPage = () => {
+    const arrowDropdown = document.querySelector('.chooseArtistDropDown');
+
     location.hash = '';
     makeLandingPageNav();
     dBlock(landingPage);
@@ -16,8 +18,9 @@ const initLandingPage = () => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(res => res.json())
             .then(res => {
-                this.style.opacity = 0;
+                //open the dropdown
                 dBlock(chooseArtistWrapper);
+                arrowDropdown.classList.add('rotate-arrow');
                 chooseArtistWrapper.innerHTML = '';
 
                 res.forEach(user => {
@@ -25,6 +28,13 @@ const initLandingPage = () => {
                                 <span class="chooseArtist" id="${user.id}">${user.name}</span>`;
                 });
             });
+    });
+
+    //close the dropdown if no artist is chosen
+    arrowDropdown.addEventListener('click', e => {
+        e.stopPropagation();
+        dNone(chooseArtistWrapper);
+        e.currentTarget.classList.remove('rotate-arrow');
     });
 
     //click on 'Join as visitor' div to open visitor-home-page
@@ -37,6 +47,8 @@ const initLandingPage = () => {
         if (e.target.classList.contains('chooseArtist')) {
             location.hash = '#artists';
             localStorage.setItem('artist', e.target.textContent);
+            dNone(chooseArtistWrapper);
+            arrowDropdown.classList.remove('rotate-arrow');
         }
     });
 };

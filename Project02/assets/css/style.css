@@ -233,37 +233,35 @@ nav {
     padding-top: 300px;
 }
 
-.landing-page .choose-button {
-    border: 1px solid #a16a5e;
-    top: 240px;
-    right: 18%;
+.landing-page .chooseArtistLanding {
+    top: 630px;
+    right: 19%;
+}
+
+.landing-page .chooseArtistLanding .choose-button {
+    border: 2px solid #a16a5e;
     font-size: 2rem;
-    min-width: 190px;
+    width: 190px;
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
-    transition: 0.3s ease-in;
+    margin-left: auto;
 }
 
-.landing-page .choose-button:hover {
-    border: 3px solid #a16a5e;
-}
-
-.landing-page .choose-button img {
+.landing-page .chooseArtistLanding .choose-button img {
     width: 25px;
 }
 
 .landing-page .chooseArtistWrapper {
     width: 400px;
     border: 2px solid #a16a5e;
-    top: 41%;
-    right: 17.5%;
     border-radius: 5px;
     height: 250px;
+    margin-top: 7px;
     overflow-y: scroll;
 }
 
-.landing-page .chooseArtist {
+.landing-page .chooseArtistWrapper .chooseArtist {
     display: block;
     border-bottom: 1px solid #a16a5e;
     text-align: right;
@@ -929,19 +927,20 @@ nav {
         font-size: 6rem;
     }
 
-    .landing-page .choose-button {
-        top: 210px;
-        right: 15%;
+    .landing-page .chooseArtistLanding {
+        top: 520px;
+        right: 17.5%;
+    }
+
+    .landing-page .chooseArtistLanding .choose-button {
         font-size: 1.5rem;
     }
 
     .landing-page .chooseArtistWrapper {
         width: 300px;
-        top: 35%;
-        right: 14.5%;
     }
 
-    .landing-page .chooseArtist {
+    .landing-page .chooseArtistWrapper .chooseArtist {
         font-size: 1.3rem;
     }
 
@@ -1010,30 +1009,35 @@ nav {
     }
 
     .landing-page .polygon p {
-        font-size: 4.5rem;
+        font-size: 5.5rem;
     }
 
-    .landing-page .choose-button {
-        top: 175px;
-        right: 20%;
-        font-size: 1.2rem;
-        min-width: 160px;
+    .landing-page .polygon-reverse p {
+        padding-top: 210px;
+    }
+
+    .landing-page .chooseArtistLanding {
+        top: 480px;
+        right: 18.5%;
+    }
+
+    .landing-page .chooseArtistLanding .choose-button {
+        width: 160px;
         padding-left: 15px;
         padding-right: 15px;
     }
 
-    .landing-page .choose-button img {
+    .landing-page .chooseArtistLanding .choose-button img {
         width: 20px;
     }
 
     .landing-page .chooseArtistWrapper {
         height: 180px;
         width: 230px;
-        top: 36%;
-        right: 19.5%;
     }
 
-    .landing-page .chooseArtist {
+    .landing-page .chooseArtistLanding .choose-button,
+    .landing-page .chooseArtistWrapper .chooseArtist {
         font-size: 1.1rem;
     }
 
@@ -1164,32 +1168,33 @@ nav {
     }
 
     .landing-page .polygon p {
-        font-size: 3.5rem;
+        font-size: 5rem;
     }
 
     .landing-page .polygon-reverse p {
-        padding-top: 240px;
+        padding-top: 200px;
     }
 
-    .landing-page .choose-button {
-        top: 150px;
-        right: 23%;
-        font-size: 1rem;
-        min-width: 140px;
+    .landing-page .chooseArtistLanding {
+        top: 410px;
+        right: 17.5%;
+    }
+
+    .landing-page .chooseArtistLanding .choose-button {
+        width: 140px;
         padding: 7px 10px;
     }
 
-    .landing-page .choose-button img {
+    .landing-page .chooseArtistLanding .choose-button img {
         width: 18px;
     }
 
     .landing-page .chooseArtistWrapper {
         width: 200px;
-        top: 37%;
-        right: 22.5%;
     }
 
-    .landing-page .chooseArtist {
+    .landing-page .chooseArtistLanding .choose-button,
+    .landing-page .chooseArtistWrapper .chooseArtist {
         font-size: 1rem;
     }
 
@@ -1364,34 +1369,39 @@ nav {
         margin-top: -129.5px;
     }
 
+    .landing-page .polygon p {
+        font-size: 4.3rem;
+    }
+
     .landing-page .polygon p.c-text-primary-default {
-        padding-top: 60px;
+        padding-top: 40px;
     }
 
     .landing-page .polygon-reverse p {
-        padding-top: 180px;
+        padding-top: 160px;
     }
 
-    .landing-page .choose-button {
-        top: 130px;
-        right: 18%;
+    .landing-page .chooseArtistLanding {
+        top: 310px;
+        right: 14%;
+    }
+
+    .landing-page .chooseArtistLanding .choose-button {
         font-size: 0.8rem;
-        min-width: 120px;
+        width: 120px;
     }
 
-    .landing-page .choose-button img {
+    .landing-page .chooseArtistLanding .choose-button img {
         width: 15px;
     }
 
     .landing-page .chooseArtistWrapper {
         height: 120px;
         width: 150px;
-        top: 40%;
-        right: 17.5%;
     }
 
-    .landing-page .chooseArtist {
-        font-size: 0.8rem;
+    .landing-page .chooseArtistWrapper .chooseArtist {
+        font-size: 0.7rem;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
@@ -1581,18 +1591,18 @@ nav {
         padding-top: 110px;
     }
 
-    .landing-page .choose-button {
-        top: 90px;
-        right: 16%;
-        min-width: 100px;
+    .landing-page .chooseArtistLanding {
+        top: 220px;
+        right: 15%;
+    }
+
+    .landing-page .chooseArtistLanding .choose-button {
         padding: 5px 8px;
     }
 
     .landing-page .chooseArtistWrapper {
         height: 110px;
         width: 130px;
-        top: 39%;
-        right: 15.5%;
     }
 
     .landing-page .chooseArtist {

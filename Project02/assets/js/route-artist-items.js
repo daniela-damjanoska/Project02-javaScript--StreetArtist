@@ -134,6 +134,7 @@ const initArtistItemsPage = () => {
             manipulateOverlayHeight(artistItemsPage);
             bodyOverlay.style.background = '#58474799';
             document.querySelector('.logo').style.zIndex = 1;
+            document.body.style.overflowX = 'hidden';
 
             localStorage.setItem('itemToRemove', itemToRemove.id);
 
