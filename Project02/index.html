@@ -43,38 +43,21 @@
                     "
                 ></div>
             </div>
-            <!-- <div class="p-absolute chooseArtistLandingMain">
-                <div
-                    class="
-                        p-relative
-                        c-text-primary-default
-                        chooseArtistLandingWrapper
-                    "
-                >
-                    <input
-                        type="text"
-                        id="chooseArtistLandingInput"
-                        readonly
-                        class="chooseArtistLanding"
-                        value="choose"
-                    />
-                    <img
-                        src="./img/choose-arrow-dark.png"
-                        alt=""
-                        class="chooseArtistArrow p-absolute"
-                    />
-                    <div
-                        id="chooseArtistWrapper"
-                        class="choose-artist c-text-primary-default p-absolute"
-                    ></div>
-                </div>
-            </div> -->
         </section>
 
         <!-- ---------------------------------visitor home page--------------------------- -->
         <section id="visitorHomePage" class="visitor-home-page hide">
             <div class="img-wrapper p-relative row">
-                <img src="./img/brick-bg.png" alt="" />
+                <img
+                    src="./img/bricks.svg"
+                    alt="bg-bricks"
+                    class="bricks-small hide"
+                />
+                <img
+                    src="./img/brick-1-bg.png"
+                    alt="bg-bricks"
+                    class="bricks-big"
+                />
                 <div class="content-wrapper p-absolute row">
                     <p class="c-text-primary-default mb-0">
                         Looking for a masterpiece?
@@ -276,6 +259,7 @@
                 <li class="menuItems">Items</li>
                 <li class="menuAuction">Auction</li>
             </ul>
+            <img src="./img/close.png" alt="" class="closeMenu p-absolute" />
         </div>
 
         <!-- -------------------------------artist items page----------------------------- -->
@@ -288,17 +272,14 @@
             <div
                 class="
                     remove-confirmation
-                    bg-light
                     c-text-primary-default
                     text-center
                     p-fixed
-                    hide
                 "
-            >
-                <p><b>Are you sure that you want to remove this item?</b></p>
-                <button class="confirm-remove">Yes</button>
-                <button class="cancel-remove">Cancel</button>
-            </div>
+            ></div>
+            <div
+                class="auction-msg c-text-primary-default text-center p-fixed"
+            ></div>
             <div class="artist-items-listing row"></div>
             <!-- ----------------------------------add-edit-page-------------------------------- -->
             <form
@@ -383,7 +364,39 @@
         </div>
 
         <!-- -------------------------------auction page----------------------------- -->
-        <div class="austion-page" id="auctionPage"></div>
+        <div class="auction-page bg-normal hide" id="auctionPage">
+            <div class="auction-items bg-light">
+                <div
+                    class="
+                        auction-items-inner
+                        text-center
+                        c-text-primary-default
+                    "
+                >
+                    <p class="mb-0">
+                        There is no auction items at the moment, please try
+                        again later!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- --------------------visitor menu page when on auction------------------- -->
+        <div
+            class="
+                visitor-menu-page
+                bg-primary-default
+                c-text-light
+                text-center
+                hide
+            "
+        >
+            <ul class="mb-0">
+                <li class="menuHomeVisitor">Back to Home</li>
+                <li class="menuItemsVisitor">Back to Items</li>
+            </ul>
+            <img src="./img/close.png" alt="" class="closeMenu p-absolute" />
+        </div>
 
         <!-- --------------------------------body overlay--------------------------------- -->
         <div class="overlay hide p-absolute"></div>
