@@ -1,4 +1,5 @@
 const initArtistAddEditPage = () => {
+    const artistLS = localStorage.getItem('artist');
     const isPublishWrapper = document.querySelector('.isPublishWrapper'),
         totalItems = items.filter(item => item.artist === artistLS);
 

@@ -11,6 +11,7 @@ body {
     margin: 0;
     background-color: #fcebd5;
     font-family: 'Roboto', 'Times New Roman', Times, serif;
+    overflow-x: hidden;
 }
 
 p,
@@ -48,9 +49,15 @@ img {
     width: 15px;
 }
 
+.msg-show {
+    padding: 30px;
+    border: 4px double #a16a5e;
+    background-color: #fcebd5;
+}
+
 button:disabled,
 button[disabled] {
-    background-color: #cccccc;
+    background-color: rgb(196, 194, 194) !important;
     color: #666666 !important;
     cursor: not-allowed !important;
 }
@@ -60,7 +67,7 @@ button[disabled] {
     top: 0;
     width: 100vw;
     background: #58474799;
-    z-index: 2;
+    z-index: 15;
 }
 
 .rotate-arrow {
@@ -179,6 +186,7 @@ nav {
     left: 5%;
     top: 5px;
     width: 80px;
+    z-index: 14;
 }
 
 .navbar-visitor-artist .navbar-icon img {
@@ -279,12 +287,18 @@ nav {
 /* ----------------------------visitor-home-styles------------------------- */
 .visitor-home-page .img-wrapper {
     height: 200px;
-    padding-top: 5px;
 }
 
-.visitor-home-page .img-wrapper img {
+.visitor-home-page .img-wrapper .bricks-big {
     height: 100%;
     opacity: 0.08;
+    padding-top: 10px;
+}
+
+.visitor-home-page .img-wrapper .bricks-small {
+    background-color: #f5e3cb;
+    padding: 10px 0;
+    object-fit: cover;
 }
 
 .visitor-home-page .content-wrapper {
@@ -309,6 +323,7 @@ nav {
     box-shadow: 3px 4px 8px #8a8484;
     cursor: pointer;
     transition: background-color 0.3s ease-in;
+    z-index: 3;
 }
 
 .visitor-home-page .content-wrapper button:hover {
@@ -445,9 +460,10 @@ nav {
 
 /* ----------------------------visitor-styles------------------------- */
 /* ------------------------artist-items-listing-styles---------------- */
+/* ----------------------------auction--styles------------------------ */
 
 .visitor-listing-page {
-    margin-top: 4px;
+    margin-top: 3px;
     padding-top: 70px;
     padding-bottom: 20px;
 }
@@ -467,7 +483,8 @@ nav {
 }
 
 .visitor-listing-page .visitor-listing-page-inner,
-.artist-items-page .artist-items-listing {
+.artist-items-page .artist-items-listing,
+.auction-page .auction-items-listing {
     width: 85%;
     margin-right: auto;
     margin-left: auto;
@@ -476,7 +493,8 @@ nav {
 }
 
 .visitor-listing-page .visitor-listing-page-inner .col-47,
-.artist-items-page .artist-items-listing .col-47 {
+.artist-items-page .artist-items-listing .col-47,
+.auction-items-listing {
     box-shadow: 3px 3px 8px #8a8484;
     margin-bottom: 50px;
 }
@@ -512,11 +530,32 @@ nav {
     font-size: 1.3rem;
 }
 
+.artist-items-page {
+    margin-top: 4px;
+    padding: 40px 0;
+}
+
+.artist-items-page .add-items,
+.auction-page .auction-items {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.artist-items-page .add-items .add-items-inner,
+.auction-page .auction-items .auction-items-inner {
+    border: 3px dashed #a16a5e;
+    padding: 50px;
+}
+
 .artist-items-page .artist-items-listing {
     padding-top: 50px;
 }
 
-.artist-items-page .artist-items-listing .text-box p:nth-child(2) {
+.artist-items-page .artist-items-listing .text-box p:nth-child(2),
+.auction-page .auction-items-listing .date {
     color: #e09686;
 }
 
@@ -527,7 +566,8 @@ nav {
 
 .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
 .artist-items-page .add-edit-part .buttons-wrapper button,
-.artist-items-page .remove-confirmation button {
+.artist-items-page .remove-confirmation button,
+.artist-items-page .auction-msg button {
     padding: 8px 20px;
     border-color: transparent;
     border-radius: 4px;
@@ -549,38 +589,162 @@ nav {
     color: #ffffff;
 }
 
-.artist-items-page .remove-confirmation {
+.artist-items-page .remove-confirmation,
+.auction-msg {
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
-    padding: 30px;
-    border: 4px double #a16a5e;
     border-radius: 6px;
-    z-index: 4;
+    z-index: 16;
 }
 
-.artist-items-page .remove-confirmation p {
+.artist-items-page .remove-confirmation p,
+.artist-items-page .auction-msg p {
     margin-bottom: 30px;
 }
 
-.artist-items-page .remove-confirmation button {
+.artist-items-page .remove-confirmation button,
+.artist-items-page .auction-msg button {
     color: #a16a5e;
     background-color: #edd5bb;
     margin: 0 10px;
 }
 
-.artist-items-page .remove-confirmation button:hover {
+.artist-items-page .remove-confirmation button:hover,
+.artist-items-page .auction-msg button:hover {
     color: #edd5bb;
     background-color: #a16a5e;
 }
 
+/* if not enough content in the page to be 100vh */
+.artist-items-page,
+.visitor-listing-page,
+.auction-page {
+    min-height: calc(100vh - 74px);
+}
+
+.auction-page {
+    margin-top: 3px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.auction-page .auction-items-listing {
+    padding: 20px;
+}
+
+.auction-page .timer {
+    width: 15%;
+    padding-bottom: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+}
+
+.auction-page .timer p {
+    background-color: #a16a5e;
+    color: #fcebd5;
+    padding: 15px 12px;
+    border-radius: 4px;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.auction-page .auction-items-listing .img-wrapper img {
+    height: 100%;
+}
+
+.auction-page .auction-items-listing .row.artist-created p:last-child {
+    font-size: 1.5rem;
+}
+
+.auction-page .auction-items-listing .title {
+    font-family: 'Reenie Beanie';
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.auction-page .timer span {
+    color: #a16a5e;
+}
+
+.auction-page .auction-items-listing .img-wrapper {
+    height: 200px;
+}
+
+.auction-page .auction-items-listing .row.artist-created {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: baseline;
+}
+
+.auction-page .auction-items-listing p.artist {
+    font-size: 1.8rem;
+}
+
+.auction-page .auction-items-listing .row.price {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.auction-page .auction-items-listing .price {
+    font-size: 2.3rem;
+}
+
+.auction-page .auction-items-listing .starting-price {
+    background-color: #d44c2e;
+    border-color: transparent;
+    padding: 10px 20px;
+    font-size: 3rem;
+    margin-left: 20px;
+    border-radius: 3px;
+}
+
+.auction-page .auction-items-listing input {
+    background-color: #fcebd5;
+    border: 2px solid rgb(255, 153, 0);
+    color: rgb(255, 153, 0);
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    width: 60%;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-size: 1.5rem;
+}
+
+.auction-page .auction-items-listing input::placeholder {
+    color: rgb(255, 153, 0);
+}
+
+.auction-page .auction-items-listing input:focus {
+    outline: none;
+    border: 3px solid rgb(255, 153, 0);
+}
+
+.auction-page .auction-items-listing .bid {
+    background-color: rgb(255, 153, 0);
+    border-color: transparent;
+    display: block;
+    width: 100%;
+    font-size: 3rem;
+    margin-top: 30px;
+    border-radius: 10px;
+    color: #f3e8dc;
+    cursor: pointer;
+}
+
+.auction-page .auction-items-listing .bid:hover {
+    background-color: rgb(255, 123, 0);
+}
+
 /* ----------------------------filter-part-styles-------------------------------- */
-/* ----------------------------artist-items-page add-edit-part------------------ */
+/* ----------------------------add-edit-part------------------ */
 .visitor-listing-page .filter-part {
     width: 600px;
     right: -600px;
     top: 0;
-    z-index: 3;
+    z-index: 17;
     transition: 0.7s ease-in;
     scroll-behavior: smooth;
     height: 930px;
@@ -607,11 +771,6 @@ nav {
 .visitor-listing-page .filter-part .filter-by .close-filter {
     width: 50px;
     cursor: pointer;
-    transition: 0.3s ease-in;
-}
-
-.visitor-listing-page .filter-part .filter-by .close-filter:hover {
-    transform: scale(1.1);
 }
 
 .visitor-listing-page .filter-part .filter-by p {
@@ -697,7 +856,7 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     top: 100px;
-    z-index: 3;
+    z-index: 17;
     padding: 40px 20px;
 }
 
@@ -864,56 +1023,59 @@ nav {
     transform: scale(1.1);
 }
 
-/* -------------------------------artist-menu-page-------------------------------- */
+/* -------------------------------artist-menu-page-styles--------------------------- */
+/* -------------------------------visitor-menu-page-styles-------------------------- */
 
-.artist-menu-page {
+.artist-menu-page,
+.visitor-menu-page {
     width: 600px;
     position: absolute;
-    top: 70px;
+    top: 0px;
     right: 0;
-    z-index: 6;
+    z-index: 16;
     padding: 20px;
     border-radius: 4px;
 }
 
-.artist-menu-page ul {
-    margin-bottom: 0;
+.artist-menu-page .closeMenu,
+.visitor-menu-page .closeMenu {
+    width: 20px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-auction-msg {
+    width: 20px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.artist-menu-page ul,
+.visitor-menu-page ul {
+    margin-bottom: 20px;
     padding-left: 0;
     list-style-type: none;
     line-height: 1.5;
     font-size: 1.5rem;
     cursor: pointer;
+    padding-top: 40px;
 }
 
-.artist-menu-page ul li {
+.artist-menu-page ul li,
+.visitor-menu-page ul li {
     transition: 0.3s ease-in;
 }
 
 .artist-menu-page ul li:hover,
 .artist-menu-page ul li.active,
-.choose-type span:hover {
+.choose-type span:hover,
+.visitor-menu-page ul li:hover,
+.visitor-menu-page span:hover {
     background-color: #fcebd5;
     color: #a16a5e;
     border-radius: 4px;
-}
-
-/* ----------------------------artist-items-page------------------------- */
-.artist-items-page {
-    margin-top: 5px;
-    padding: 40px 0;
-}
-
-.artist-items-page .add-items {
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    cursor: pointer;
-}
-
-.artist-items-page .add-items .add-items-inner {
-    border: 3px dashed #a16a5e;
-    padding: 50px;
 }
 
 /*===============================================================================================================*/
@@ -986,6 +1148,48 @@ nav {
     /* ----------------------------add/edit part styles------------------------- */
     .artist-items-page .add-edit-part {
         top: 40px;
+    }
+
+    /* -------------------------auction-page-styles------------ */
+    .auction-page .timer {
+        padding-bottom: 15px;
+    }
+
+    .auction-page .timer p {
+        padding: 15px 8px;
+        font-size: 1.3rem;
+    }
+
+    .auction-page .timer span {
+        font-size: 0.6rem;
+    }
+
+    .auction-page .auction-items-listing .title {
+        font-size: 2.5rem;
+    }
+
+    .auction-page .auction-items-listing p.artist {
+        font-size: 1.4rem;
+    }
+
+    .auction-page .auction-items-listing .row.artist-created p:last-child {
+        font-size: 1rem;
+    }
+
+    .auction-page .auction-items-listing .price {
+        font-size: 1.8rem;
+    }
+
+    .auction-page .auction-items-listing .starting-price {
+        font-size: 2.3rem;
+    }
+
+    .auction-page .auction-items-listing input {
+        padding: 7px;
+    }
+
+    .auction-page .auction-items-listing .bid {
+        font-size: 2.4rem;
     }
 }
 
@@ -1198,7 +1402,19 @@ nav {
         font-size: 1rem;
     }
 
+    .logo {
+        z-index: 20 !important;
+    }
+
     /* ----------------------------visitor-home-styles------------------------- */
+    .visitor-home-page .img-wrapper .bricks-small {
+        display: block;
+    }
+
+    .visitor-home-page .img-wrapper .bricks-big {
+        display: none;
+    }
+
     .visitor-home-page .content-wrapper button {
         font-size: 1.2rem;
     }
@@ -1344,7 +1560,7 @@ nav {
 
     .navbar-visitor-artist .navbar-brand .logo {
         width: 60px;
-        z-index: 7;
+        /* z-index: 20; */
     }
 
     .navbar-visitor-artist .navbar-icon img {
@@ -1499,7 +1715,9 @@ nav {
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page .artist-home-page-wrapper,
     .artist-menu-page,
-    .artist-items-page .add-items {
+    .visitor-menu-page,
+    .artist-items-page .add-items,
+    .auction-page .auction-items {
         width: 100%;
         font-size: 1rem;
     }
@@ -1521,10 +1739,23 @@ nav {
     }
 
     /* -------------------------------artist-menu-page-------------------------------- */
-    .artist-menu-page {
+    /* -------------------------------visitor-menu-page-------------------------------- */
+    .artist-menu-page,
+    .visitor-menu-page {
         top: 55px;
         box-shadow: 0 2px 10px #5e4343;
         border-radius: 0;
+    }
+
+    .artist-menu-page .closeMenu,
+    .visitor-menu-page .closeMenu {
+        display: none;
+    }
+
+    .artist-menu-page ul,
+    .visitor-menu-page ul {
+        margin-bottom: 0;
+        padding-top: 0;
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
@@ -1533,19 +1764,23 @@ nav {
     }
 
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
-    .artist-items-page .remove-confirmation button {
+    .artist-items-page .remove-confirmation button,
+    .artist-items-page .auction-msg button {
         padding: 5px 11.5px;
     }
 
-    .artist-items-page .remove-confirmation {
+    .artist-items-page .remove-confirmation,
+    .artist-items-page .auction-msg {
         padding: 25px;
     }
 
-    .artist-items-page .remove-confirmation p {
+    .artist-items-page .remove-confirmation p,
+    .artist-items-page .auction-msg p {
         margin-bottom: 25px;
     }
 
-    .artist-items-page .remove-confirmation button {
+    .artist-items-page .remove-confirmation button,
+    .artist-items-page .auction-msg button {
         margin: 0 7px;
     }
 }
@@ -1705,12 +1940,14 @@ nav {
 
     /* ------------------------artist-items-listing-styles---------------- */
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
-    .artist-items-page .remove-confirmation button {
+    .artist-items-page .remove-confirmation button,
+    .artist-items-page .auction-msg button {
         padding: 3px 7px;
         font-size: 0.8rem;
     }
 
-    .artist-items-page .remove-confirmation p {
+    .artist-items-page .remove-confirmation p,
+    .artist-items-page .auction-msg p {
         font-size: 0.9rem;
     }
 }

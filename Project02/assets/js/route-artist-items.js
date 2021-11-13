@@ -96,8 +96,16 @@ const initArtistItemsPage = () => {
             '.remove-confirmation'
         );
 
-        //clicking on publish/unpublish buttons to change color/text content/update array
+        // click on menu icon to open the artist menu
+        if (e.target.classList.contains('menuIcon'))
+            manipulateMenuAndOverlayWhenSectionisUnder100vh(
+                artistItemsPage,
+                menuArtist
+            );
+
+        //click on publish/unpublish buttons to change color/text content/update array
         if (e.target.classList.contains('publishing')) {
+            e.stopPropagation();
             toggleElClass(e.target, 'btn-grey');
             toggleElClass(e.target, 'bg-primary-green');
 
@@ -129,12 +137,7 @@ const initArtistItemsPage = () => {
         //click on remove button to open the confirmation popup
         if (e.target.classList.contains('remove')) {
             const itemToRemove = e.target.parentElement.parentElement;
-
-            manipulateOverlayDisplay(removeConfirmation, 'block', 'block');
-            manipulateOverlayHeight(artistItemsPage);
-            bodyOverlay.style.background = '#58474799';
-            document.querySelector('.logo').style.zIndex = 1;
-            document.body.style.overflowX = 'hidden';
+            createRemoveMsg();
 
             localStorage.setItem('itemToRemove', itemToRemove.id);
 
@@ -167,7 +170,7 @@ const initArtistItemsPage = () => {
 
         //click on cancel button to cancel the item deletion
         if (e.target.classList.contains('cancel-remove')) {
-            manipulateOverlayDisplay(removeConfirmation, 'none', 'none');
+            deleteMsg(removeConfirmation);
         }
 
         //edit functionality
@@ -197,6 +200,25 @@ const initArtistItemsPage = () => {
             addTypeInput.value = itemToEdit.type;
             addPriceInput.value = itemToEdit.price;
             addImgUrlInput.value = itemToEdit.image;
+        }
+
+        const auctioningTrue = localStorage.getItem('auction');
+        //click on sent to auction button to send the item for auctioning
+        if (e.target.classList.contains('sold-no') && !auctioningTrue) {
+            location.hash = '#auction';
+            localStorage.setItem('auction', true);
+            dNone(bodyOverlay);
+        }
+
+        //on click on sent to auction button when auction is in progress show the rejecting message
+        if (e.target.classList.contains('sold-no') && auctioningTrue) {
+            e.stopPropagation();
+            createAuctionMsg();
+        }
+
+        //delete the rejecting message
+        if (e.target.classList.contains('confirm')) {
+            deleteMsg(auctionMsg);
         }
     });
 };

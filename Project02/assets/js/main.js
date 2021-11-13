@@ -20,6 +20,7 @@ const windowWidth = window.innerWidth,
     bodyOverlay = document.querySelector('.overlay'),
     typeDropDown = document.querySelector('.choose-type'),
     changeTypeArrow = document.querySelector('.chooseTypeArrow'),
+    menuArtist = document.querySelector('.artist-menu-page'),
     menuHome = document.querySelector('.menuHome'),
     menuItems = document.querySelector('.menuItems'),
     menuAuction = document.querySelector('.menuAuction'),
@@ -29,6 +30,8 @@ const windowWidth = window.innerWidth,
     addPriceInput = document.querySelector('#itemPrice'),
     addImgUrlInput = document.querySelector('#imageUrl'),
     imgCheckBox = document.querySelector('img.checked'),
+    removeMsg = document.querySelector('.remove-confirmation'),
+    auctionMsg = document.querySelector('.auction-msg'),
     itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
     artistLS = localStorage.getItem('artist');
 
@@ -76,8 +79,6 @@ const handleRoute = () => {
 if (itemsLS) items = itemsLS;
 
 document.addEventListener('click', function (e) {
-    const menuArtist = document.querySelector('.artist-menu-page');
-
     //click on logo to go to landing page
     if (e.target.classList.contains('logo')) {
         location.hash = '';
@@ -93,7 +94,6 @@ document.addEventListener('click', function (e) {
 
         if (location.hash === '#artists/items') {
             manipulateOverlayHeight(artistItemsPage);
-            document.body.style.overflowX = 'hidden';
         } else {
             bodyOverlay.style.height = '100vh';
         }
@@ -114,6 +114,11 @@ document.addEventListener('click', function (e) {
     //click on auction from the menu-artist to go to the auction page
     if (e.target.classList.contains('menuAuction')) {
         location.hash = '#auction';
+        manipulateOverlayDisplay(menuArtist, 'none', 'none');
+    }
+
+    //click on close to close the menu-artist
+    if (e.target.classList.contains('closeMenu')) {
         manipulateOverlayDisplay(menuArtist, 'none', 'none');
     }
 
