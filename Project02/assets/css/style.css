@@ -468,17 +468,30 @@ nav {
     padding-bottom: 20px;
 }
 
-.visitor-listing-page .filter-icon {
+.visitor-listing-page .filter-icon,
+.visitor-listing-page .show-all {
     width: 130px;
-    right: 2%;
-    bottom: 4%;
+    right: 40px;
     cursor: pointer;
     box-shadow: 0 2px 7px #8a8484;
     border-radius: 5px;
     transition: 0.3s ease-in;
 }
 
-.visitor-listing-page .filter-icon:hover {
+.visitor-listing-page .filter-icon {
+    bottom: 40px;
+}
+
+.visitor-listing-page .show-all {
+    background-color: #d44c2e;
+    color: #fcebd5;
+    border-color: transparent;
+    bottom: 200px;
+    padding: 15px 0;
+}
+
+.visitor-listing-page .filter-icon:hover,
+.visitor-listing-page .show-all:hover {
     filter: brightness(1.2);
 }
 
@@ -535,17 +548,22 @@ nav {
     padding: 40px 0;
 }
 
+.artist-items-page .add-items {
+    cursor: pointer;
+}
+
 .artist-items-page .add-items,
-.auction-page .auction-items {
+.auction-page .auction-items,
+.visitor-listing-page .no-filtered-items {
     width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    cursor: pointer;
 }
 
 .artist-items-page .add-items .add-items-inner,
-.auction-page .auction-items .auction-items-inner {
+.auction-page .auction-items .auction-items-inner,
+.visitor-listing-page .no-filtered-items-inner {
     border: 3px dashed #a16a5e;
     padding: 50px;
 }
@@ -567,7 +585,8 @@ nav {
 .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
 .artist-items-page .add-edit-part .buttons-wrapper button,
 .artist-items-page .remove-confirmation button,
-.artist-items-page .auction-msg button {
+.artist-items-page .auction-msg button,
+.visitor-listing-page .back-items {
     padding: 8px 20px;
     border-color: transparent;
     border-radius: 4px;
@@ -604,14 +623,16 @@ nav {
 }
 
 .artist-items-page .remove-confirmation button,
-.artist-items-page .auction-msg button {
+.artist-items-page .auction-msg button,
+.visitor-listing-page .back-items {
     color: #a16a5e;
     background-color: #edd5bb;
     margin: 0 10px;
 }
 
 .artist-items-page .remove-confirmation button:hover,
-.artist-items-page .auction-msg button:hover {
+.artist-items-page .auction-msg button:hover,
+.visitor-listing-page .back-items:hover {
     color: #edd5bb;
     background-color: #a16a5e;
 }
@@ -702,8 +723,8 @@ nav {
 
 .auction-page .auction-items-listing input {
     background-color: #fcebd5;
-    border: 2px solid rgb(255, 153, 0);
-    color: rgb(255, 153, 0);
+    border: 2px solid #ff9900;
+    color: #ff9900;
     text-align: center;
     font-weight: bold;
     padding: 10px;
@@ -757,10 +778,6 @@ nav {
     height: 100%;
     width: 100%;
     padding: 20px;
-}
-
-.visitor-listing-page .filter-part .filter .choose-button {
-    border: 1px solid #edd5bb;
 }
 
 .visitor-listing-page .filter-part .filter-by {
@@ -832,6 +849,13 @@ nav {
     width: 130px;
 }
 
+.visitor-listing-page .filter-part .filter .inner-filter-artist,
+.visitor-listing-page .filter-part .filter .inner-filter-artist input,
+.visitor-listing-page .filter-part .filter .inner-filter-type,
+.visitor-listing-page .filter-part .filter .inner-filter-type input {
+    width: 170px;
+}
+
 .visitor-listing-page .filter-part .img-filter-done-wrapper {
     padding-bottom: 20px;
 }
@@ -898,35 +922,64 @@ nav {
     margin-right: 30px;
 }
 
+.visitor-listing-page .filter .inner-filter-artist,
+.visitor-listing-page .filter .inner-filter-type {
+    width: 250px !important;
+}
+
+.visitor-listing-page .filter input.filter-artist,
+.visitor-listing-page .filter input.filter-type {
+    width: 100% !important;
+}
+
+.visitor-listing-page .filter-part .chooseArtistArrowFilter,
+.visitor-listing-page .filter-part .chooseTypeArrowFilter,
 .artist-items-page .add-edit-part .chooseTypeArrow {
     width: 20px;
-    right: 5px;
+    cursor: pointer;
+}
+
+.artist-items-page .add-edit-part .chooseTypeArrow {
     top: 33px;
+    right: 5px;
+}
+
+.visitor-listing-page .filter-part .chooseArtistArrowFilter,
+.visitor-listing-page .filter-part .chooseTypeArrowFilter {
+    top: 14px;
+    right: 10px;
+}
+
+.artist-items-page .add-edit-part input.item-type,
+.visitor-listing-page .filter input.filter-artist,
+.visitor-listing-page .filter input.filter-type {
     cursor: pointer;
 }
 
-.artist-items-page .add-edit-part input.item-type {
-    cursor: pointer;
-}
-
-.artist-items-page .add-edit-part .choose-type {
-    margin-top: -35px;
+.artist-items-page .add-edit-part .choose-type,
+.visitor-listing-page .filter-part .choose-artist-filter,
+.visitor-listing-page .filter-part .choose-type-filter {
     padding: 5px;
     border-radius: 4px;
-    margin-bottom: 0;
     max-height: 70px;
     left: 0;
     right: 0;
-    top: 97px;
 }
 
-.artist-items-page .add-edit-part .choose-type span {
+.artist-items-page .add-edit-part .choose-type {
+    top: 61px;
+}
+
+.artist-items-page .add-edit-part .choose-type span,
+.visitor-listing-page .filter-part .choose-artist-filter span,
+.visitor-listing-page .filter-part .choose-type-filter span {
     cursor: pointer;
     display: block;
     padding: 0 5px;
 }
 
-.artist-items-page .add-edit-part .chooseTypeOpen {
+.artist-items-page .add-edit-part .chooseTypeOpen,
+.visitor-listing-page .filter-part .chooseTypeOpen {
     border: 1px solid #fcebd5;
     overflow-y: scroll;
     background-color: #a16a5e;
@@ -934,7 +987,7 @@ nav {
 
 .artist-items-page .add-edit-part .add-edit .required {
     font-size: 0.8rem;
-    color: rgb(201, 15, 15);
+    color: #c90f0f;
     margin-top: -30px;
     margin-bottom: 15.6px;
 }
@@ -1071,6 +1124,8 @@ nav {
 .artist-menu-page ul li:hover,
 .artist-menu-page ul li.active,
 .choose-type span:hover,
+.choose-artist-filter span:hover,
+.choose-type-filter span:hover,
 .visitor-menu-page ul li:hover,
 .visitor-menu-page span:hover {
     background-color: #fcebd5;
@@ -1116,7 +1171,8 @@ nav {
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
-    .visitor-listing-page .filter-icon {
+    .visitor-listing-page .filter-icon,
+    .visitor-listing-page .show-all {
         width: 110px;
     }
 
@@ -1143,6 +1199,11 @@ nav {
 
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
         padding: 5px 15px;
+    }
+
+    .visitor-listing-page .show-all {
+        bottom: 170px;
+        padding: 10px 0;
     }
 
     /* ----------------------------add/edit part styles------------------------- */
@@ -1301,9 +1362,18 @@ nav {
         width: 95%;
     }
 
-    .visitor-listing-page .filter-icon {
+    .visitor-listing-page .filter-icon,
+    .visitor-listing-page .show-all {
         width: 100px;
-        right: 4%;
+        right: 30px;
+    }
+
+    .visitor-listing-page .filter-icon {
+        bottom: 30px;
+    }
+
+    .visitor-listing-page .show-all {
+        bottom: 150px;
     }
 
     .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
@@ -1400,10 +1470,6 @@ nav {
     .landing-page .chooseArtistLanding .choose-button,
     .landing-page .chooseArtistWrapper .chooseArtist {
         font-size: 1rem;
-    }
-
-    .logo {
-        z-index: 20 !important;
     }
 
     /* ----------------------------visitor-home-styles------------------------- */
@@ -1560,7 +1626,6 @@ nav {
 
     .navbar-visitor-artist .navbar-brand .logo {
         width: 60px;
-        /* z-index: 20; */
     }
 
     .navbar-visitor-artist .navbar-icon img {
@@ -1689,9 +1754,9 @@ nav {
         padding-bottom: 10px;
     }
 
-    .visitor-listing-page .filter-icon {
+    .visitor-listing-page .filter-icon,
+    .visitor-listing-page .show-all {
         width: 90px;
-        right: 5%;
     }
 
     .visitor-listing-page .visitor-listing-page-inner,
@@ -1717,7 +1782,8 @@ nav {
     .artist-menu-page,
     .visitor-menu-page,
     .artist-items-page .add-items,
-    .auction-page .auction-items {
+    .auction-page .auction-items,
+    .visitor-listing-page .no-filtered-items {
         width: 100%;
         font-size: 1rem;
     }
@@ -1765,7 +1831,8 @@ nav {
 
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
     .artist-items-page .remove-confirmation button,
-    .artist-items-page .auction-msg button {
+    .artist-items-page .auction-msg button,
+    .visitor-listing-page .back-items {
         padding: 5px 11.5px;
     }
 
@@ -1898,8 +1965,18 @@ nav {
         padding-bottom: 10px;
     }
 
-    .visitor-listing-page .filter-icon {
+    .visitor-listing-page .filter-icon,
+    .visitor-listing-page .show-all {
         width: 70px;
+        right: 20px;
+    }
+
+    .visitor-listing-page .show-all {
+        bottom: 120px;
+    }
+
+    .visitor-listing-page .filter-icon {
+        bottom: 20px;
     }
 
     .visitor-listing-page .visitor-listing-page-inner,
@@ -1941,13 +2018,15 @@ nav {
     /* ------------------------artist-items-listing-styles---------------- */
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button,
     .artist-items-page .remove-confirmation button,
-    .artist-items-page .auction-msg button {
+    .artist-items-page .auction-msg button,
+    .visitor-listing-page .back-items {
         padding: 3px 7px;
         font-size: 0.8rem;
     }
 
     .artist-items-page .remove-confirmation p,
-    .artist-items-page .auction-msg p {
+    .artist-items-page .auction-msg p,
+    .visitor-listing-page .no-filtered-items p {
         font-size: 0.9rem;
     }
 }

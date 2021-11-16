@@ -3,12 +3,12 @@ const initAuctionPage = () => {
     const artistLS = localStorage.getItem('artist');
 
     if (artistLS) {
-        makeArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
+        createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
         removeElClass(menuHome, 'active');
         removeElClass(menuItems, 'active');
         addElClass(menuAuction, 'active');
     } else {
-        makeArtistVisitorNavbar('Street ARTist', 'back', 'backIcon');
+        createArtistVisitorNavbar('Street ARTist', 'back', 'backIcon');
     }
 
     dNone(landingPage);
@@ -22,7 +22,9 @@ const initAuctionPage = () => {
 
     if (auctioningTrue) {
         //example
-        makeAuctionWrapper('hello', 'hello', 'hello', 'hello', 'hello');
+        createAuctionItem('hello', 'hello', 'hello', 'hello', 'hello');
+        const bidPriceInput = document.querySelector('#bidPrice');
+        /////////////check the value of the price (not to be negative)
 
         //if there is auction in progress and an artist go to the auction page then make the bid button disabled and hide the bid input
         const bidInput = document.querySelector('.input-wrapper'),
@@ -48,6 +50,7 @@ const initAuctionPage = () => {
 
             if (windowWidth <= 600) {
                 bodyOverlay.style.backgroundColor = 'transparent';
+                document.querySelector('.logo').style.zIndex = 20;
             }
         }
 

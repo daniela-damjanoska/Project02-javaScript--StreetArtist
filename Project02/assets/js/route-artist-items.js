@@ -1,8 +1,7 @@
 const initArtistItemsPage = () => {
-    const artistLS = localStorage.getItem('artist'),
-        totalItems = items.filter(item => item.artist === artistLS);
+    const artistLS = localStorage.getItem('artist');
 
-    makeArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
+    createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
     dNone(visitorListingPage);
@@ -15,68 +14,9 @@ const initArtistItemsPage = () => {
     removeElClass(menuAuction, 'active');
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
 
+    //create the items
     artistItemsListing.innerHTML = '';
-
-    //render the items with the appropriate publish/unpublish button and send/not sent to auction button
-    totalItems.forEach(item => {
-        //render the items with the appropriate publish/unpublish button
-        if (item.isPublished === true && item.priceSold === undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-no'
-            );
-        else if (item.isPublished === true && item.priceSold !== undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-yes'
-            );
-        else if (item.isPublished === false && item.priceSold === undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'btn-grey',
-                'publish',
-                'sold-no'
-            );
-        else if (item.isPublished === false && item.priceSold !== undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-yes'
-            );
-    });
-
-    //make go to auction buttons disabled when the item is sold
-    const soldBtns = document.querySelectorAll('.sold-status');
-    soldBtns.forEach(btn => {
-        if (btn.classList.contains('sold-yes')) {
-            btn.setAttribute('disabled', true);
-        }
-    });
+    createArtistPageAllItems();
 
     //set the default isPublished checked
     removeElClass(imgCheckBox, 'hide');
@@ -103,7 +43,7 @@ const initArtistItemsPage = () => {
                 menuArtist
             );
 
-        //click on publish/unpublish buttons to change color/text content/update array
+        //click on publish/unpublish buttons to change their color/text content and update arrays
         if (e.target.classList.contains('publishing')) {
             e.stopPropagation();
             toggleElClass(e.target, 'btn-grey');
@@ -113,25 +53,35 @@ const initArtistItemsPage = () => {
                 const BtnToChangePublishId =
                     +e.target.parentElement.parentElement.id;
 
+                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
                 e.target.textContent = 'unpublish';
-                items.forEach((item, idx) => {
+                itemsLS.forEach((item, idx) => {
                     if (idx + 1 === BtnToChangePublishId) {
                         item.isPublished = true;
                     }
                 });
+
+                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+                updateArtistItemsArray();
             } else if (e.target.textContent === 'unpublish') {
                 const BtnToChangeUnpublishId =
                     +e.target.parentElement.parentElement.id;
 
+                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
                 e.target.textContent = 'publish';
-                items.forEach((item, idx) => {
+                itemsLS.forEach((item, idx) => {
                     if (idx + 1 === BtnToChangeUnpublishId) {
                         item.isPublished = false;
                     }
                 });
-            }
 
-            localStorage.setItem('itemsLS', JSON.stringify(items));
+                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+                updateArtistItemsArray();
+            }
         }
 
         //click on remove button to open the confirmation popup
@@ -139,38 +89,43 @@ const initArtistItemsPage = () => {
             const itemToRemove = e.target.parentElement.parentElement;
             createRemoveMsg();
 
-            localStorage.setItem('itemToRemove', itemToRemove.id);
+            localStorage.setItem('itemToRemoveIdLS', itemToRemove.id);
 
-            //click on confirm button to delete the item and also to update(filter) the items array
+            //click on confirm button to delete the item and also to update(filter) the items array and artist array
             document
                 .querySelector('.confirm-remove')
                 .addEventListener('click', () => {
                     itemToRemove.remove();
 
-                    const itemToRemoveId = localStorage.getItem('itemToRemove');
+                    const itemToRemoveId =
+                        localStorage.getItem('itemToRemoveIdLS');
 
-                    const filteredArrayWithItems = items.filter(
+                    const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+                    //filter the items array
+                    const filteredItems = itemsLS.filter(
                         item => item.id !== +itemToRemoveId
                     );
 
-                    filteredArrayWithItems.forEach((el, i) => (el.id = i + 1));
+                    // make  renumeration of the items according to the index, so the new items can get the appropriate id
+                    filteredItems.forEach((el, i) => (el.id = i + 1));
 
                     localStorage.setItem(
                         'itemsLS',
-                        JSON.stringify(filteredArrayWithItems)
+                        JSON.stringify(filteredItems)
                     );
 
-                    manipulateOverlayDisplay(
-                        removeConfirmation,
-                        'none',
-                        'none'
-                    );
+                    updateArtistItemsArray();
+
+                    deleteMsg(removeConfirmation);
+                    localStorage.removeItem('itemToRemoveIdLS');
                 });
         }
 
         //click on cancel button to cancel the item deletion
         if (e.target.classList.contains('cancel-remove')) {
             deleteMsg(removeConfirmation);
+            localStorage.removeItem('itemToRemoveIdLS');
         }
 
         //edit functionality
@@ -184,10 +139,18 @@ const initArtistItemsPage = () => {
 
             const itemToEditId = +e.target.parentElement.parentElement.id;
 
-            const itemToEdit = items.find(item => item.id === itemToEditId);
+            const artistItemsLS = JSON.parse(
+                localStorage.getItem('artistItemsLS')
+            );
+
+            //find the item to be edited and save it to local storage
+            const itemToEdit = artistItemsLS.find(
+                item => item.id === itemToEditId
+            );
 
             localStorage.setItem('editItemIdLS', itemToEditId);
 
+            //update the checkbox when the edit section is open according to the isPublished property
             if (itemToEdit.isPublished === true) {
                 removeElClass(imgCheckBox, 'hide');
             } else {
@@ -195,6 +158,7 @@ const initArtistItemsPage = () => {
                 localStorage.setItem('isPublished', false);
             }
 
+            //take the values for the inputs according to the appropriate properties
             addTitleInput.value = itemToEdit.title;
             addDescInput.value = itemToEdit.description;
             addTypeInput.value = itemToEdit.type;
