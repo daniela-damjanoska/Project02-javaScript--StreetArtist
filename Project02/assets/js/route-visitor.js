@@ -1,7 +1,12 @@
 const initVisitorHomePage = () => {
-    const filteredPublished = items.filter(item => item.isPublished === true);
+    const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+    const filteredPublished = itemsLS.filter(item => item.isPublished === true);
+    localStorage.setItem(
+        'filteredPublishedLS',
+        JSON.stringify(filteredPublished)
+    );
 
-    makeArtistVisitorNavbar('Street ARTist', 'auction', 'auctionIcon');
+    createArtistVisitorNavbar('Street ARTist', 'auction', 'auctionIcon');
     dNone(landingPage);
     dBlock(visitorHomePage);
     dNone(visitorListingPage);
@@ -10,8 +15,8 @@ const initVisitorHomePage = () => {
     dNone(auctionPage);
 
     filteredPublished.forEach(item => {
-        makeSliderImg(document.querySelector('.slide-track-one'), item.image);
-        makeSliderImg(document.querySelector('.slide-track-two'), item.image);
+        createSliderImg(document.querySelector('.slide-track-one'), item.image);
+        createSliderImg(document.querySelector('.slide-track-two'), item.image);
     });
 
     // click on 'Find one btn' to go to visitor-listing-page

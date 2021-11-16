@@ -1,10 +1,9 @@
 const initArtistAddEditPage = () => {
     const artistLS = localStorage.getItem('artist');
-    const isPublishWrapper = document.querySelector('.isPublishWrapper'),
-        totalItems = items.filter(item => item.artist === artistLS);
+    const isPublishWrapper = document.querySelector('.isPublishWrapper');
 
-    //if the user click on reload render tne navbar, open the items and edit/new section ----------------
-    makeArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
+    //if the user click on reload -> render tne navbar, the items and open the edit/new section ----------
+    createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
     dNone(visitorListingPage);
@@ -12,67 +11,9 @@ const initArtistAddEditPage = () => {
     dBlock(artistItemsPage);
     dNone(auctionPage);
 
+    //create the items
     artistItemsListing.innerHTML = '';
-
-    //render the items with the appropriate publish/unpublish button and send/not sent to auction button
-    totalItems.forEach(item => {
-        if (item.isPublished === true && item.priceSold === undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-no'
-            );
-        else if (item.isPublished === true && item.priceSold !== undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-yes'
-            );
-        else if (item.isPublished === false && item.priceSold === undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'btn-grey',
-                'publish',
-                'sold-no'
-            );
-        else if (item.isPublished === false && item.priceSold !== undefined)
-            makeArtistListingItems(
-                item.id,
-                item.image,
-                item.title,
-                item.price,
-                item.dateCreated,
-                item.description,
-                'bg-primary-green',
-                'unpublish',
-                'sold-yes'
-            );
-    });
-
-    //make go to auction buttons disabled when the item is sold
-    const soldBtns = document.querySelectorAll('.sold-status');
-    soldBtns.forEach(btn => {
-        if (btn.classList.contains('sold-yes')) {
-            btn.setAttribute('disabled', true);
-        }
-    });
+    createArtistPageAllItems();
 
     openNewEditSection();
     //-----------------------------------------------------------------------------------------------------
@@ -97,24 +38,25 @@ const initArtistAddEditPage = () => {
     addEditSection.addEventListener('submit', e => {
         e.preventDefault();
 
+        //check the required input fields, if no value show the required msg
         if (!addTitleInput.value) {
             document.querySelector('.add-title-req').innerHTML = '';
-            makeRequiredFeedback('reqTitle', '.add-title-req');
+            createRequiredFeedback('reqTitle', '.add-title-req');
         }
 
         if (!addTypeInput.value) {
             document.querySelector('.add-type').innerHTML = '';
-            makeRequiredFeedback('reqType', '.add-type');
+            createRequiredFeedback('reqType', '.add-type');
         }
 
         if (!addPriceInput.value) {
             document.querySelector('.add-price').innerHTML = '';
-            makeRequiredFeedback('reqPrice', '.add-price');
+            createRequiredFeedback('reqPrice', '.add-price');
         }
 
         if (!addImgUrlInput.value) {
             document.querySelector('.add-img').innerHTML = '';
-            makeRequiredFeedback('reqImgUrl', '.add-img');
+            createRequiredFeedback('reqImgUrl', '.add-img');
         }
 
         const reqTitle = document.querySelector('.reqTitle'),
@@ -131,6 +73,7 @@ const initArtistAddEditPage = () => {
             addTitleInput.value &&
             addTypeInput.value &&
             addPriceInput.value &&
+            addPriceInput.valueAsNumber > 0 &&
             addImgUrlInput.value
         ) {
             if (!isEditing) {
@@ -153,11 +96,16 @@ const initArtistAddEditPage = () => {
                     priceSold: undefined,
                 };
 
-                items.push(newItem);
+                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
 
-                items.forEach((el, i) => (el.id = i + 1));
+                itemsLS.push(newItem);
 
-                localStorage.setItem('itemsLS', JSON.stringify(items));
+                // make  a renumeration of the items according to the index, so the new item can get the appropriate id
+                itemsLS.forEach((el, i) => (el.id = i + 1));
+
+                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+                updateArtistItemsArray();
             } else {
                 isEditing = true;
 
@@ -169,8 +117,19 @@ const initArtistAddEditPage = () => {
                     localStorage.getItem('isPublished')
                 );
 
-                items.forEach((item, idx) => {
-                    if (idx + 1 === editItemIdLS) {
+                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+                //find the item to be edited
+                const findIdxOfItemsLS = itemsLS.find(
+                    el => el.id === editItemIdLS
+                );
+
+                //find the index of item to be edited
+                const idxOfItemsLS = itemsLS.indexOf(findIdxOfItemsLS);
+
+                //update the item according to the new values from the input fields
+                itemsLS.forEach((item, idx) => {
+                    if (idx === idxOfItemsLS) {
                         item.title = addTitleInput.value;
                         item.description = addDescInput.value;
                         item.type = addTypeInput.value;
@@ -180,39 +139,13 @@ const initArtistAddEditPage = () => {
                     }
                 });
 
-                localStorage.setItem('itemsLS', JSON.stringify(items));
+                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
 
-                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+                updateArtistItemsArray();
 
-                if (itemsLS) {
-                    artistItemsListing.innerHTML = '';
-
-                    //render the items with the appropriate publish/unpublish button
-                    itemsLS.forEach(item => {
-                        if (item.isPublished === true)
-                            makeArtistListingItems(
-                                item.id,
-                                item.image,
-                                item.title,
-                                item.price,
-                                item.dateCreated,
-                                item.description,
-                                'bg-primary-green',
-                                'unpublish'
-                            );
-                        else
-                            makeArtistListingItems(
-                                item.id,
-                                item.image,
-                                item.title,
-                                item.price,
-                                item.dateCreated,
-                                item.description,
-                                'btn-grey',
-                                'publish'
-                            );
-                    });
-                }
+                //create the items
+                artistItemsListing.innerHTML = '';
+                createArtistPageAllItems();
 
                 isEditing = false;
             }
@@ -221,24 +154,29 @@ const initArtistAddEditPage = () => {
         }
     });
 
+    //check the value od price (not to be negative)
+    addRedBorder(addPriceInput);
+
     //click on cancel button to close the add-new/edit section
     document
         .querySelector('.cancelNewEdit')
         .addEventListener('click', closeNewEditSection);
 
     //open the dropdown on inputType
-    addTypeInput.addEventListener('click', makeDropdownTypeMenu);
+    addTypeInput.addEventListener('click', () => {
+        createDropdownChooseType(typeDropDown, changeTypeArrow);
+    });
 
     document.addEventListener('click', function (e) {
         //click on arrow-up to close the choose type dropdown
         if (e.target.classList.contains('rotate-arrow')) {
-            closeDropdownMenu();
+            closeDropdownMenu(typeDropDown, changeTypeArrow);
         }
 
         //click on chooseTypeDropdown to select the option and update the value
         if (e.target.classList.contains('chooseType')) {
             addTypeInput.value = e.target.textContent;
-            closeDropdownMenu();
+            closeDropdownMenu(typeDropDown, changeTypeArrow);
         }
     });
 };

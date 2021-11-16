@@ -1,6 +1,6 @@
 const navbar = document.querySelector('nav');
 
-const makeLandingPageNav = () => {
+const createLandingPageNav = () => {
     navbar.innerHTML = `
         <div class="navbar-landing-page row">
             <span class="c-text-primary-default"><b>Street ARTist</b></span>
@@ -8,7 +8,7 @@ const makeLandingPageNav = () => {
     `;
 };
 
-const makeArtistVisitorNavbar = (person, icon, elClass) => {
+const createArtistVisitorNavbar = (person, icon, elClass) => {
     navbar.innerHTML = `
         <div class="navbar-visitor-artist">
             <span class="navbar-brand">
@@ -24,13 +24,13 @@ const makeArtistVisitorNavbar = (person, icon, elClass) => {
     `;
 };
 
-const makeSliderImg = (slideTrack, src) => {
+const createSliderImg = (slideTrack, src) => {
     slideTrack.innerHTML += `<div class="slide">
     <img src="${src}" class="img-slide" alt="" />
     </div>`;
 };
 
-const makeVisitorListingItems = (
+const createVisitorPageItem = (
     id,
     src,
     artistName,
@@ -55,7 +55,63 @@ const makeVisitorListingItems = (
     `;
 };
 
-const makeArtistListingItems = (
+const createVisitorPageAllItems = array => {
+    //render the items with the appropriate background color on different resolutions
+    visitorListingPageInner.innerHTML = '';
+    array.forEach((item, idx) => {
+        if (windowWidth <= 768) {
+            if (idx % 2 === 0)
+                createVisitorPageItem(
+                    item.id,
+                    item.image,
+                    item.artist,
+                    item.price,
+                    item.title,
+                    item.description,
+                    'bg-light c-text-primary-default',
+                    'c-text-normal bg-primary-default'
+                );
+            else
+                createVisitorPageItem(
+                    item.id,
+                    item.image,
+                    item.artist,
+                    item.price,
+                    item.title,
+                    item.description,
+                    'bg-primary-default c-text-normal',
+                    'c-text-primary-default bg-light'
+                );
+        } else {
+            if (idx === 0 || (idx + 1) % 4 === 0 || (idx + 1) % 4 === 1)
+                createVisitorPageItem(
+                    item.id,
+                    item.image,
+                    item.artist,
+                    item.price,
+                    item.title,
+                    item.description,
+                    'bg-light c-text-primary-default',
+                    'c-text-normal bg-primary-default'
+                );
+            else
+                createVisitorPageItem(
+                    item.id,
+                    item.image,
+                    item.artist,
+                    item.price,
+                    item.title,
+                    item.description,
+                    'bg-primary-default c-text-normal',
+                    'c-text-primary-default bg-light'
+                );
+        }
+    });
+
+    dBlock(filterIcon);
+};
+
+const createArtistPageItem = (
     id,
     src,
     title,
@@ -63,8 +119,7 @@ const makeArtistListingItems = (
     date,
     desc,
     isPublished,
-    isPublishedText,
-    isSold
+    isPublishedText
 ) => {
     artistItemsListing.innerHTML += `
         <div class="col-47" id="${id}">
@@ -78,7 +133,7 @@ const makeArtistListingItems = (
                 <p class="mb-0">${desc}</p>
             </div>
             <div class="bg-primary-default row buttons-wrapper">
-                <button class="bg-primary-blue ${isSold} sold-status">Send to auction</button>
+                <button class="bg-primary-blue sold-status">Send to auction</button>
                 <button class="${isPublished} publishing">${isPublishedText}</button>
                 <button class="bg-primary-contrast remove">Remove</button>
                 <button class="bg-light c-text-primary-default edit-item">Edit</button>
@@ -87,26 +142,81 @@ const makeArtistListingItems = (
     `;
 };
 
-const makeRequiredFeedback = (reqField, parent) => {
+const createArtistPageAllItems = () => {
+    const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
+    console.log(artistItemsLS);
+
+    //render the items with the appropriate publish/unpublish button
+    artistItemsLS.forEach(item => {
+        if (item.isPublished === true) {
+            createArtistPageItem(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'bg-primary-green',
+                'unpublish'
+            );
+        } else {
+            createArtistPageItem(
+                item.id,
+                item.image,
+                item.title,
+                item.price,
+                item.dateCreated,
+                item.description,
+                'btn-grey',
+                'publish'
+            );
+        }
+
+        // adding a class to the send/not sent to auction buttons
+        const allButtons = document.querySelectorAll('.sold-status');
+        allButtons.forEach(btn => {
+            if (item.priceSold !== undefined) btn.classList.add('sold-yes');
+            else btn.classList.add('sold-no');
+
+            //make go to auction buttons disabled when the item is sold
+            if (btn.classList.contains('sold-yes')) {
+                btn.setAttribute('disabled', true);
+            }
+        });
+    });
+};
+
+const createRequiredFeedback = (reqField, parent) => {
     const feedbackPar = document.createElement('p');
     feedbackPar.classList.add(reqField, 'required');
     feedbackPar.textContent = '*required field';
     document.querySelector(parent).appendChild(feedbackPar);
 };
 
-const makeDropdownTypeMenu = function () {
-    typeDropDown.classList.add('chooseTypeOpen');
-    changeTypeArrow.classList.add('rotate-arrow');
-    typeDropDown.innerHTML = '';
+const createDropdownChooseType = (section, arrow) => {
+    section.classList.add('chooseTypeOpen');
+    arrow.classList.add('rotate-arrow');
+    section.innerHTML = '';
     itemTypes.forEach(
         type =>
-            (typeDropDown.innerHTML += `
+            (section.innerHTML += `
             <span class="chooseType">${type}</span>
     `)
     );
 };
 
-const makeAuctionWrapper = (img, title, artist, date, price) => {
+const createDropdownChooseArtist = section => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(res => {
+            res.forEach(user => {
+                section.innerHTML += `
+                        <span class="chooseArtist" id="${user.id}">${user.name}</span>`;
+            });
+        });
+};
+
+const createAuctionItem = (img, title, artist, date, price) => {
     auctionPage.innerHTML = `
         <div class="auction-wrapper">
             <div class="timer row text-center">
@@ -143,7 +253,7 @@ const makeAuctionWrapper = (img, title, artist, date, price) => {
                                 <span class="c-text-normal starting-price">$${price}</span>
                             </div>
                             <div class="input-wrapper text-center">
-                                <input type="number" placeholder="Your offer" />
+                                <input type="number" placeholder="Your offer" id="bidPrice" />
                             </div>
                             <button class="bid">Bid!</button>
                         </div>
@@ -172,5 +282,27 @@ const createRemoveMsg = () => {
             <button class="cancel-remove">Cancel</button>
         `;
     dBlock(bodyOverlay);
+    bodyOverlay.style.backgroundColor = '#58474799';
     manipulateOverlayHeight(artistItemsPage);
+};
+
+const createFilterMessage = () => {
+    visitorListingPageInner.innerHTML = `
+        <div class="no-filtered-items bg-light">
+            <div class="no-filtered-items-inner text-center c-text-primary-default">
+                <p>
+                    There is no item with that search!
+                </p>
+                <button class="back-items">Back to items</button>
+            </div>
+        </div>
+    `;
+
+    dNone(filterIcon);
+};
+
+const createShowAllBtn = () => {
+    visitorListingPageInner.innerHTML += `
+        <button class="show-all p-fixed">Show all</button>
+    `;
 };

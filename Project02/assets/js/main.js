@@ -20,7 +20,14 @@ const windowWidth = window.innerWidth,
     bodyOverlay = document.querySelector('.overlay'),
     typeDropDown = document.querySelector('.choose-type'),
     changeTypeArrow = document.querySelector('.chooseTypeArrow'),
+    typeDropDownFilter = document.querySelector('.choose-type-filter'),
+    changeTypeArrowFilter = document.querySelector('.chooseTypeArrowFilter'),
+    artistDropDownFilter = document.querySelector('.choose-artist-filter'),
+    changeArtistArrowFilter = document.querySelector(
+        '.chooseArtistArrowFilter'
+    ),
     menuArtist = document.querySelector('.artist-menu-page'),
+    menuVisitor = document.querySelector('.visitor-menu-page'),
     menuHome = document.querySelector('.menuHome'),
     menuItems = document.querySelector('.menuItems'),
     menuAuction = document.querySelector('.menuAuction'),
@@ -30,12 +37,20 @@ const windowWidth = window.innerWidth,
     addPriceInput = document.querySelector('#itemPrice'),
     addImgUrlInput = document.querySelector('#imageUrl'),
     imgCheckBox = document.querySelector('img.checked'),
+    titleInputFilter = document.querySelector('#filterTitle'),
+    artistInputFilter = document.querySelector('#chooseArtistFilter'),
+    minPriceInputFilter = document.querySelector('#filterPriceMin'),
+    maxPriceInputFilter = document.querySelector('#filterPriceMax'),
+    typeInputFilter = document.querySelector('#chooseTypeFilter'),
     removeMsg = document.querySelector('.remove-confirmation'),
     auctionMsg = document.querySelector('.auction-msg'),
-    itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
-    artistLS = localStorage.getItem('artist');
+    backToItems = document.querySelector('.back-items');
 
 let isEditing = false;
+
+// updating the items array
+const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+if (itemsLS) items = itemsLS;
 
 const handleRoute = () => {
     let _hash = location.hash;
@@ -75,13 +90,20 @@ const handleRoute = () => {
     }
 };
 
-//updating the items array
-if (itemsLS) items = itemsLS;
-
 document.addEventListener('click', function (e) {
-    //click on logo to go to landing page
+    //click on logo to go to the landing page
     if (e.target.classList.contains('logo')) {
         location.hash = '';
+        localStorage.removeItem('artist');
+        localStorage.removeItem('artistItemsLS');
+        localStorage.removeItem('isPublished');
+        localStorage.removeItem('filteredPublishedLS');
+        localStorage.removeItem('filterItemsLS');
+        localStorage.removeItem('auction');
+
+        //close the menu for smaller resolutions
+        manipulateOverlayDisplay(menuArtist, 'none', 'none');
+        manipulateOverlayDisplay(menuVisitor, 'none', 'none');
     }
 
     //click on menu icon to open the menu on artist pages
@@ -90,6 +112,7 @@ document.addEventListener('click', function (e) {
 
         if (windowWidth <= 600) {
             bodyOverlay.style.backgroundColor = 'transparent';
+            document.querySelector('.logo').style.zIndex = 20;
         }
 
         if (location.hash === '#artists/items') {
