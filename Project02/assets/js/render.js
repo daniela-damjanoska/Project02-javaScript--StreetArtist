@@ -144,7 +144,6 @@ const createArtistPageItem = (
 
 const createArtistPageAllItems = () => {
     const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
-    console.log(artistItemsLS);
 
     //render the items with the appropriate publish/unpublish button
     artistItemsLS.forEach(item => {
@@ -228,7 +227,7 @@ const createAuctionItem = (img, title, artist, date, price) => {
                     <p class="hour">00</p>
                     <span>Hours</span>
                 </div>
-                <div class="Minutes">
+                <div class="minutes">
                     <p class="minute">00</p>
                     <span>Minutes</span>
                 </div>
@@ -271,6 +270,7 @@ const createAuctionMsg = () => {
         <button class="confirm">OK</button>
     `;
     dBlock(bodyOverlay);
+    bodyOverlay.style.backgroundColor = '#58474799';
     manipulateOverlayHeight(artistItemsPage);
 };
 
