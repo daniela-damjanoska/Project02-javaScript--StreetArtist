@@ -94,12 +94,16 @@ document.addEventListener('click', function (e) {
     //click on logo to go to the landing page
     if (e.target.classList.contains('logo')) {
         location.hash = '';
+        const auctioningTrue = localStorage.getItem('auction');
+
+        if (!auctioningTrue) {
+            localStorage.removeItem('artistItemsLS');
+        }
+
         localStorage.removeItem('artist');
-        localStorage.removeItem('artistItemsLS');
         localStorage.removeItem('isPublished');
         localStorage.removeItem('filteredPublishedLS');
         localStorage.removeItem('filterItemsLS');
-        localStorage.removeItem('auction');
 
         //close the menu for smaller resolutions
         manipulateOverlayDisplay(menuArtist, 'none', 'none');

@@ -1,6 +1,8 @@
 const initArtistItemsPage = () => {
     const artistLS = localStorage.getItem('artist');
 
+    let timer;
+
     createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
@@ -169,9 +171,18 @@ const initArtistItemsPage = () => {
         const auctioningTrue = localStorage.getItem('auction');
         //click on sent to auction button to send the item for auctioning
         if (e.target.classList.contains('sold-no') && !auctioningTrue) {
-            location.hash = '#auction';
+            //get the id of the item, starting time and ending time(start counting from 2 min -> 120000ms)
+            const itemForAuctionId = +e.target.parentElement.parentElement.id,
+                startTime = new Date().getTime(),
+                endTime = startTime + 120000;
+
+            //save the id, the state of auction(true), endTime and startTime
+            localStorage.setItem('itemForAuctionId', itemForAuctionId);
             localStorage.setItem('auction', true);
-            dNone(bodyOverlay);
+            localStorage.setItem('startTime', startTime);
+            localStorage.setItem('endTime', endTime);
+
+            location.hash = '#auction';
         }
 
         //on click on sent to auction button when auction is in progress show the rejecting message
