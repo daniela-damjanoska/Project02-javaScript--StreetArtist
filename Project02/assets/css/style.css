@@ -2030,3 +2030,27 @@ nav {
         font-size: 0.9rem;
     }
 }
+
+.make-snapshot {
+    background-color: #a16a5e;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 50px;
+}
+
+.make-snapshot-inner {
+    background-color: black;
+    height: 70vh;
+}
+
+.make-snapshot .take-photo {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}

@@ -179,4 +179,13 @@ const initArtistAddEditPage = () => {
             closeDropdownMenu(typeDropDown, changeTypeArrow);
         }
     });
+
+    document.querySelector('#takeSnapshot').addEventListener('click', () => {
+        document.querySelector('.snapshot-wrapper').innerHTML = `
+        <div class="make-snapshot">
+                        <div class="make-snapshot-inner"></div>
+                        <img src="./img/snapshot.png" alt="" class= "take-photo" />
+                    </div>
+        `;
+    });
 };
