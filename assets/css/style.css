@@ -1056,7 +1056,7 @@ nav {
 .artist-home-page .chart-wrapper .chart-btn-wrapper {
     justify-content: space-between;
     padding-bottom: 40px;
-    width: 80%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1072,8 +1072,10 @@ nav {
     transition: all 0.3s ease-in;
 }
 
-.artist-home-page .chart-wrapper .chart-btn-wrapper button:hover {
-    transform: scale(1.1);
+.artist-home-page .chart-wrapper .chart-btn-wrapper button:hover,
+.artist-home-page .chart-wrapper .chart-btn-wrapper button:focus,
+.artist-home-page .chart-wrapper .chart-btn-wrapper button.active {
+    background-color: #d54c2e;
 }
 
 /* -------------------------------artist-menu-page-styles--------------------------- */
@@ -2012,7 +2014,7 @@ nav {
     }
 
     .artist-home-page .chart-wrapper .chart-btn-wrapper {
-        width: 100%;
+        width: 90%;
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
