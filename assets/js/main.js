@@ -104,6 +104,7 @@ document.addEventListener('click', function (e) {
         localStorage.removeItem('isPublished');
         localStorage.removeItem('filteredPublishedLS');
         localStorage.removeItem('filterItemsLS');
+        localStorage.removeItem('chartDataLS');
 
         //close the menu for smaller resolutions
         manipulateOverlayDisplay(menuArtist, 'none', 'none');
