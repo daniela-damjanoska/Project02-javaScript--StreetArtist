@@ -2,6 +2,7 @@ const initArtistHomePage = () => {
     const currentBidWrapper = document.querySelector('#currentBidBox'),
         artistLS = localStorage.getItem('artist'),
         isAuctioning = localStorage.getItem('auction'),
+        currentBidLS = localStorage.getItem('currentBidLS'),
         itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
         artistItems = itemsLS.filter(item => item.artist === artistLS);
 
