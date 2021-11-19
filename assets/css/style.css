@@ -1853,8 +1853,8 @@ nav {
 
     .artist-items-page .add-edit-part .optional {
         display: block;
-        margin-top: 0 !important;
-        margin-bottom: 15px !important;
+        margin-top: -15px !important;
+        margin-bottom: 5px;
     }
 
     .artist-items-page .add-edit-part .snapshot img {
