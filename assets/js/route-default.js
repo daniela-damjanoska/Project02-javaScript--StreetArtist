@@ -1,6 +1,7 @@
 const initLandingPage = () => {
     localStorage.setItem('itemsLS', JSON.stringify(items));
-    const arrowDropdown = document.querySelector('.chooseArtistDropDown');
+    const arrowDropdown = document.querySelector('.chooseArtistDropDown'),
+        auctioningTrue = localStorage.getItem('auction');
 
     location.hash = '';
     createLandingPageNav();
@@ -10,6 +11,12 @@ const initLandingPage = () => {
     dNone(artistHomePage);
     dNone(artistItemsPage);
     dNone(auctionPage);
+
+    if (!auctioningTrue) {
+        localStorage.removeItem('artistItemsLS');
+    }
+
+    localStorage.removeItem('chartDataLS');
 
     // click on choose button on landing-page to open the list of artist (from API)
     chooseBtnLanding.addEventListener('click', function () {

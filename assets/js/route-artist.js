@@ -1,5 +1,7 @@
 const initArtistHomePage = () => {
-    const artistLS = localStorage.getItem('artist'),
+    const currentBidWrapper = document.querySelector('#currentBidBox'),
+        artistLS = localStorage.getItem('artist'),
+        isAuctioning = localStorage.getItem('auction'),
         itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
         artistItems = itemsLS.filter(item => item.artist === artistLS);
 
@@ -24,13 +26,20 @@ const initArtistHomePage = () => {
 
     //make a sum of the income of the sold items
     let sum = 0;
-    for (let i = 0; i < soldItems.length; i++) {
-        if (!soldItems[i].priceSold) continue;
-        sum += soldItems[i].priceSold;
-    }
+    soldItems.forEach(item => (sum += item.priceSold));
 
     //updating the data for the artist sold items and income
     document.querySelector('#totalItems').textContent = artistItems.length;
     document.querySelector('#soldItems').textContent = soldItems.length;
     document.querySelector('#totalIncome').textContent = `$${sum}`;
+
+    // show the section with current bid amount
+    if (isAuctioning) {
+        document.querySelector(
+            '#currentBidAmount'
+        ).textContent = `$${currentBidLS}`;
+        dBlock(currentBidWrapper);
+    } else {
+        dNone(currentBidWrapper);
+    }
 };

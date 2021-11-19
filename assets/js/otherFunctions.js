@@ -128,12 +128,14 @@ const closeDropdownMenu = (section, arrow) => {
 };
 
 const calcProperTimeFormat = date => {
-    const dateFormat = date.slice(0, 10),
-        year = dateFormat.slice(0, 4),
-        month = dateFormat.slice(5, 7),
-        day = dateFormat.slice(8);
+    if (date) {
+        const dateFormat = date.slice(0, 10),
+            year = dateFormat.slice(0, 4),
+            month = dateFormat.slice(5, 7),
+            day = dateFormat.slice(8);
 
-    return `${day}.${month}.${year}`;
+        return `${day}.${month}.${year}`;
+    }
 };
 
 const manipulateMenuAndOverlayWhenSectionisUnder100vh = (section, menu) => {
@@ -184,6 +186,15 @@ const datesBetween = (start, end) => {
     return dates.reverse();
 };
 
+const makeDateToProperFormat = lab => {
+    const dateToISOString = lab.map(el => el.toISOString()),
+        dateToProperTimeFormat = dateToISOString.map(el =>
+            calcProperTimeFormat(el)
+        );
+
+    return dateToProperTimeFormat;
+};
+
 function findDuplicates(array) {
     const uniqueElements = new Set(array);
     const filteredElements = array.filter(item => {
@@ -211,6 +222,8 @@ const makeLabel = (arr, num) => {
 const findDuplicatesAndCalcSum = label => {
     //find the dates in the artistItemsLS array in which the artist has sold an item
     let artistArrDateSold = [];
+
+    const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
     if (artistItemsLS) {
         for (let i = 0; i < artistItemsLS.length; i++) {
             if (artistItemsLS[i].dateSold !== undefined)
@@ -252,21 +265,16 @@ const findDuplicatesAndCalcSum = label => {
     });
 };
 
-const makeDateToProperFormat = lab => {
-    const dateToISOString = lab.map(el => el.toISOString()),
-        dateToProperTimeFormat = dateToISOString.map(el =>
-            calcProperTimeFormat(el)
-        );
+const makeBid = amount => {
+    const url = 'https://blooming-sierra-28258.herokuapp.com/bid',
+        data = { amount };
 
-    return dateToProperTimeFormat;
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'origin-when-cross-origin',
+        body: JSON.stringify(data),
+    }).then(res => res.json());
 };
-
-function updateChart(data, num, label) {
-    makeLabel(data, num);
-    findDuplicatesAndCalcSum(label);
-    const chartDataLS = JSON.parse(localStorage.getItem('chartDataLS'));
-    artistInfoChart.data.datasets[0].data = chartDataLS;
-
-    artistInfoChart.data.labels = makeDateToProperFormat(label);
-    artistInfoChart.update();
-}
