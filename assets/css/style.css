@@ -1413,8 +1413,9 @@ nav {
 
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page .artist-home-page-wrapper {
-        width: 100%;
+        width: 90%;
         display: block;
+        padding-top: 40px;
     }
 
     .artist-home-page .artist-home-outer {
@@ -1427,14 +1428,45 @@ nav {
         width: 100%;
     }
 
-    /* ------------------------artist-items-listing-styles---------------- */
-    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
-        padding: 5px 15px;
-    }
-
     /* ----------------------------add/edit part styles------------------------- */
     .artist-items-page .add-edit-part {
         top: 120px;
+    }
+}
+
+/* ==============================================================================================================  */
+@media (max-width: 870px) and (min-width: 769px) {
+    .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
+        padding: 3px 7px;
+        font-size: 0.8rem;
+    }
+
+    .artist-items-page .add-edit-part {
+        width: 100%;
+        top: 70px;
+    }
+
+    .artist-items-page .add-edit-part input,
+    .artist-items-page .add-edit-part textarea {
+        margin-bottom: 20px;
+    }
+
+    .artist-items-page .add-edit-part .add-edit .required {
+        margin-top: -20px;
+        margin-bottom: 10.6px;
+    }
+
+    .auction-page .auction-items-listing {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .auction-page .auction-items-listing .col-47 {
+        margin-bottom: 25px;
+    }
+
+    .auction-page .timer {
+        width: 23%;
     }
 }
 
@@ -1613,6 +1645,10 @@ nav {
         padding: 30px 10px;
     }
 
+    .artist-home-page .artist-home-inner .items-info-wrapper .col-47 p {
+        font-size: 1.4rem;
+    }
+
     /* ----------------------------add/edit part styles------------------------- */
     .artist-items-page .add-edit-part {
         width: 100%;
@@ -1627,27 +1663,6 @@ nav {
     .artist-items-page .add-edit-part .add-edit .required {
         margin-top: -20px;
         margin-bottom: 10.6px;
-    }
-
-    /* to work on mobile landscape */
-    .artist-items-page .add-edit-part .snapshot {
-        display: block;
-        border: 3px dashed #fcebd5;
-        padding: 100px;
-        margin-bottom: 20px;
-    }
-
-    .artist-items-page .add-edit-part .optional {
-        display: block;
-        margin-top: 0 !important;
-        margin-bottom: 20px !important;
-    }
-
-    .artist-items-page .add-edit-part .snapshot img {
-        width: 90px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
     }
 }
 
@@ -1827,6 +1842,26 @@ nav {
     .artist-items-page .add-edit-part {
         width: 100%;
         top: 55px;
+    }
+
+    .artist-items-page .add-edit-part .snapshot {
+        display: block;
+        border: 3px dashed #fcebd5;
+        padding: 30px;
+        margin-bottom: 15px;
+    }
+
+    .artist-items-page .add-edit-part .optional {
+        display: block;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .artist-items-page .add-edit-part .snapshot img {
+        width: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
     }
 
     /* ----------------------------artist-home-page-styles------------------------- */
@@ -2155,6 +2190,10 @@ nav {
 
     .artist-home-page .chart-wrapper .chart-btn-wrapper {
         width: 90%;
+    }
+
+    .artist-home-page .artist-home-inner .items-info-wrapper .col-47 p {
+        font-size: 1rem;
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
