@@ -80,9 +80,13 @@ const initAuctionPage = () => {
 
                 itemsLS.forEach(item => {
                     if (item.isAuctioning === true) {
-                        item.isAuctioning = false;
-                        item.dateSold = new Date().toISOString();
-                        item.priceSold = priceSold;
+                        if (!priceSold) {
+                            item.isAuctioning = false;
+                        } else {
+                            item.isAuctioning = false;
+                            item.dateSold = new Date().toISOString();
+                            item.priceSold = priceSold;
+                        }
                     }
                 });
 

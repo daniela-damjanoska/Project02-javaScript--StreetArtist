@@ -48,13 +48,13 @@ const openNewEditSection = () => {
     bodyOverlay.style.top = 0;
     bodyOverlay.style.height = '100vh';
 
-    if (windowWidth < 769) {
+    if (windowWidth < 870) {
         addEditSection.style.overflowY = 'scroll';
-        addEditSection.style.height = '94vh';
+        addEditSection.style.height = '90vh';
         bodyOverlay.style.backgroundColor = 'transparent';
         document.querySelector('.logo').style.zIndex = 20;
-        if (windowWidth < 601) {
-            addEditSection.style.height = '93vh';
+        if (windowWidth < 769) {
+            addEditSection.style.height = '94vh';
         }
     } else {
         addEditSection.style.height = '560px';
@@ -82,7 +82,7 @@ const openFilterSection = () => {
     location.hash = '#visitor/listing/filter';
 
     filterSection.style.right = 0;
-    document.querySelector('.logo').style.zIndex = 20;
+    document.querySelector('.logo').style.zIndex = 14;
     document.body.classList.add('p-fixed');
     manipulateOverlayDisplay(filterIcon, 'none', 'block');
     bodyOverlay.style.top = 0;
@@ -95,6 +95,7 @@ const openFilterSection = () => {
         if (windowWidth <= 600) {
             filterSection.style.height = `${windowHeight - 50}px`;
             bodyOverlay.style.backgroundColor = 'transparent';
+            document.querySelector('.logo').style.zIndex = 20;
         } else filterSection.style.height = `${windowHeight}px`;
     }
 
