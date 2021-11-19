@@ -377,7 +377,7 @@ nav {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-100px * 60));
+        transform: translateX(calc(-100px * 50));
     }
 }
 
@@ -735,16 +735,16 @@ nav {
 }
 
 .auction-page .auction-items-listing input::placeholder {
-    color: rgb(255, 153, 0);
+    color: #ff9900;
 }
 
 .auction-page .auction-items-listing input:focus {
     outline: none;
-    border: 3px solid rgb(255, 153, 0);
+    border: 3px solid #ff9900;
 }
 
 .auction-page .auction-items-listing .bid {
-    background-color: rgb(255, 153, 0);
+    background-color: #ff9900;
     border-color: transparent;
     display: block;
     width: 100%;
@@ -757,6 +757,30 @@ nav {
 
 .auction-page .auction-items-listing .bid:hover {
     background-color: rgb(255, 123, 0);
+}
+
+.auction-page .bid-list p {
+    width: 60%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.auction-page .bid-list .bid-visitor {
+    background-color: rgba(255, 153, 0, 0.7);
+}
+
+.auction-page .bid-list .bid-api {
+    background-color: rgba(212, 76, 46, 0.7);
+    margin-left: auto;
+}
+
+.auction-page .bid-list .title {
+    font-weight: bold;
+    font-size: 3rem;
+    width: 100%;
 }
 
 /* ----------------------------filter-part-styles-------------------------------- */
@@ -1042,6 +1066,10 @@ nav {
 .artist-home-page .current-bid-box span:first-of-type {
     display: block;
     margin-bottom: 16px;
+}
+
+.artist-home-page .current-bid-box span:last-of-type {
+    font-size: 1.5rem;
 }
 
 .artist-home-page .chart-wrapper {
@@ -1360,7 +1388,8 @@ nav {
 
     /* ----------------------------visitor-listing-styles------------------------- */
     .visitor-listing-page .visitor-listing-page-inner,
-    .artist-items-page .artist-items-listing {
+    .artist-items-page .artist-items-listing,
+    .auction-page .auction-items-listing {
         width: 95%;
     }
 
@@ -1541,18 +1570,22 @@ nav {
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
+    /* ----------------------------auction-page-styles------------------------- */
+
     .visitor-listing-page {
         padding-top: 60px;
         padding-bottom: 15px;
     }
 
     .visitor-listing-page .visitor-listing-page-inner,
-    .artist-items-page .artist-items-listing {
+    .artist-items-page .artist-items-listing,
+    .auction-page .auction-items-listing {
         flex-direction: column;
         width: 80%;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner .col-47 {
+    .visitor-listing-page .visitor-listing-page-inner .col-47,
+    .auction-page .auction-items-listing .col-47 {
         margin-bottom: 45px;
     }
 
@@ -1561,6 +1594,10 @@ nav {
         .text-box
         p:first-of-type {
         margin-bottom: 12px;
+    }
+
+    .auction-page .timer {
+        width: 23%;
     }
 
     /* ----------------------------artist-home-page-styles------------------------- */
@@ -1750,6 +1787,13 @@ nav {
     }
 
     /* ----------------------------visitor-listing-page-styles------------------------- */
+    /* --------------------------------auction-page-styles----------------------------- */
+    /* if not enough content in the page to be 100vh */
+    .artist-items-page,
+    .visitor-listing-page,
+    .auction-page {
+        min-height: calc(100vh - 58px);
+    }
 
     .visitor-listing-page {
         padding-top: 50px;
@@ -1762,13 +1806,19 @@ nav {
     }
 
     .visitor-listing-page .visitor-listing-page-inner,
-    .artist-items-page .artist-items-listing {
+    .artist-items-page .artist-items-listing,
+    .auction-page .auction-items-listing {
         width: 95%;
     }
 
     .visitor-listing-page .visitor-listing-page-inner .col-47,
-    .artist-items-page .artist-items-listing .col-47 {
+    .artist-items-page .artist-items-listing .col-47,
+    .auction-page .auction-items-listing .col-47 {
         margin-bottom: 40px;
+    }
+
+    .auction-page .timer {
+        width: 30%;
     }
 
     /* ----------------------------filter-part-styles------------------------- */
@@ -1962,6 +2012,7 @@ nav {
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
+    /* -----------------------..-----auction-page-styles------------------------- */
     .visitor-listing-page {
         padding-top: 40px;
         padding-bottom: 10px;
@@ -1982,12 +2033,101 @@ nav {
     }
 
     .visitor-listing-page .visitor-listing-page-inner,
-    .artist-items-page .artist-items-listing {
+    .artist-items-page .artist-items-listing,
+    .auction-page .auction-items-listing {
         width: 100%;
     }
 
     .visitor-listing-page .visitor-listing-page-inner .col-47 {
         margin-bottom: 30px;
+    }
+
+    .auction-page {
+        padding-top: 25px;
+    }
+
+    .auction-page .auction-items-listing {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .auction-page .auction-items-listing .col-47 {
+        margin-bottom: 0;
+    }
+
+    .auction-page .timer {
+        width: 35%;
+        padding-bottom: 20px;
+    }
+
+    .auction-page .timer p {
+        padding: 10px 7px;
+        font-size: 1rem;
+    }
+
+    .auction-page .timer span {
+        font-size: 0.5rem;
+    }
+
+    .auction-page .auction-items-listing .text-box {
+        padding: 20px;
+    }
+
+    .auction-page .auction-items-listing .row.artist-created p:last-child {
+        font-size: 0.8rem;
+    }
+
+    .auction-page .auction-items-listing .title {
+        font-size: 2rem;
+        margin-bottom: 7px;
+    }
+
+    .auction-page .auction-items-listing .row.artist-created {
+        margin-bottom: 5px;
+    }
+
+    .auction-page .auction-items-listing p.artist {
+        font-size: 1rem;
+    }
+
+    .auction-page .auction-items-listing .price {
+        font-size: 1.3rem;
+    }
+
+    .auction-page .auction-items-listing .starting-price {
+        padding: 7px 14px;
+        font-size: 1.5rem;
+    }
+
+    .auction-page .auction-items-listing input {
+        background-color: #fcebd5;
+        padding: 6px;
+        width: 40%;
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+    .auction-page .auction-items-listing input:focus {
+        border-width: 2px;
+    }
+
+    .auction-page .auction-items-listing .bid {
+        font-size: 1.5rem;
+        margin-top: 15px;
+    }
+
+    .auction-page .bid-list {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .auction-page .bid-list p {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .auction-page .bid-list .title {
+        font-size: 2rem;
     }
 
     /* ----------------------------filter-part-styles------------------------- */

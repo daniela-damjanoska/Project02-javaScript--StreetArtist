@@ -1,8 +1,6 @@
 const initArtistItemsPage = () => {
     const artistLS = localStorage.getItem('artist');
 
-    let timer;
-
     createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
     dNone(visitorHomePage);
@@ -171,16 +169,32 @@ const initArtistItemsPage = () => {
         const auctioningTrue = localStorage.getItem('auction');
         //click on sent to auction button to send the item for auctioning
         if (e.target.classList.contains('sold-no') && !auctioningTrue) {
-            //get the id of the item, starting time and ending time(start counting from 2 min -> 120000ms)
+            //get the id of the item, create starting time and ending time(start counting from 2 min -> 120000ms)
             const itemForAuctionId = +e.target.parentElement.parentElement.id,
                 startTime = new Date().getTime(),
                 endTime = startTime + 120000;
+
+            //find the item in itemsLS array and set item isAuctioning property to true
+            const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+            itemsLS.forEach((item, idx) => {
+                if (idx + 1 === itemForAuctionId) item.isAuctioning = true;
+            });
+
+            localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+            updateArtistItemsArray();
 
             //save the id, the state of auction(true), endTime and startTime
             localStorage.setItem('itemForAuctionId', itemForAuctionId);
             localStorage.setItem('auction', true);
             localStorage.setItem('startTime', startTime);
             localStorage.setItem('endTime', endTime);
+            localStorage.setItem('bidding', true);
+
+            if (!auctioningTrue) {
+                localStorage.removeItem('currentBidLS');
+            }
 
             location.hash = '#auction';
         }

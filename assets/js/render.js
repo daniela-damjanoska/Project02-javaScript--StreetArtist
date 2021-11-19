@@ -235,32 +235,36 @@ const createAuctionItem = (img, title, artist, date, price) => {
                     <p class="second">00</p>
                     <span>Seconds</span>
                 </div>
-                </div>
-                <div class="auction-items-listing bg-light row" id="01">
-                    <div class="col-47">
-                        <div class="img-wrapper">
-                            <img src="${img}"/>
+            </div>
+            <div class="auction-items-listing bg-light row">
+                <div class="col-47">
+                    <div class="img-wrapper">
+                        <img src="${img}"/>
+                    </div>
+                    <div class="text-box c-text-primary-default">
+                        <p class="title"><b>${title}</b></p>
+                        <div class="row artist-created">
+                            <p class="artist mb-0">by ${artist}</p>
+                            <p>Date created:<span class="date"> ${date}</span></p>
                         </div>
-                        <div class="text-box c-text-primary-default">
-                            <p class="title"><b>${title}</b></p>
-                            <div class="row artist-created">
-                                <p class="artist mb-0">by ${artist}</p>
-                                <p>Date created:<span class="date"> ${date}</span></p>
-                            </div>
-                            <div class="row price">
-                                <span class="price">Reserve price:</span>
-                                <span class="c-text-normal starting-price">$${price}</span>
-                            </div>
+                        <div class="row price">
+                            <span class="price">Reserve price:</span>
+                            <span class="c-text-normal starting-price">$${price}</span>
+                        </div>
+                        <form class="send-bid">
                             <div class="input-wrapper text-center">
-                                <input type="number" placeholder="Your offer" id="bidPrice" />
+                                <input type="number" placeholder="Your offer" id="bidAmount" />
                             </div>
                             <button class="bid">Bid!</button>
-                        </div>
+                        </form>
                     </div>
-                    <div class="col-50"></div>
+                </div>
+                <div class="col-50 bid-list">
+                    <p class="title c-text-primary-default text-center">Bids:</p>
                 </div>
             </div>
-        `;
+        </div>
+    `;
 };
 
 const createAuctionMsg = () => {
@@ -304,5 +308,11 @@ const createFilterMessage = () => {
 const createShowAllBtn = () => {
     visitorListingPageInner.innerHTML += `
         <button class="show-all p-fixed">Show all</button>
+    `;
+};
+
+const createBidContent = (person, content) => {
+    document.querySelector('.bid-list').innerHTML += `
+        <p class="${person} c-text-light row"><span>$${content}</span></p>
     `;
 };

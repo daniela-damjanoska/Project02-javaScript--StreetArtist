@@ -58,6 +58,7 @@ const handleRoute = () => {
     switch (_hash) {
         case '#artists':
             initArtistHomePage();
+            initChart();
             break;
 
         case '#artists/items':
@@ -94,17 +95,15 @@ document.addEventListener('click', function (e) {
     //click on logo to go to the landing page
     if (e.target.classList.contains('logo')) {
         location.hash = '';
-        const auctioningTrue = localStorage.getItem('auction');
-
-        if (!auctioningTrue) {
-            localStorage.removeItem('artistItemsLS');
-        }
 
         localStorage.removeItem('artist');
         localStorage.removeItem('isPublished');
         localStorage.removeItem('filteredPublishedLS');
         localStorage.removeItem('filterItemsLS');
         localStorage.removeItem('chartDataLS');
+
+        const artistChart = document.querySelector('#artistChart');
+        artistChart.innerHTML = '';
 
         //close the menu for smaller resolutions
         manipulateOverlayDisplay(menuArtist, 'none', 'none');
