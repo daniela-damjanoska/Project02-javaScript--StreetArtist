@@ -1,6 +1,6 @@
 const initArtistAddEditPage = () => {
-    const artistLS = localStorage.getItem('artist');
-    const isPublishWrapper = document.querySelector('.isPublishWrapper');
+    const artistLS = localStorage.getItem('artist'),
+        isPublishWrapper = document.querySelector('.isPublishWrapper');
 
     //if the user click on reload -> render tne navbar, the items and open the edit/new section ----------
     createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
@@ -34,7 +34,7 @@ const initArtistAddEditPage = () => {
         }
     });
 
-    //add/edit functionality
+    //add and remove items when click on 'Add New Item' / 'Add Item' button in the addEditSection
     addEditSection.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -77,71 +77,11 @@ const initArtistAddEditPage = () => {
             addImgUrlInput.value
         ) {
             if (!isEditing) {
-                const isPublishedLS = JSON.parse(
-                    localStorage.getItem('isPublished')
-                );
-
-                const newItem = {
-                    id: undefined,
-                    title: addTitleInput.value,
-                    description: addDescInput.value,
-                    type: addTypeInput.value,
-                    image: addImgUrlInput.value,
-                    price: addPriceInput.valueAsNumber,
-                    artist: artistLS,
-                    dateCreated: new Date().toISOString(),
-                    isPublished: isPublishedLS,
-                    isAuctioning: false,
-                    dateSold: undefined,
-                    priceSold: undefined,
-                };
-
-                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
-
-                itemsLS.push(newItem);
-
-                // make  a renumeration of the items according to the index, so the new item can get the appropriate id
-                itemsLS.forEach((el, i) => (el.id = i + 1));
-
-                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
-
-                updateArtistItemsArray();
+                addNewItemOnSubmit();
             } else {
                 isEditing = true;
 
-                const editItemIdLS = JSON.parse(
-                    localStorage.getItem('editItemIdLS')
-                );
-
-                const isPublishedLS = JSON.parse(
-                    localStorage.getItem('isPublished')
-                );
-
-                const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
-
-                //find the item to be edited
-                const findIdxOfItemsLS = itemsLS.find(
-                    el => el.id === editItemIdLS
-                );
-
-                //find the index of item to be edited
-                const idxOfItemsLS = itemsLS.indexOf(findIdxOfItemsLS);
-
-                //update the item according to the new values from the input fields
-                itemsLS.forEach((item, idx) => {
-                    if (idx === idxOfItemsLS) {
-                        item.title = addTitleInput.value;
-                        item.description = addDescInput.value;
-                        item.type = addTypeInput.value;
-                        item.image = addImgUrlInput.value;
-                        item.price = addPriceInput.valueAsNumber;
-                        item.isPublished = isPublishedLS;
-                    }
-                });
-
-                localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
-
-                updateArtistItemsArray();
+                editItemOnSubmit();
 
                 //create the items
                 artistItemsListing.innerHTML = '';
@@ -182,10 +122,10 @@ const initArtistAddEditPage = () => {
 
     document.querySelector('#takeSnapshot').addEventListener('click', () => {
         document.querySelector('.snapshot-wrapper').innerHTML = `
-        <div class="make-snapshot">
-                        <div class="make-snapshot-inner"></div>
-                        <img src="./img/snapshot.png" alt="" class= "take-photo" />
-                    </div>
+            <div class="make-snapshot">
+                <div class="make-snapshot-inner"></div>
+                <img src="./img/snapshot.png" alt="" class= "take-photo" />
+            </div>
         `;
     });
 };

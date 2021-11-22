@@ -1,5 +1,3 @@
-const navbar = document.querySelector('nav');
-
 const createLandingPageNav = () => {
     navbar.innerHTML = `
         <div class="navbar-landing-page row">
@@ -204,13 +202,13 @@ const createDropdownChooseType = (section, arrow) => {
     );
 };
 
-const createDropdownChooseArtist = section => {
+const createDropdownChooseArtist = (section, itemClass) => {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(res => res.json())
         .then(res => {
             res.forEach(user => {
                 section.innerHTML += `
-                        <span class="chooseArtist" id="${user.id}">${user.name}</span>`;
+                        <span class="${itemClass}" id="${user.id}">${user.name}</span>`;
             });
         });
 };
@@ -267,6 +265,22 @@ const createAuctionItem = (img, title, artist, date, price) => {
     `;
 };
 
+const createBidContent = (whoBids, content) => {
+    document.querySelector('.bid-list').innerHTML += `
+        <p class="${whoBids} c-text-light row"><span>$${content}</span></p>
+    `;
+};
+
+const createNoAuctionMsg = () => {
+    auctionPage.innerHTML = `
+        <div class="auction-items bg-light">
+            <div class="auction-items-inner text-center c-text-primary-default">
+                <p class="mb-0">There is no auction at the moment, please try again later!</p>
+            </div>
+        </div>
+    `;
+};
+
 const createAuctionMsg = () => {
     auctionMsg.classList.add('msg-show');
     auctionMsg.innerHTML = `
@@ -308,11 +322,5 @@ const createFilterMessage = () => {
 const createShowAllBtn = () => {
     visitorListingPageInner.innerHTML += `
         <button class="show-all p-fixed">Show all</button>
-    `;
-};
-
-const createBidContent = (person, content) => {
-    document.querySelector('.bid-list').innerHTML += `
-        <p class="${person} c-text-light row"><span>$${content}</span></p>
     `;
 };

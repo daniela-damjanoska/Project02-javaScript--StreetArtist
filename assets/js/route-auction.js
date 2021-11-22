@@ -103,6 +103,9 @@ const initAuctionPage = () => {
                 localStorage.removeItem('bidArrLS');
                 if (!localStorage.getItem('artist'))
                     localStorage.removeItem('artistItemsLS');
+
+                // document.querySelector('.auction-items').innerHTML = '';
+                createNoAuctionMsg();
             }
         });
 
