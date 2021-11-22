@@ -50,7 +50,7 @@ const openNewEditSection = () => {
 
     if (windowWidth < 870) {
         addEditSection.style.overflowY = 'scroll';
-        addEditSection.style.height = '85vh';
+        addEditSection.style.height = '70vh';
         bodyOverlay.style.backgroundColor = 'transparent';
         document.querySelector('.logo').style.zIndex = 20;
         if (windowWidth < 769) {
