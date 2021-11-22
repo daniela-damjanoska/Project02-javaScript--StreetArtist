@@ -18,6 +18,12 @@ const initArtistItemsPage = () => {
     artistItemsListing.innerHTML = '';
     createArtistPageAllItems();
 
+    //if there is only one item or no items -> the width of the section to be 100vw when addNew/Edit section is open
+    const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
+    if (artistItemsLS.length <= 1) {
+        artistItemsPage.style.width = '100vw';
+    }
+
     //set the default isPublished checked
     removeElClass(imgCheckBox, 'hide');
     localStorage.setItem('isPublished', true);
@@ -32,10 +38,6 @@ const initArtistItemsPage = () => {
         .addEventListener('click', openNewEditSection);
 
     document.addEventListener('click', e => {
-        const removeConfirmation = document.querySelector(
-            '.remove-confirmation'
-        );
-
         // click on menu icon to open the artist menu
         if (e.target.classList.contains('menuIcon'))
             manipulateMenuAndOverlayWhenSectionisUnder100vh(
@@ -87,48 +89,23 @@ const initArtistItemsPage = () => {
         //click on remove button to open the confirmation popup
         if (e.target.classList.contains('remove')) {
             const itemToRemove = e.target.parentElement.parentElement;
+            const itemToRemoveId = +itemToRemove.id;
+
             createRemoveMsg();
 
-            localStorage.setItem('itemToRemoveIdLS', itemToRemove.id);
-
             //click on confirm button to delete the item and also to update(filter) the items array and artist array
-            document
-                .querySelector('.confirm-remove')
-                .addEventListener('click', () => {
-                    itemToRemove.remove();
-
-                    const itemToRemoveId =
-                        localStorage.getItem('itemToRemoveIdLS');
-
-                    const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
-
-                    //filter the items array
-                    const filteredItems = itemsLS.filter(
-                        item => item.id !== +itemToRemoveId
-                    );
-
-                    // make  renumeration of the items according to the index, so the new items can get the appropriate id
-                    filteredItems.forEach((el, i) => (el.id = i + 1));
-
-                    localStorage.setItem(
-                        'itemsLS',
-                        JSON.stringify(filteredItems)
-                    );
-
-                    updateArtistItemsArray();
-
-                    deleteMsg(removeConfirmation);
-                    localStorage.removeItem('itemToRemoveIdLS');
-                });
+            removeItem(itemToRemove, itemToRemoveId);
         }
 
         //click on cancel button to cancel the item deletion
         if (e.target.classList.contains('cancel-remove')) {
+            const removeConfirmation = document.querySelector(
+                '.remove-confirmation'
+            );
             deleteMsg(removeConfirmation);
-            localStorage.removeItem('itemToRemoveIdLS');
         }
 
-        //edit functionality
+        //edit functionality when 'edit' button is clicked by the artist - take the values from the appropriate item from the Artist Items Array
         if (e.target.classList.contains('edit-item')) {
             isEditing = true;
 
@@ -137,18 +114,18 @@ const initArtistItemsPage = () => {
             //change the button textContent
             document.querySelector('.add-edit-btn').textContent = 'Add Item';
 
+            //find the item to be edited ID and save it to local storage
             const itemToEditId = +e.target.parentElement.parentElement.id;
+            localStorage.setItem('editItemIdLS', itemToEditId);
 
+            //find the item to be edited in the artist items array in order to take the values to be edited
             const artistItemsLS = JSON.parse(
                 localStorage.getItem('artistItemsLS')
             );
 
-            //find the item to be edited and save it to local storage
             const itemToEdit = artistItemsLS.find(
                 item => item.id === itemToEditId
             );
-
-            localStorage.setItem('editItemIdLS', itemToEditId);
 
             //update the checkbox when the edit section is open according to the isPublished property
             if (itemToEdit.isPublished === true) {
@@ -166,9 +143,12 @@ const initArtistItemsPage = () => {
             addImgUrlInput.value = itemToEdit.image;
         }
 
-        const auctioningTrue = localStorage.getItem('auction');
         //click on sent to auction button to send the item for auctioning
+        const auctioningTrue = localStorage.getItem('auction');
+
         if (e.target.classList.contains('sold-no') && !auctioningTrue) {
+            e.stopPropagation();
+
             //get the id of the item, create starting time and ending time(start counting from 2 min -> 120000ms)
             const itemForAuctionId = +e.target.parentElement.parentElement.id,
                 startTime = new Date().getTime(),

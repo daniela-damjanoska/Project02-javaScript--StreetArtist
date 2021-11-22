@@ -30,4 +30,6 @@ const initVisitorHomePage = () => {
             location.hash = '#visitor/listing';
         }
     });
+
+    window.scrollTo(0, 0);
 };

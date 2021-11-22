@@ -29,7 +29,7 @@ const initVisitorItemsFilterPage = () => {
 
     artistInputFilter.addEventListener('click', () => {
         // open the filterArtistDropdown
-        createDropdownChooseArtist(artistDropDownFilter);
+        createDropdownChooseArtist(artistDropDownFilter, 'filterArtist');
         artistDropDownFilter.classList.add('chooseTypeOpen');
         changeArtistArrowFilter.classList.add('rotate-arrow');
     });
@@ -45,7 +45,7 @@ const initVisitorItemsFilterPage = () => {
         }
 
         //select the option, update the value and close the filterArtistDropdown
-        if (e.target.classList.contains('chooseArtist')) {
+        if (e.target.classList.contains('filterArtist')) {
             artistInputFilter.value = e.target.textContent;
             closeDropdownMenu(artistDropDownFilter, changeArtistArrowFilter);
         }

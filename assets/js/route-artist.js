@@ -46,7 +46,12 @@ const initArtistHomePage = () => {
             currentBidBox.textContent = `$${currentBidLS}`;
             dBlock(currentBidText);
         }
-    } else {
+    } else if (!isAuctioning) {
         dNone(currentBidWrapper);
     }
+
+    document.addEventListener('click', e => {
+        if (e.target.classList.contains('current-bid-box'))
+            location.hash = '#auction';
+    });
 };

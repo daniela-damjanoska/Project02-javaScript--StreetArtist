@@ -50,7 +50,7 @@ const openNewEditSection = () => {
 
     if (windowWidth < 870) {
         addEditSection.style.overflowY = 'scroll';
-        addEditSection.style.height = '90vh';
+        addEditSection.style.height = '85vh';
         bodyOverlay.style.backgroundColor = 'transparent';
         document.querySelector('.logo').style.zIndex = 20;
         if (windowWidth < 769) {
@@ -63,6 +63,63 @@ const openNewEditSection = () => {
 
 const manipulatingRequiredFieldsOnFocus = (input, reqField) => {
     if (reqField) input.addEventListener('focus', () => reqField.remove());
+};
+
+const editItemOnSubmit = () => {
+    const editItemIdLS = JSON.parse(localStorage.getItem('editItemIdLS')),
+        isPublishedLS = JSON.parse(localStorage.getItem('isPublished')),
+        itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
+        //find the item to be edited
+        findIdxOfItemsLS = itemsLS.find(el => el.id === editItemIdLS),
+        //find the index of item to be edited
+        idxOfItemsLS = itemsLS.indexOf(findIdxOfItemsLS);
+
+    //update the item according to the new values from the input fields
+    itemsLS.forEach((item, idx) => {
+        if (idx === idxOfItemsLS) {
+            item.title = addTitleInput.value;
+            item.description = addDescInput.value;
+            item.type = addTypeInput.value;
+            item.image = addImgUrlInput.value;
+            item.price = addPriceInput.valueAsNumber;
+            item.isPublished = isPublishedLS;
+        }
+    });
+
+    localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+    updateArtistItemsArray();
+};
+
+const addNewItemOnSubmit = () => {
+    const isPublishedLS = JSON.parse(localStorage.getItem('isPublished')),
+        artistLS = localStorage.getItem('artist');
+
+    const newItem = {
+        id: undefined,
+        title: addTitleInput.value,
+        description: addDescInput.value,
+        type: addTypeInput.value,
+        image: addImgUrlInput.value,
+        price: addPriceInput.valueAsNumber,
+        artist: artistLS,
+        dateCreated: new Date().toISOString(),
+        isPublished: isPublishedLS,
+        isAuctioning: false,
+        dateSold: undefined,
+        priceSold: undefined,
+    };
+
+    const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+    itemsLS.push(newItem);
+
+    // make  a renumeration of the items according to the index, so the new item can get the appropriate id
+    itemsLS.forEach((el, i) => (el.id = i + 1));
+
+    localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
+
+    updateArtistItemsArray();
 };
 
 const closeNewEditSection = () => {
@@ -122,6 +179,32 @@ const closeFilterSection = () => {
     manipulateOverlayDisplay(filterIcon, 'block', 'none');
 };
 
+const removeItem = (itemToRemove, itemToRemoveId) => {
+    //click on confirm button to delete the item and also to update(filter) the items array and artist array
+    document.querySelector('.confirm-remove').addEventListener('click', () => {
+        const removeConfirmation = document.querySelector(
+            '.remove-confirmation'
+        );
+
+        deleteMsg(removeConfirmation);
+        itemToRemove.remove();
+
+        const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
+
+        //filter the items array
+        const filteredItems = itemsLS.filter(
+            item => item.id !== itemToRemoveId
+        );
+
+        // make  renumeration of the items according to the index, so the new items can get the appropriate id
+        filteredItems.forEach((el, i) => (el.id = i + 1));
+
+        localStorage.setItem('itemsLS', JSON.stringify(filteredItems));
+
+        updateArtistItemsArray();
+    });
+};
+
 const closeDropdownMenu = (section, arrow) => {
     section.innerHTML = '';
     removeElClass(section, 'chooseTypeOpen');
@@ -162,6 +245,7 @@ const removeShowAllBtn = () => {
 
         localStorage.removeItem('filterItemsLS');
         createVisitorPageAllItems(filteredPublishedLS);
+        window.scrollTo(0, 0);
     });
 };
 
@@ -196,7 +280,7 @@ const makeDateToProperFormat = lab => {
     return dateToProperTimeFormat;
 };
 
-function findDuplicates(array) {
+const findDuplicates = array => {
     const uniqueElements = new Set(array);
     const filteredElements = array.filter(item => {
         if (uniqueElements.has(item)) {
@@ -207,7 +291,7 @@ function findDuplicates(array) {
     });
 
     return [...new Set(filteredElements)];
-}
+};
 
 const makeLabel = (arr, num) => {
     arr = [];
@@ -279,3 +363,10 @@ const makeBid = amount => {
         body: JSON.stringify(data),
     }).then(res => res.json());
 };
+
+// function hello() {
+//     const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
+//     if (artistItemsLS.length <= 1) {
+//         artistItemsPage.style.width = '100vw';
+//     }
+// }

@@ -20,7 +20,7 @@ const initLandingPage = () => {
 
     // click on choose button on landing-page to open the list of artist (from API)
     chooseBtnLanding.addEventListener('click', function () {
-        createDropdownChooseArtist(chooseArtistWrapper);
+        createDropdownChooseArtist(chooseArtistWrapper, 'chooseArtist');
         dBlock(chooseArtistWrapper);
         arrowDropdown.classList.add('rotate-arrow');
     });

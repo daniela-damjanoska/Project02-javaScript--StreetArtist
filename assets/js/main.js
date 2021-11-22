@@ -1,6 +1,7 @@
 'use strict';
 
 const windowWidth = window.innerWidth,
+    navbar = document.querySelector('nav'),
     landingPage = document.querySelector('#landingPage'),
     visitorHomePage = document.querySelector('#visitorHomePage'),
     visitorListingPage = document.querySelector('#visitorListingPage'),
