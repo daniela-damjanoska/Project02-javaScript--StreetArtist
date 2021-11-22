@@ -54,7 +54,7 @@ const openNewEditSection = () => {
         bodyOverlay.style.backgroundColor = 'transparent';
         document.querySelector('.logo').style.zIndex = 20;
         if (windowWidth < 600) {
-            addEditSection.style.height = '94vh';
+            addEditSection.style.height = '92vh';
         }
     } else {
         addEditSection.style.height = '560px';
@@ -363,10 +363,3 @@ const makeBid = amount => {
         body: JSON.stringify(data),
     }).then(res => res.json());
 };
-
-// function hello() {
-//     const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
-//     if (artistItemsLS.length <= 1) {
-//         artistItemsPage.style.width = '100vw';
-//     }
-// }
