@@ -53,9 +53,6 @@ const openNewEditSection = () => {
         addEditSection.style.height = '70vh';
         bodyOverlay.style.backgroundColor = 'transparent';
         document.querySelector('.logo').style.zIndex = 20;
-        if (windowWidth < 769) {
-            addEditSection.style.height = '94vh';
-        }
     } else {
         addEditSection.style.height = '560px';
     }
