@@ -43,11 +43,11 @@ const windowWidth = window.innerWidth,
     minPriceInputFilter = document.querySelector('#filterPriceMin'),
     maxPriceInputFilter = document.querySelector('#filterPriceMax'),
     typeInputFilter = document.querySelector('#chooseTypeFilter'),
+    snapshotWrapper = document.querySelector('.snapshot-wrapper'),
+    canvas = document.querySelector('.make-snapshot-inner canvas'),
     removeMsg = document.querySelector('.remove-confirmation'),
     auctionMsg = document.querySelector('.auction-msg'),
     backToItems = document.querySelector('.back-items');
-
-const snapshotWrapper = document.querySelector('.snapshot-wrapper');
 
 let isEditing = false;
 
