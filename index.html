@@ -371,24 +371,24 @@
                 </div>
                 <p class="text-center hide optional">or</p>
                 <!-- --------------capture image-------------------------------- -->
-                <div class="snapshot text-center hide">
+                <div class="snapshot text-center hide p-relative">
                     <img src="./img/snapshot.png" alt="" id="takeSnapshot" />
                     <p>Take a snapshot</p>
+                    <img src="" alt="" class="new-img hide p-absolute" />
                 </div>
-                <div class="snapshot-wrapper hide p-absolute id="captureImagePage"">
-                    <!-- <div class="make-snapshot" > -->
-                        <div class="make-snapshot-inner p-relative">
-                            <video autoplay></video>
-                            <canvas></canvas>
-                            <select id="videos"></select>
-                        </div>
-                        <img src="" alt="" class="new" />
+                <div class="snapshot-wrapper hide p-absolute">
+                    <div class="make-snapshot-inner p-relative">
+                        <video autoplay></video>
+                        <canvas></canvas>
+                        <select id="videos" class="p-absolute"></select>
+                        <!-- <img src="" alt="" class="new-img hide" /> -->
                         <img
                             src="./img/snapshot.png"
                             alt=""
                             class="take-photo p-absolute"
                         />
-                    <!-- </div> -->
+                        <!-- <img src="" alt="" class="new-img hide" /> -->
+                    </div>
                 </div>
 
                 <!-- ----------------------------------------------------------- -->

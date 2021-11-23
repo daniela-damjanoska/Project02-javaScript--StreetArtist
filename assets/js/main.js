@@ -47,6 +47,8 @@ const windowWidth = window.innerWidth,
     auctionMsg = document.querySelector('.auction-msg'),
     backToItems = document.querySelector('.back-items');
 
+const snapshotWrapper = document.querySelector('.snapshot-wrapper');
+
 let isEditing = false;
 
 // updating the items array
