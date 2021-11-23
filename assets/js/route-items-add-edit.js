@@ -125,3 +125,11 @@ const initArtistAddEditPage = () => {
 document.querySelector('#takeSnapshot').addEventListener('click', () => {
     location.hash = '#artists/items/add/snapshot';
 });
+
+document.querySelector('.new-img').addEventListener('click', function () {
+    const canvas = document.querySelector('.make-snapshot-inner canvas');
+    location.hash = '#artists/items/add/snapshot';
+    // this.src = '';
+    // canvas.innerHTML = '';
+    canvas.style.opacity = 0;
+});

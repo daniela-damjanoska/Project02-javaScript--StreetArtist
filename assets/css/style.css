@@ -2214,12 +2214,12 @@ nav {
 }
 
 .snapshot-wrapper {
-    height: 90vh;
+    height: 95vh;
     background-color: #a16a5e;
-    position: absolute;
     top: 0;
     right: 0;
     left: 0;
+    z-index: 25;
 }
 
 .snapshot-wrapper .make-snapshot-inner {
@@ -2233,25 +2233,12 @@ nav {
     bottom: 40px;
 }
 
-/* .new-img {
-    height: 85vh;
-    width: 90vw;
-    object-fit: cover;
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-} */
-
 .new-img {
     top: 0;
     left: 0;
     width: 100% !important;
-    /* right: ; */
-    object-fit: cover;
     height: 100%;
-    /* z-index: 25; */
+    object-fit: cover;
 }
 
 select {
