@@ -70,6 +70,10 @@ const handleRoute = () => {
             initArtistAddEditPage();
             break;
 
+        case '#artists/items/add/snapshot':
+            initCaptureImagePage();
+            break;
+
         case '#visitor':
             initVisitorHomePage();
             break;
