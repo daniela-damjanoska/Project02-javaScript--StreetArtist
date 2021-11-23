@@ -33,21 +33,8 @@ const gotDevices = deviceInfo => {
     }
 };
 
-// const stopStreamedVideo = () => {
-//     const stream = videoBox.srcObject,
-//         tracks = stream.getTracks();
-
-// tracks.forEach(function (track) {
-//     track.stop();
-// });
-
-// videoBox.srcObject = null;
-// };
-
 const initCaptureImagePage = () => {
-    // const snapshotWrapper = document.querySelector('.snapshot-wrapper'),
-    const canvas = document.querySelector('.make-snapshot-inner canvas'),
-        imgFromVideo = document.querySelector('.new-img'),
+    const imgFromVideo = document.querySelector('.new-img'),
         makeAPhotoBtn = document.querySelector('.take-photo');
 
     dNone(landingPage);
@@ -72,4 +59,6 @@ const initCaptureImagePage = () => {
     });
 
     getStream().then(getDevices).then(gotDevices);
+
+    window.scrollTo(0, 0);
 };
