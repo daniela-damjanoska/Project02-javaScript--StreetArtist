@@ -7,6 +7,7 @@ const initArtistItemsPage = () => {
     dNone(visitorListingPage);
     dNone(artistHomePage);
     dBlock(artistItemsPage);
+    dBlock(addItems);
     dNone(auctionPage);
 
     removeElClass(menuHome, 'active');

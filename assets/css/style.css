@@ -1865,6 +1865,51 @@ nav {
         margin-bottom: 10px;
     }
 
+    .snapshot-wrapper {
+        height: 100vh;
+        background-color: #a16a5e;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 25;
+    }
+
+    .snapshot-wrapper .make-snapshot-inner {
+        height: 100%;
+    }
+
+    .snapshot-wrapper .take-photo {
+        width: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20vh;
+    }
+
+    .snapshot .new-img {
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .snapshot-wrapper select {
+        right: 20px;
+        bottom: 50px;
+        background-color: #a16a5e;
+        color: #edd5bb;
+    }
+
+    .snapshot-wrapper video {
+        height: 70vh;
+        width: 90vw;
+        object-fit: cover;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30px;
+    }
+
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page .artist-home-page-wrapper,
     .artist-menu-page,
@@ -2211,49 +2256,4 @@ nav {
     .visitor-listing-page .no-filtered-items p {
         font-size: 0.9rem;
     }
-}
-
-.snapshot-wrapper {
-    height: 100vh;
-    background-color: #a16a5e;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 25;
-}
-
-.snapshot-wrapper .make-snapshot-inner {
-    height: 100%;
-}
-
-.snapshot-wrapper .take-photo {
-    width: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20vh;
-}
-
-.new-img {
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100%;
-    object-fit: cover;
-}
-
-select {
-    right: 20px;
-    bottom: 50px;
-    background-color: #a16a5e;
-    color: #edd5bb;
-}
-
-video {
-    height: 70vh;
-    width: 90vw;
-    object-fit: cover;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 30px;
 }
