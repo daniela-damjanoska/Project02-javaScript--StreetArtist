@@ -2227,10 +2227,10 @@ nav {
 }
 
 .snapshot-wrapper .take-photo {
-    width: 50px;
+    width: 35px;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 40px;
+    bottom: 10vh;
 }
 
 .new-img {
@@ -2249,7 +2249,7 @@ select {
 }
 
 video {
-    height: 75vh;
+    height: 70vh;
     width: 90vw;
     object-fit: cover;
     position: fixed;
