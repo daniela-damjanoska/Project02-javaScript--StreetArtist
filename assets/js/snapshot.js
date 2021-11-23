@@ -34,7 +34,8 @@ const gotDevices = deviceInfo => {
 };
 
 const initCaptureImagePage = () => {
-    const imgFromVideo = document.querySelector('.new-img'),
+    const snapshotWrapper = document.querySelector('.snapshot-wrapper'),
+        imgFromVideo = document.querySelector('.new-img'),
         makeAPhotoBtn = document.querySelector('.take-photo');
 
     dNone(landingPage);
@@ -42,6 +43,7 @@ const initCaptureImagePage = () => {
     dNone(visitorListingPage);
     dNone(artistHomePage);
     dBlock(artistItemsPage);
+    dBlock(addItems);
     dBlock(snapshotWrapper);
     dNone(auctionPage);
 
@@ -56,6 +58,9 @@ const initCaptureImagePage = () => {
         imgFromVideo.src = imageURL;
 
         location.hash = '#artists/items/add';
+
+        //enter the image url in the addImgUrlInput
+        addImgUrlInput.value = imageURL;
     });
 
     getStream().then(getDevices).then(gotDevices);

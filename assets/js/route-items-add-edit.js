@@ -9,6 +9,7 @@ const initArtistAddEditPage = () => {
     dNone(visitorListingPage);
     dNone(artistHomePage);
     dBlock(artistItemsPage);
+    dBlock(addItems);
     dNone(snapshotWrapper);
     dNone(auctionPage);
 

@@ -10,6 +10,7 @@ const windowWidth = window.innerWidth,
     ),
     artistHomePage = document.querySelector('#artistHomePage'),
     artistItemsPage = document.querySelector('#artistItemsPage'),
+    addItems = document.querySelector('.add-items'),
     artistItemsListing = document.querySelector('.artist-items-listing'),
     addEditSection = document.querySelector('#addEditPart'),
     auctionPage = document.querySelector('#auctionPage'),
@@ -108,6 +109,20 @@ document.addEventListener('click', function (e) {
         localStorage.removeItem('filteredPublishedLS');
         localStorage.removeItem('filterItemsLS');
         localStorage.removeItem('chartDataLS');
+
+        //fixing bug----------------------------------------------
+        if (windowWidth > 769) {
+            landingPage.style.width = '70%';
+        } else if (windowWidth >= 769 && windowWidth < 1025) {
+            landingPage.style.width = '60%';
+        } else if (windowWidth >= 1025) {
+            landingPage.style.width = '50%';
+        }
+
+        landingPage.marginLeft = 'auto';
+        landingPage.marginRight = 'auto';
+        navbar.style.width = '100vw';
+        //--------------------------------------------------------
 
         const artistChart = document.querySelector('#artistChart');
         artistChart.innerHTML = '';
