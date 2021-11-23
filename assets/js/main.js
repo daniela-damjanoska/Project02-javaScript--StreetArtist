@@ -111,14 +111,9 @@ document.addEventListener('click', function (e) {
         localStorage.removeItem('chartDataLS');
 
         //fixing bug----------------------------------------------
-        if (windowWidth > 769) {
-            landingPage.style.width = '70%';
-        } else if (windowWidth >= 769 && windowWidth < 1025) {
-            landingPage.style.width = '60%';
-        } else if (windowWidth >= 1025) {
-            landingPage.style.width = '50%';
-        }
-
+        if (windowWidth > 1025) landingPage.style.width = '50%';
+        if (windowWidth < 1025) landingPage.style.width = '60%';
+        if (windowWidth < 769) landingPage.style.width = '70%';
         landingPage.marginLeft = 'auto';
         landingPage.marginRight = 'auto';
         navbar.style.width = '100vw';
