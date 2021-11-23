@@ -56,7 +56,7 @@ const openNewEditSection = () => {
         if (windowWidth < 600) {
             addEditSection.style.height = '92vh';
         }
-    } else {
+    } else if (windowWidth > 870){
         addEditSection.style.height = '560px';
     }
 };
