@@ -33,16 +33,16 @@ const gotDevices = deviceInfo => {
     }
 };
 
-const stopStreamedVideo = () => {
-    const stream = videoBox.srcObject,
-        tracks = stream.getTracks();
+// const stopStreamedVideo = () => {
+//     const stream = videoBox.srcObject,
+//         tracks = stream.getTracks();
 
-    tracks.forEach(function (track) {
-        track.stop();
-    });
+// tracks.forEach(function (track) {
+//     track.stop();
+// });
 
-    videoBox.srcObject = null;
-};
+// videoBox.srcObject = null;
+// };
 
 const initCaptureImagePage = () => {
     // const snapshotWrapper = document.querySelector('.snapshot-wrapper'),
@@ -67,11 +67,6 @@ const initCaptureImagePage = () => {
 
         const imageURL = canvas.toDataURL('image/webp');
         imgFromVideo.src = imageURL;
-
-        // stopStreamedVideo();
-        // dNone(canvas);
-        // dNone(selectVideos);
-        // this.style.display = 'none';
 
         location.hash = '#artists/items/add';
     });
