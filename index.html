@@ -375,7 +375,20 @@
                     <img src="./img/snapshot.png" alt="" id="takeSnapshot" />
                     <p>Take a snapshot</p>
                 </div>
-                <div class="snapshot-wrapper"></div>
+                <div class="snapshot-wrapper">
+                    <div class="make-snapshot" id="captureImagePage">
+                        <div class="make-snapshot-inner">
+                            <video autoplay width="200px"></video>
+                            <canvas width="300px" height="300px"></canvas>
+                            <select id="videos"></select>
+
+                            <button id="stopStream">Stop</button>
+                        </div>
+                        <img src="" alt="" class="new" />
+                        <button class="take-photo">Take</button>
+                    </div>
+                </div>
+
                 <!-- ----------------------------------------------------------- -->
                 <div class="row buttons-wrapper">
                     <button

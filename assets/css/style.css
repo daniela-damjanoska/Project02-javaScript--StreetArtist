@@ -2226,7 +2226,7 @@ nav {
 }
 
 .make-snapshot-inner {
-    background-color: black;
+    /* background-color: black; */
     height: 70vh;
 }
 
