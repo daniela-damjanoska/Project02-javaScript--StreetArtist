@@ -587,6 +587,10 @@ nav {
     padding-top: 50px;
 }
 
+.artist-items-page .artist-items-listing .col-47 .img-item {
+    height: 250px;
+}
+
 .artist-items-page .artist-items-listing .text-box p:nth-child(2),
 .auction-page .auction-items-listing .date {
     color: #e09686;
@@ -705,7 +709,7 @@ nav {
 }
 
 .auction-page .auction-items-listing .img-wrapper {
-    height: 200px;
+    height: 250px;
 }
 
 .auction-page .auction-items-listing .row.artist-created {
