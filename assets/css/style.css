@@ -548,6 +548,21 @@ nav {
     padding: 40px 0;
 }
 
+.artist-items-page .img-scroll {
+    width: 25px;
+    padding: 10px 4px;
+}
+
+.artist-items-page .btn-scroll {
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    border-radius: 3px;
+    background-color: #e0c19f;
+    right: 55px;
+    bottom: 80px;
+}
+
 .artist-items-page .add-items {
     cursor: pointer;
 }
@@ -1214,6 +1229,11 @@ nav {
     .visitor-listing-page .visitor-listing-page-inner .text-box .row button {
         font-size: 1.1rem;
     }
+
+    .visitor-listing-page .show-all {
+        bottom: 10px;
+        padding: 10px 0;
+    }
     /* ----------------------------artist-home-page-styles------------------------- */
     .artist-home-page {
         font-size: 1.3rem;
@@ -1224,17 +1244,16 @@ nav {
     }
 
     /* ------------------------artist-items-listing-styles---------------- */
+    .artist-items-page .btn-scroll {
+        right: 30px;
+    }
+
     .artist-items-page .price {
         font-size: 1.2rem !important;
     }
 
     .artist-items-page .artist-items-listing .col-47 .buttons-wrapper button {
         padding: 5px 15px;
-    }
-
-    .visitor-listing-page .show-all {
-        bottom: 170px;
-        padding: 10px 0;
     }
 
     /* ----------------------------add/edit part styles------------------------- */
@@ -1603,6 +1622,7 @@ nav {
     }
 
     /* ----------------------------visitor-listing-styles------------------------- */
+    /* ----------------------------artist-items-styles------------------------- */
     /* ----------------------------auction-page-styles------------------------- */
 
     .visitor-listing-page {
@@ -1627,6 +1647,10 @@ nav {
         .text-box
         p:first-of-type {
         margin-bottom: 12px;
+    }
+
+    .artist-items-page .btn-scroll {
+        right: 20px;
     }
 
     .auction-page .timer {
@@ -2106,7 +2130,7 @@ nav {
     }
 
     .visitor-listing-page .show-all {
-        bottom: 120px;
+        bottom: 110px;
     }
 
     .visitor-listing-page .filter-icon {
