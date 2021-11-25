@@ -237,18 +237,6 @@ const deleteMsg = msg => {
     dNone(bodyOverlay);
 };
 
-const removeShowAllBtn = () => {
-    document.querySelector('.show-all').addEventListener('click', () => {
-        const filteredPublishedLS = JSON.parse(
-            localStorage.getItem('filteredPublishedLS')
-        );
-
-        localStorage.removeItem('filterItemsLS');
-        createVisitorPageAllItems(filteredPublishedLS);
-        window.scrollTo(0, 0);
-    });
-};
-
 const updateArtistItemsArray = () => {
     const itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
         artistLS = localStorage.getItem('artist');

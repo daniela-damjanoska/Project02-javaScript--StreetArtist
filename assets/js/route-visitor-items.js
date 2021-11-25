@@ -1,3 +1,14 @@
+const removeShowAllBtn = () => {
+    document.querySelector('.show-all').addEventListener('click', () => {
+        const filteredPublishedLS = JSON.parse(
+            localStorage.getItem('filteredPublishedLS')
+        );
+        localStorage.removeItem('filterItemsLS');
+        createVisitorPageAllItems(filteredPublishedLS);
+        window.scrollTo(0, 0);
+    });
+};
+
 const initVisitorItemsPage = () => {
     const filteredPublishedLS = JSON.parse(
         localStorage.getItem('filteredPublishedLS')

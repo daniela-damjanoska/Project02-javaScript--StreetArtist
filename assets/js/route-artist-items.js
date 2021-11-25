@@ -1,5 +1,6 @@
 const initArtistItemsPage = () => {
-    const artistLS = localStorage.getItem('artist');
+    const artistLS = localStorage.getItem('artist'),
+        btnScrollArtist = document.querySelector('.artist');
 
     createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
     dNone(landingPage);
@@ -37,6 +38,12 @@ const initArtistItemsPage = () => {
     document
         .querySelector('.add-items')
         .addEventListener('click', openNewEditSection);
+
+    //click on scroll-btn to go to top of the page and delete the scroll button
+    btnScrollArtist.addEventListener('click', () => {
+        dNone(btnScrollArtist);
+        window.scrollTo(0, 0);
+    });
 
     document.addEventListener('click', e => {
         // click on menu icon to open the artist menu
@@ -190,5 +197,10 @@ const initArtistItemsPage = () => {
         if (e.target.classList.contains('confirm')) {
             deleteMsg(auctionMsg);
         }
+    });
+
+    //show the scroll-btn
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) dBlock(btnScrollArtist);
     });
 };
