@@ -1,3 +1,17 @@
+const makeBid = amount => {
+    const url = 'https://blooming-sierra-28258.herokuapp.com/bid',
+        data = { amount };
+
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        referrerPolicy: 'origin-when-cross-origin',
+        body: JSON.stringify(data),
+    }).then(res => res.json());
+};
+
 const initAuctionPage = () => {
     //render appropriate navbar for artist or visitor
     const artistLS = localStorage.getItem('artist');

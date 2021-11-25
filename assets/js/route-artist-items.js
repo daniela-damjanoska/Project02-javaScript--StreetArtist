@@ -202,5 +202,6 @@ const initArtistItemsPage = () => {
     //show the scroll-btn
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) dBlock(btnScrollArtist);
+        else if (window.scrollY <= 300) dNone(btnScrollArtist);
     });
 };
