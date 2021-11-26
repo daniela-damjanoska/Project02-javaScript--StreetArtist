@@ -524,6 +524,10 @@ nav {
     margin-bottom: 10px;
 }
 
+.visitor-listing-page .visitor-listing-page-inner .col-47 .img-item {
+    height: 250px;
+}
+
 .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
     font-family: 'Reenie Beanie';
     font-size: 4rem;
