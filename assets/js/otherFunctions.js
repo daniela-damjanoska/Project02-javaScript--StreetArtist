@@ -1,3 +1,5 @@
+const isPublishWrapper = document.querySelector('.isPublishWrapper');
+
 const dNone = el => {
     el.style.display = 'none';
 };
@@ -14,10 +16,6 @@ const removeElClass = (el, removeClass) => {
     el.classList.remove(removeClass);
 };
 
-const toggleElClass = (el, toggleClass) => {
-    el.classList.toggle(toggleClass);
-};
-
 const manipulateOverlayHeight = section => {
     const overlayHeight = section.offsetHeight;
     bodyOverlay.style.height = `${overlayHeight + 75}px`;
@@ -26,6 +24,15 @@ const manipulateOverlayHeight = section => {
 const manipulateOverlayDisplay = (element, status, overlay) => {
     element.style.display = status;
     bodyOverlay.style.display = overlay;
+};
+
+const manipulateMenuAndOverlayWhenSectionisUnder100vh = (section, menu) => {
+    const sectionPageHeight = section.offsetHeight,
+        windowHeight = window.innerHeight;
+
+    manipulateOverlayDisplay(menu, 'block', 'block');
+    if (sectionPageHeight < windowHeight) bodyOverlay.style.height = '100vh';
+    else manipulateOverlayHeight(section);
 };
 
 const addRedBorder = input => {
@@ -67,7 +74,6 @@ const manipulatingRequiredFieldsOnFocus = (input, reqField) => {
 
 const editItemOnSubmit = () => {
     const editItemIdLS = JSON.parse(localStorage.getItem('editItemIdLS')),
-        isPublishedLS = JSON.parse(localStorage.getItem('isPublished')),
         itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
         //find the item to be edited
         findIdxOfItemsLS = itemsLS.find(el => el.id === editItemIdLS),
@@ -82,7 +88,9 @@ const editItemOnSubmit = () => {
             item.type = addTypeInput.value;
             item.image = addImgUrlInput.value;
             item.price = addPriceInput.valueAsNumber;
-            item.isPublished = isPublishedLS;
+            item.isPublished = isPublishWrapper.getAttribute('data-checked')
+                ? true
+                : false;
         }
     });
 
@@ -92,8 +100,7 @@ const editItemOnSubmit = () => {
 };
 
 const addNewItemOnSubmit = () => {
-    const isPublishedLS = JSON.parse(localStorage.getItem('isPublished')),
-        artistLS = localStorage.getItem('artist');
+    const artistLS = localStorage.getItem('artist');
 
     const newItem = {
         id: undefined,
@@ -104,7 +111,9 @@ const addNewItemOnSubmit = () => {
         price: addPriceInput.valueAsNumber,
         artist: artistLS,
         dateCreated: new Date().toISOString(),
-        isPublished: isPublishedLS,
+        isPublished: isPublishWrapper.getAttribute('data-checked')
+            ? true
+            : false,
         isAuctioning: false,
         dateSold: undefined,
         priceSold: undefined,
@@ -128,8 +137,27 @@ const closeNewEditSection = () => {
 
     location.hash = '#artists/items';
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
-    removeElClass(imgCheckBox, 'hide');
     document.body.classList.remove('p-fixed');
+};
+
+const toggleIsPublished = () => {
+    if (imgCheckBox.classList.contains('hide')) {
+        removeElClass(imgCheckBox, 'hide');
+        isPublishWrapper.setAttribute('data-checked', true);
+    } else {
+        addElClass(imgCheckBox, 'hide');
+        isPublishWrapper.removeAttribute('data-checked');
+    }
+};
+
+const toggleNotPublished = target => {
+    removeElClass(target, 'btn-grey');
+    addElClass(target, 'bg-primary-green');
+};
+
+const togglePublished = target => {
+    removeElClass(target, 'bg-primary-green');
+    addElClass(target, 'btn-grey');
 };
 
 const openFilterSection = () => {
@@ -220,15 +248,6 @@ const calcProperTimeFormat = date => {
 
         return `${day}.${month}.${year}`;
     }
-};
-
-const manipulateMenuAndOverlayWhenSectionisUnder100vh = (section, menu) => {
-    const sectionPageHeight = section.offsetHeight,
-        windowHeight = window.innerHeight;
-
-    manipulateOverlayDisplay(menu, 'block', 'block');
-    if (sectionPageHeight < windowHeight) bodyOverlay.style.height = '100vh';
-    else manipulateOverlayHeight(section);
 };
 
 const deleteMsg = msg => {

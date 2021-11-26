@@ -1,5 +1,3 @@
-'use strict';
-
 const windowWidth = window.innerWidth,
     navbar = document.querySelector('nav'),
     landingPage = document.querySelector('#landingPage'),
@@ -99,9 +97,11 @@ const handleRoute = () => {
     }
 };
 
-document.addEventListener('click', function (e) {
+document.addEventListener('click', e => {
     //click on logo to go to the landing page
     if (e.target.classList.contains('logo')) {
+        const auctioningTrue = localStorage.getItem('auction');
+
         location.hash = '';
 
         localStorage.removeItem('artist');
@@ -109,6 +109,10 @@ document.addEventListener('click', function (e) {
         localStorage.removeItem('filteredPublishedLS');
         localStorage.removeItem('filterItemsLS');
         localStorage.removeItem('chartDataLS');
+
+        if (!auctioningTrue) {
+            localStorage.removeItem('currentBidLS');
+        }
 
         //fixing bug----------------------------------------------
         if (windowWidth > 1025) landingPage.style.width = '50%';
