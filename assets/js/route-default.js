@@ -20,9 +20,10 @@ const initLandingPage = () => {
 
     // click on choose button on landing-page to open the list of artist (from API)
     chooseBtnLanding.addEventListener('click', function () {
+        chooseArtistWrapper.innerHTML = '';
         createDropdownChooseArtist(chooseArtistWrapper, 'chooseArtist');
         dBlock(chooseArtistWrapper);
-        arrowDropdown.classList.add('rotate-arrow');
+        addElClass(arrowDropdown, 'rotate-arrow');
     });
 
     //close the dropdown if no artist is chosen
@@ -44,7 +45,7 @@ const initLandingPage = () => {
             location.hash = '#artists';
             localStorage.setItem('artist', e.target.textContent);
             dNone(chooseArtistWrapper);
-            arrowDropdown.classList.remove('rotate-arrow');
+            removeElClass(arrowDropdown, 'rotate-arrow');
         }
     });
 };

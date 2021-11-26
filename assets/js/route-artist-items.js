@@ -20,52 +20,20 @@ const initArtistItemsPage = () => {
     artistItemsListing.innerHTML = '';
     createArtistPageAllItems();
 
-    //if there is only one item or no items -> the width of the section to be 100vw when addNew/Edit section is open
-    const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
-    if (artistItemsLS.length <= 1) {
-        artistItemsPage.style.width = '100vw';
-    }
+    //click on publish/unpublish buttons to change their color/text content and update arrays
+    const isPublishedBtns = document.querySelectorAll('.publishing');
 
-    //set the default isPublished checked
-    removeElClass(imgCheckBox, 'hide');
-    localStorage.setItem('isPublished', true);
-
-    //remove the required messages on add-edit section after clicking cancel
-    const requiredWrappers = document.querySelectorAll('.req');
-    requiredWrappers.forEach(el => (el.innerHTML = ''));
-
-    //click on add-new-item to open the add-new/edit section
-    document
-        .querySelector('.add-items')
-        .addEventListener('click', openNewEditSection);
-
-    //click on scroll-btn to go to top of the page and delete the scroll button
-    btnScrollArtist.addEventListener('click', () => {
-        dNone(btnScrollArtist);
-        window.scrollTo(0, 0);
-    });
-
-    document.addEventListener('click', e => {
-        // click on menu icon to open the artist menu
-        if (e.target.classList.contains('menuIcon'))
-            manipulateMenuAndOverlayWhenSectionisUnder100vh(
-                artistItemsPage,
-                menuArtist
-            );
-
-        //click on publish/unpublish buttons to change their color/text content and update arrays
-        if (e.target.classList.contains('publishing')) {
-            e.stopPropagation();
-            toggleElClass(e.target, 'btn-grey');
-            toggleElClass(e.target, 'bg-primary-green');
-
-            if (e.target.textContent === 'publish') {
+    isPublishedBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            if (this.classList.contains('btn-grey')) {
                 const BtnToChangePublishId =
-                    +e.target.parentElement.parentElement.id;
+                    +this.parentElement.parentElement.id;
+
+                toggleNotPublished(this);
 
                 const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
 
-                e.target.textContent = 'unpublish';
+                this.textContent = 'unpublish';
                 itemsLS.forEach((item, idx) => {
                     if (idx + 1 === BtnToChangePublishId) {
                         item.isPublished = true;
@@ -75,13 +43,15 @@ const initArtistItemsPage = () => {
                 localStorage.setItem('itemsLS', JSON.stringify(itemsLS));
 
                 updateArtistItemsArray();
-            } else if (e.target.textContent === 'unpublish') {
+            } else if (this.classList.contains('bg-primary-green')) {
                 const BtnToChangeUnpublishId =
-                    +e.target.parentElement.parentElement.id;
+                    +this.parentElement.parentElement.id;
+
+                togglePublished(this);
 
                 const itemsLS = JSON.parse(localStorage.getItem('itemsLS'));
 
-                e.target.textContent = 'publish';
+                this.textContent = 'publish';
                 itemsLS.forEach((item, idx) => {
                     if (idx + 1 === BtnToChangeUnpublishId) {
                         item.isPublished = false;
@@ -92,7 +62,50 @@ const initArtistItemsPage = () => {
 
                 updateArtistItemsArray();
             }
-        }
+        });
+    });
+
+    //if there is only one item or no items -> the width of the section to be 100vw when addNew/Edit section is open
+    const artistItemsLS = JSON.parse(localStorage.getItem('artistItemsLS'));
+    if (artistItemsLS.length <= 1) {
+        artistItemsPage.style.width = '100vw';
+    }
+
+    //remove the required messages on add-edit section after clicking cancel
+    const requiredWrappers = document.querySelectorAll('.req');
+    requiredWrappers.forEach(el => (el.innerHTML = ''));
+
+    //click on add-new-item to open the add-new/edit section
+    document.querySelector('.add-items').addEventListener('click', function () {
+        openNewEditSection();
+        //set the default isPublished checked
+        removeElClass(imgCheckBox, 'hide');
+        isPublishWrapper.setAttribute('data-checked', true);
+    });
+
+    //click on scroll-btn to go to top of the page and delete the scroll button
+    btnScrollArtist.addEventListener('click', () => {
+        dNone(btnScrollArtist);
+        window.scrollTo(0, 0);
+    });
+
+    //on click on sent to auction button when auction is in progress show the rejecting message
+    const auctioningTrue = localStorage.getItem('auction');
+
+    if (auctioningTrue) {
+        const notSoldBtns = document.querySelectorAll('.sold-no');
+        notSoldBtns.forEach(btn =>
+            btn.addEventListener('click', createAuctionMsg)
+        );
+    }
+
+    document.addEventListener('click', e => {
+        // click on menu icon to open the artist menu
+        if (e.target.classList.contains('menuIcon'))
+            manipulateMenuAndOverlayWhenSectionisUnder100vh(
+                artistItemsPage,
+                menuArtist
+            );
 
         //click on remove button to open the confirmation popup
         if (e.target.classList.contains('remove')) {
@@ -140,7 +153,6 @@ const initArtistItemsPage = () => {
                 removeElClass(imgCheckBox, 'hide');
             } else {
                 addElClass(imgCheckBox, 'hide');
-                localStorage.setItem('isPublished', false);
             }
 
             //take the values for the inputs according to the appropriate properties
@@ -155,8 +167,6 @@ const initArtistItemsPage = () => {
         const auctioningTrue = localStorage.getItem('auction');
 
         if (e.target.classList.contains('sold-no') && !auctioningTrue) {
-            e.stopPropagation();
-
             //get the id of the item, create starting time and ending time(start counting from 2 min -> 120000ms)
             const itemForAuctionId = +e.target.parentElement.parentElement.id,
                 startTime = new Date().getTime(),
@@ -180,17 +190,7 @@ const initArtistItemsPage = () => {
             localStorage.setItem('endTime', endTime);
             localStorage.setItem('bidding', true);
 
-            if (!auctioningTrue) {
-                localStorage.removeItem('currentBidLS');
-            }
-
             location.hash = '#auction';
-        }
-
-        //on click on sent to auction button when auction is in progress show the rejecting message
-        if (e.target.classList.contains('sold-no') && auctioningTrue) {
-            e.stopPropagation();
-            createAuctionMsg();
         }
 
         //delete the rejecting message

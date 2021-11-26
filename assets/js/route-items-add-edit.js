@@ -20,21 +20,8 @@ const initArtistAddEditPage = () => {
     openNewEditSection();
     //-----------------------------------------------------------------------------------------------------
 
-    //manipulating the isPublished checkbox
-    isPublishWrapper.addEventListener('click', e => {
-        e.stopPropagation();
-        toggleElClass(imgCheckBox, 'hide');
-
-        if (imgCheckBox.classList.contains('hide'))
-            isPublishWrapper.removeAttribute('data-checked');
-        else isPublishWrapper.setAttribute('data-checked', true);
-
-        if (isPublishWrapper.getAttribute('data-checked')) {
-            localStorage.setItem('isPublished', true);
-        } else {
-            localStorage.setItem('isPublished', false);
-        }
-    });
+    // manipulating the isPublished checkbox
+    isPublishWrapper.addEventListener('click', toggleIsPublished);
 
     //add and remove items when click on 'Add New Item' / 'Add Item' button in the addEditSection
     addEditSection.addEventListener('submit', e => {
