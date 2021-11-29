@@ -1898,7 +1898,7 @@ nav {
     }
 
     .snapshot-wrapper {
-        height: 90vh;
+        height: 100vh;
         background-color: #a16a5e;
         top: 0;
         right: 0;
@@ -1914,7 +1914,7 @@ nav {
         width: 35px;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 50px;
+        bottom: 10vh;
     }
 
     .snapshot .new-img {
@@ -1927,7 +1927,7 @@ nav {
 
     .snapshot-wrapper select {
         right: 20px;
-        bottom: 50px;
+        bottom: 15vh;
         background-color: #a16a5e;
         color: #edd5bb;
     }

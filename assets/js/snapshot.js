@@ -65,5 +65,5 @@ const initCaptureImagePage = () => {
 
     getStream().then(getDevices).then(gotDevices);
 
-    window.scrollTo(0, 0);
+    window.addEventListener('load', () => window.scrollTo(0, 0));
 };
