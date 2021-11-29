@@ -251,7 +251,7 @@ const createAuctionItem = (img, title, artist, date, price) => {
                         </div>
                         <form class="send-bid">
                             <div class="input-wrapper text-center">
-                                <input type="number" placeholder="Your offer" id="bidAmount" />
+                                <input type="number" placeholder="Your bid" id="bidAmount" />
                             </div>
                             <button class="bid">Bid!</button>
                         </form>
