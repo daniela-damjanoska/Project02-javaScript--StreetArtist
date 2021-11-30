@@ -140,10 +140,6 @@ function initCaptureImagePage() {
 
             //enter the image url in the addImgUrlInput
             addImgUrlInput.value = imageURL;
-
-            //fixing-bug
-            const reqImgUrl = document.querySelector('.reqImgUrl');
-            manipulatingRequiredFieldsOnFocus(addImgUrlInput, reqImgUrl);
         });
 
         switchCamera.addEventListener('click', function () {
