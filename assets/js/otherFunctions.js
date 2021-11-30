@@ -138,6 +138,12 @@ const closeNewEditSection = () => {
     location.hash = '#artists/items';
     manipulateOverlayDisplay(addEditSection, 'none', 'none');
     document.body.classList.remove('p-fixed');
+
+    //when user click on the add-new-item area img-box on mobile devices to be empty
+    if (windowWidth <= 600) {
+        imgFromVideo.style.display = 'none';
+        imgFromVideo.src = '';
+    }
 };
 
 const toggleIsPublished = () => {

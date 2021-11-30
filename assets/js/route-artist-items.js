@@ -161,6 +161,11 @@ const initArtistItemsPage = () => {
             addTypeInput.value = itemToEdit.type;
             addPriceInput.value = itemToEdit.price;
             addImgUrlInput.value = itemToEdit.image;
+
+            if (windowWidth <= 600) {
+                imgFromVideo.style.display = 'block';
+                imgFromVideo.src = itemToEdit.image;
+            }
         }
 
         //click on sent to auction button to send the item for auctioning
