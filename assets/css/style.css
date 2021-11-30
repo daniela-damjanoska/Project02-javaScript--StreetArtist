@@ -1914,7 +1914,7 @@ nav {
         width: 45px;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 20vh;
+        bottom: 18vh;
     }
 
     .snapshot .new-img {
@@ -1927,7 +1927,7 @@ nav {
 
     .snapshot-wrapper .switchBtn {
         right: 20px;
-        bottom: 18vh;
+        bottom: 20vh;
         width: 35px;
         background-color: #a16a5e;
         color: #edd5bb;

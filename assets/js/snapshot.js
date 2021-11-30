@@ -71,7 +71,6 @@
 function initCaptureImagePage() {
     const video = document.querySelector('.make-snapshot-inner video'),
         snapshotWrapper = document.querySelector('.snapshot-wrapper'),
-        imgFromVideo = document.querySelector('.new-img'),
         switchCamera = document.querySelector('.switchBtn');
 
     let currentStreamingIndex = 0,
@@ -130,6 +129,9 @@ function initCaptureImagePage() {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             dBlock(imgFromVideo);
+
+            //when user click on the add-new-item area hide the canvas
+            dNone(canvas);
 
             canvas.getContext('2d').drawImage(video, 0, 0);
 
