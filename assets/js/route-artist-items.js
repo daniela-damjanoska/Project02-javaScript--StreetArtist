@@ -93,7 +93,7 @@ const initArtistItemsPage = () => {
     const auctioningTrue = localStorage.getItem('auction');
 
     if (auctioningTrue) {
-        const notSoldBtns = document.querySelectorAll('.sold-no');
+        const notSoldBtns = document.querySelectorAll("[data-sold='false']");
         notSoldBtns.forEach(btn =>
             btn.addEventListener('click', createAuctionMsg)
         );
@@ -171,7 +171,7 @@ const initArtistItemsPage = () => {
         //click on sent to auction button to send the item for auctioning
         const auctioningTrue = localStorage.getItem('auction');
 
-        if (e.target.classList.contains('sold-no') && !auctioningTrue) {
+        if (e.target.classList.contains('sold-status') && !auctioningTrue) {
             //get the id of the item, create starting time and ending time(start counting from 2 min -> 120000ms)
             const itemForAuctionId = +e.target.parentElement.parentElement.id,
                 startTime = new Date().getTime(),
@@ -188,12 +188,17 @@ const initArtistItemsPage = () => {
 
             updateArtistItemsArray();
 
-            //save the id, the state of auction(true), endTime and startTime
+            e.target.removeAttribute('data-sold');
+
+            //save the id, the state of auction(true), endTime, startTime and the artist
             localStorage.setItem('itemForAuctionId', itemForAuctionId);
             localStorage.setItem('auction', true);
             localStorage.setItem('startTime', startTime);
             localStorage.setItem('endTime', endTime);
             localStorage.setItem('bidding', true);
+
+            const artistAuction = localStorage.getItem('artist');
+            localStorage.setItem('artistAuction', artistAuction);
 
             location.hash = '#auction';
         }

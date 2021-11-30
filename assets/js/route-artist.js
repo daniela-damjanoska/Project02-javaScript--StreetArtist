@@ -1,10 +1,11 @@
 const initArtistHomePage = () => {
     const currentBidWrapper = document.querySelector('#currentBidBox'),
-        artistLS = localStorage.getItem('artist'),
         currentBidBox = document.querySelector('#currentBidAmount'),
         currentBidText = document.querySelector('.current-bid-text'),
         isAuctioning = localStorage.getItem('auction'),
         currentBidLS = localStorage.getItem('currentBidLS'),
+        artistLS = localStorage.getItem('artist'),
+        artistAuction = localStorage.getItem('artistAuction'),
         itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
         artistItems = itemsLS.filter(item => item.artist === artistLS);
 
@@ -36,8 +37,8 @@ const initArtistHomePage = () => {
     document.querySelector('#soldItems').textContent = soldItems.length;
     document.querySelector('#totalIncome').textContent = `$${sum}`;
 
-    // show the section with current bid amount
-    if (isAuctioning) {
+    // show the section with current bid amount but only on the home page of the artist that has an item on auction
+    if (isAuctioning && artistLS === artistAuction) {
         dBlock(currentBidWrapper);
         if (!currentBidLS) {
             currentBidBox.textContent = 'No bids!';
