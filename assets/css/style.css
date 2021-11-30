@@ -1911,7 +1911,7 @@ nav {
     }
 
     .snapshot-wrapper .take-photo {
-        width: 35px;
+        width: 45px;
         left: 50%;
         transform: translateX(-50%);
         bottom: 10vh;
@@ -1928,7 +1928,8 @@ nav {
     .snapshot-wrapper .switchBtn {
         right: 20px;
         bottom: 15vh;
-        /* background-color: #a16a5e; */
+        width: 35px;
+        background-color: #a16a5e;
         color: #edd5bb;
     }
 
