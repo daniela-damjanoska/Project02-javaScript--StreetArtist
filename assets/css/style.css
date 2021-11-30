@@ -1914,7 +1914,7 @@ nav {
         width: 45px;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 10vh;
+        bottom: 20vh;
     }
 
     .snapshot .new-img {
@@ -1927,18 +1927,11 @@ nav {
 
     .snapshot-wrapper .switchBtn {
         right: 20px;
-        bottom: 15vh;
+        bottom: 18vh;
         width: 35px;
         background-color: #a16a5e;
         color: #edd5bb;
     }
-
-    /* .snapshot-wrapper select {
-        right: 20px;
-        bottom: 15vh;
-        background-color: #a16a5e;
-        color: #edd5bb;
-    } */
 
     .snapshot-wrapper video {
         height: 70vh;
