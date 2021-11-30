@@ -1925,19 +1925,19 @@ nav {
         object-fit: cover;
     }
 
-    /* .snapshot-wrapper .switchBtn {
-        right: 20px;
-        bottom: 15vh;
-        background-color: #a16a5e;
-        color: #edd5bb;
-    } */
-
-    .snapshot-wrapper select {
+    .snapshot-wrapper .switchBtn {
         right: 20px;
         bottom: 15vh;
         /* background-color: #a16a5e; */
         color: #edd5bb;
     }
+
+    /* .snapshot-wrapper select {
+        right: 20px;
+        bottom: 15vh;
+        background-color: #a16a5e;
+        color: #edd5bb;
+    } */
 
     .snapshot-wrapper video {
         height: 70vh;

@@ -1,82 +1,42 @@
-const videoBox = document.querySelector('.make-snapshot-inner video'),
-    selectVideos = document.querySelector('#videos');
+// const videoBox = document.querySelector('.make-snapshot-inner video'),
+//     selectVideos = document.querySelector('#videos');
 
-const getStream = () => {
-    const source = selectVideos.value,
-        constrains = {
-            video: {
-                deviceId: source ? { exact: source } : undefined,
-            },
-        };
+// const getStream = () => {
+//     const source = selectVideos.value,
+//         constrains = {
+//             video: {
+//                 deviceId: source ? { exact: source } : undefined,
+//             },
+//         };
 
-    return navigator.mediaDevices.getUserMedia(constrains).then(gotStream);
-};
+//     return navigator.mediaDevices.getUserMedia(constrains).then(gotStream);
+// };
 
-const gotStream = stream => {
-    videoBox.srcObject = stream;
-};
+// const gotStream = stream => {
+//     videoBox.srcObject = stream;
+// };
 
-const getDevices = () => {
-    return navigator.mediaDevices.enumerateDevices();
-};
+// const getDevices = () => {
+//     return navigator.mediaDevices.enumerateDevices();
+// };
 
-const gotDevices = deviceInfo => {
-    const videoDevices = deviceInfo.filter(x => x.kind === 'videoinput');
+// const gotDevices = deviceInfo => {
+//     const videoDevices = deviceInfo.filter(x => x.kind === 'videoinput');
 
-    for (let i = 0; i < videoDevices.length; i++) {
-        const device = videoDevices[i],
-            option = document.createElement('option');
+//     for (let i = 0; i < videoDevices.length; i++) {
+//         const device = videoDevices[i],
+//             option = document.createElement('option');
 
-        option.value = device.deviceId;
-        option.text = `Camera ${i + 1} ${device.label || device.deviceId}`;
-        selectVideos.appendChild(option);
-    }
-};
+//         option.value = device.deviceId;
+//         option.text = `Camera ${i + 1} ${device.label || device.deviceId}`;
+//         selectVideos.appendChild(option);
+//     }
+// };
 
-const initCaptureImagePage = () => {
-    const snapshotWrapper = document.querySelector('.snapshot-wrapper'),
-        imgFromVideo = document.querySelector('.new-img'),
-        makeAPhotoBtn = document.querySelector('.take-photo');
-
-    dNone(landingPage);
-    dNone(visitorHomePage);
-    dNone(visitorListingPage);
-    dNone(artistHomePage);
-    dBlock(artistItemsPage);
-    dBlock(addItems);
-    dBlock(snapshotWrapper);
-    dNone(auctionPage);
-
-    makeAPhotoBtn.addEventListener('click', function () {
-        canvas.width = videoBox.videoWidth;
-        canvas.height = videoBox.videoHeight;
-        dBlock(imgFromVideo);
-
-        canvas.getContext('2d').drawImage(videoBox, 0, 0);
-
-        const imageURL = canvas.toDataURL('image/webp');
-        imgFromVideo.src = imageURL;
-
-        location.hash = '#artists/items/add';
-
-        //enter the image url in the addImgUrlInput
-        addImgUrlInput.value = imageURL;
-    });
-
-    getStream().then(getDevices).then(gotDevices);
-
-    window.addEventListener('load', () => window.scrollTo(0, 0));
-};
-
-// function initCaptureImagePage() {
-//     const video = document.querySelector('.make-snapshot-inner video'),
-//         snapshotWrapper = document.querySelector('.snapshot-wrapper'),
+// const initCaptureImagePage = () => {
+//     const snapshotWrapper = document.querySelector('.snapshot-wrapper'),
 //         imgFromVideo = document.querySelector('.new-img'),
-//         switchCamera = document.querySelector('.switchBtn');
-
-//     let currentStreamingIndex = 0,
-//         currentStream,
-//         allVideoDevices;
+//         makeAPhotoBtn = document.querySelector('.take-photo');
 
 //     dNone(landingPage);
 //     dNone(visitorHomePage);
@@ -87,74 +47,114 @@ const initCaptureImagePage = () => {
 //     dBlock(snapshotWrapper);
 //     dNone(auctionPage);
 
-//     // Take all devices
-//     navigator.mediaDevices.enumerateDevices().then(data => {
-//         allVideoDevices = data.filter(device => device.kind === 'videoinput');
-//         switchCamera.removeAttribute('disabled');
+//     makeAPhotoBtn.addEventListener('click', function () {
+//         canvas.width = videoBox.videoWidth;
+//         canvas.height = videoBox.videoHeight;
+//         dBlock(imgFromVideo);
+
+//         canvas.getContext('2d').drawImage(videoBox, 0, 0);
+
+//         const imageURL = canvas.toDataURL('image/webp');
+//         imgFromVideo.src = imageURL;
+
+//         location.hash = '#artists/items/add';
+
+//         //enter the image url in the addImgUrlInput
+//         addImgUrlInput.value = imageURL;
 //     });
 
-//     // Get stream when switching camera
-//     function getStream() {
-//         currentStreamingIndex++;
-//         const source =
-//             allVideoDevices[currentStreamingIndex % allVideoDevices.length]
-//                 .deviceId;
+//     getStream().then(getDevices).then(gotDevices);
 
-//         const constrains = {
-//             video: {
-//                 deviceId: source ? { exact: source } : undefined,
-//             },
-//         };
+//     window.addEventListener('load', () => window.scrollTo(0, 0));
+// };
 
-//         navigator.mediaDevices.getUserMedia(constrains).then(stream => {
-//             currentStream = stream;
-//             video.srcObject = stream;
-//         });
-//     }
+function initCaptureImagePage() {
+    const video = document.querySelector('.make-snapshot-inner video'),
+        snapshotWrapper = document.querySelector('.snapshot-wrapper'),
+        imgFromVideo = document.querySelector('.new-img'),
+        switchCamera = document.querySelector('.switchBtn');
 
-//     function initCamera() {
-//         const canvas = document.querySelector('#canvas'),
-//             makeAPhotoBtn = document.querySelector('.take-photo');
+    let currentStreamingIndex = 0,
+        currentStream,
+        allVideoDevices;
 
-//         navigator.mediaDevices
-//             .getUserMedia({ video: true, audio: false })
-//             .then(stream => {
-//                 currentStream = stream;
-//                 video.srcObject = stream;
-//             })
-//             .catch(function (err) {
-//                 console.log('An error occurred: ' + err);
-//             });
+    dNone(landingPage);
+    dNone(visitorHomePage);
+    dNone(visitorListingPage);
+    dNone(artistHomePage);
+    dBlock(artistItemsPage);
+    dBlock(addItems);
+    dBlock(snapshotWrapper);
+    dNone(auctionPage);
 
-//         makeAPhotoBtn.addEventListener('click', function () {
-//             canvas.width = video.videoWidth;
-//             canvas.height = video.videoHeight;
-//             dBlock(imgFromVideo);
+    // Take all devices
+    navigator.mediaDevices.enumerateDevices().then(data => {
+        allVideoDevices = data.filter(device => device.kind === 'videoinput');
+        switchCamera.removeAttribute('disabled');
+    });
 
-//             canvas.getContext('2d').drawImage(video, 0, 0);
+    // Get stream when switching camera
+    function getStream() {
+        currentStreamingIndex++;
+        const source =
+            allVideoDevices[currentStreamingIndex % allVideoDevices.length]
+                .deviceId;
 
-//             const imageURL = canvas.toDataURL('image/webp');
-//             imgFromVideo.src = imageURL;
+        const constrains = {
+            video: {
+                deviceId: source ? { exact: source } : undefined,
+            },
+        };
 
-//             location.hash = '#artists/items/add';
+        navigator.mediaDevices.getUserMedia(constrains).then(stream => {
+            currentStream = stream;
+            video.srcObject = stream;
+        });
+    }
 
-//             //enter the image url in the addImgUrlInput
-//             addImgUrlInput.value = imageURL;
-//         });
+    function initCamera() {
+        const canvas = document.querySelector('#canvas'),
+            makeAPhotoBtn = document.querySelector('.take-photo');
 
-//         switchCamera.addEventListener('click', function () {
-//             if (currentStream) {
-//                 stopAllStream(currentStream);
-//             }
-//             getStream();
-//         });
-//     }
+        navigator.mediaDevices
+            .getUserMedia({ video: true, audio: false })
+            .then(stream => {
+                currentStream = stream;
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.log('An error occurred: ' + err);
+            });
 
-//     function stopAllStream(stream) {
-//         stream.getTracks().forEach(track => {
-//             track.stop();
-//         });
-//     }
+        makeAPhotoBtn.addEventListener('click', function () {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            dBlock(imgFromVideo);
 
-//     initCamera();
-// }
+            canvas.getContext('2d').drawImage(video, 0, 0);
+
+            const imageURL = canvas.toDataURL('image/webp');
+            imgFromVideo.src = imageURL;
+
+            location.hash = '#artists/items/add';
+
+            //enter the image url in the addImgUrlInput
+            addImgUrlInput.value = imageURL;
+        });
+
+        switchCamera.addEventListener('click', function () {
+            if (currentStream) {
+                stopAllStream(currentStream);
+            }
+            getStream();
+        });
+    }
+
+    function stopAllStream(stream) {
+        stream.getTracks().forEach(track => {
+            track.stop();
+        });
+    }
+
+    initCamera();
+}
