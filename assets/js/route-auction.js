@@ -14,7 +14,8 @@ const makeBid = amount => {
 
 const initAuctionPage = () => {
     //render appropriate navbar for artist or visitor
-    const artistLS = localStorage.getItem('artist');
+    const artistLS = localStorage.getItem('artist'),
+        artistAuction = localStorage.getItem('artistAuction');
 
     if (artistLS) {
         createArtistVisitorNavbar(artistLS, 'menu', 'menuIcon');
@@ -86,7 +87,7 @@ const initAuctionPage = () => {
                 //stop the timer
                 clearInterval(timer);
 
-                //find the item in itemsLS array and set item isAuctioning property to true, and set dateSold and priceSold properties
+                //find the item in itemsLS array and update the isAuctioning, dateSold and priceSold properties
                 const itemsLS = JSON.parse(localStorage.getItem('itemsLS')),
                     priceSold = JSON.parse(
                         localStorage.getItem('currentBidLS')
@@ -94,8 +95,10 @@ const initAuctionPage = () => {
 
                 itemsLS.forEach(item => {
                     if (item.isAuctioning === true) {
+                        //make isAuctioning property to false when there is not any bids
                         if (!priceSold) {
                             item.isAuctioning = false;
+                            //make isAuctioning property to false when the item is sold and set dateSold and priceSold properties
                         } else {
                             item.isAuctioning = false;
                             item.dateSold = new Date().toISOString();
@@ -115,6 +118,8 @@ const initAuctionPage = () => {
                 localStorage.removeItem('itemForAuctionId');
                 localStorage.removeItem('remainingTime');
                 localStorage.removeItem('bidArrLS');
+                localStorage.removeItem('bidding');
+                localStorage.removeItem('artistAuction');
                 if (!localStorage.getItem('artist'))
                     localStorage.removeItem('artistItemsLS');
 
@@ -227,13 +232,10 @@ const initAuctionPage = () => {
             });
         }
 
-        // if there is auction in progress and an artist go to the auction page/or bidding is done then make the bid button disabled and hide the bid input
-        if (artistLS || !localStorage.getItem('bidding')) {
+        // if the artist that has an item to auction go to the auction page/ or bidding process is done => make the bid button disabled and hide the bid input
+        if (artistLS === artistAuction || !localStorage.getItem('bidding')) {
             confirmBidBtn.setAttribute('disabled', true);
             dNone(bidInput);
-        } else {
-            confirmBidBtn.removeAttribute('disabled');
-            dBlock(bidInput);
         }
     }
 

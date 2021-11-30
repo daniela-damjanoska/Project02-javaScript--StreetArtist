@@ -169,14 +169,15 @@ const createArtistPageAllItems = () => {
             );
         }
 
-        // adding a class to the send/not sent to auction buttons
-        const allButtons = document.querySelectorAll('.sold-status');
-        allButtons.forEach(btn => {
-            if (item.priceSold !== undefined) btn.classList.add('sold-yes');
-            else btn.classList.add('sold-no');
+        // adding a data-attribute to the not sent to auction buttons
+        const allButtonsSentToAuction =
+            document.querySelectorAll('.sold-status');
+        allButtonsSentToAuction.forEach(btn => {
+            if (item.priceSold === undefined)
+                btn.setAttribute('data-sold', false);
 
             //make go to auction buttons disabled when the item is sold
-            if (btn.classList.contains('sold-yes')) {
+            if (!btn.getAttribute('data-sold')) {
                 btn.setAttribute('disabled', true);
             }
         });
