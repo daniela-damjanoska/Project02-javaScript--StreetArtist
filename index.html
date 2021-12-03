@@ -45,173 +45,6 @@
             </div>
         </section>
 
-        <!-- ---------------------------------visitor home page--------------------------- -->
-        <section id="visitorHomePage" class="visitor-home-page hide">
-            <div class="img-wrapper p-relative row">
-                <img
-                    src="./img/bricks.svg"
-                    alt="bg-bricks"
-                    class="bricks-small hide"
-                />
-                <img
-                    src="./img/brick-1-bg.png"
-                    alt="bg-bricks"
-                    class="bricks-big"
-                />
-                <div class="content-wrapper p-absolute row">
-                    <p class="c-text-primary-default mb-0">
-                        Looking for a masterpiece?
-                    </p>
-                    <button class="bg-primary-default findMasterpiece">
-                        Find one now!
-                    </button>
-                </div>
-            </div>
-            <div class="bg-normal slider-div">
-                <div class="slide-area row slide-center">
-                    <div class="slide-track-one row slide-left"></div>
-                </div>
-                <div class="slide-area row slide-top">
-                    <div class="slide-track-two row slide-right"></div>
-                </div>
-            </div>
-            <div class="carousel p-relative row">
-                <div class="carousel-container row">
-                    <div class="carousel-buttons p-absolute row">
-                        <img
-                            src="./img/arrow.png"
-                            alt="left-arrow"
-                            id="arrowPrev"
-                            class="arrow-prev"
-                        />
-
-                        <img
-                            src="./img/arrow.png"
-                            alt="right-arrow"
-                            id="arrowNext"
-                            class="arrow-next"
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- -------------------------------visitor listing page-------------------------- -->
-        <section
-            id="visitorListingPage"
-            class="visitor-listing-page bg-normal hide"
-        >
-            <img
-                src="./img/filter.png"
-                class="filter-icon p-fixed"
-                id="filterIcon"
-                alt="filter"
-            />
-            <div class="visitor-listing-page-inner row"></div>
-
-            <!-- ----------------------------------filter page-------------------------------- -->
-            <div
-                class="filter-part bg-primary-default c-text-light p-fixed"
-                id="filterPart"
-            >
-                <div class="filter-part-inner bg-primary-default c-text-light">
-                    <div class="row filter-by">
-                        <p class="mb-0"><b>Filter by</b></p>
-                        <img
-                            src="./img/close.png"
-                            class="close-filter"
-                            alt="close"
-                        />
-                    </div>
-                    <div class="filter">
-                        <p>By Item Title</p>
-                        <input
-                            type="text"
-                            id="filterTitle"
-                            class="filter-title"
-                            placeholder="Search by Item title"
-                        />
-                    </div>
-                    <div class="filter">
-                        <p>By Artist</p>
-                        <div class="inner-filter-artist p-relative">
-                            <input
-                                type="text"
-                                id="chooseArtistFilter"
-                                readonly
-                                class="filter-artist"
-                                placeholder="Choose"
-                            />
-                            <img
-                                src="./img/choose-arrow.png"
-                                alt=""
-                                class="chooseArtistArrowFilter p-absolute"
-                            />
-                            <div
-                                class="
-                                    choose-artist-filter
-                                    c-text-light
-                                    p-absolute
-                                "
-                            ></div>
-                        </div>
-                    </div>
-                    <div class="filter">
-                        <p>By Price</p>
-                        <div class="filter-price-inner row">
-                            <div class="col-50">
-                                <label for="filter-price-min">Min: </label>
-                                <input
-                                    type="number"
-                                    id="filterPriceMin"
-                                    placeholder="Min price"
-                                />
-                            </div>
-                            <div class="col-50 row">
-                                <label for="filter-price-max">Max: </label>
-                                <input
-                                    type="number"
-                                    id="filterPriceMax"
-                                    placeholder="Max Price"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter">
-                        <p>By Type</p>
-                        <div class="inner-filter-type p-relative">
-                            <input
-                                type="text"
-                                id="chooseTypeFilter"
-                                readonly
-                                class="filter-type"
-                                placeholder="Choose"
-                            />
-                            <img
-                                src="./img/choose-arrow.png"
-                                alt=""
-                                class="chooseTypeArrowFilter p-absolute"
-                            />
-                            <div
-                                class="
-                                    choose-type-filter
-                                    c-text-light
-                                    p-absolute
-                                "
-                            ></div>
-                        </div>
-                    </div>
-                    <div class="img-filter-done-wrapper">
-                        <img
-                            src="./img/check.png"
-                            class="filter-done"
-                            alt="check"
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- -------------------------------artist home page------------------------------ -->
         <section id="artistHomePage" class="artist-home-page hide">
             <div class="artist-home-page-wrapper">
@@ -411,6 +244,172 @@
                     <button class="cancelNewEdit btn-grey">Cancel</button>
                 </div>
             </form>
+        </section>
+
+        <!-- ---------------------------------visitor home page--------------------------- -->
+        <section id="visitorHomePage" class="visitor-home-page hide">
+            <div class="img-wrapper p-relative row">
+                <img
+                    src="./img/bricks.svg"
+                    alt="bg-bricks"
+                    class="bricks-small hide"
+                />
+                <img
+                    src="./img/brick-1-bg.png"
+                    alt="bg-bricks"
+                    class="bricks-big"
+                />
+                <div class="content-wrapper p-absolute row">
+                    <p class="c-text-primary-default mb-0">
+                        Looking for a masterpiece?
+                    </p>
+                    <button class="bg-primary-default findMasterpiece">
+                        Find one now!
+                    </button>
+                </div>
+            </div>
+            <div class="bg-normal slider-div">
+                <div class="slide-area row">
+                    <div class="slide-track-one row slide-left"></div>
+                </div>
+                <div class="slide-area row">
+                    <div class="slide-track-two row slide-right"></div>
+                </div>
+            </div>
+            <div class="carousel p-relative row">
+                <div class="carousel-container row">
+                    <div class="carousel-buttons p-absolute row">
+                        <img
+                            src="./img/arrow.png"
+                            alt="left-arrow"
+                            id="arrowPrev"
+                            class="arrow-prev"
+                        />
+                        <img
+                            src="./img/arrow.png"
+                            alt="right-arrow"
+                            id="arrowNext"
+                            class="arrow-next"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- -------------------------------visitor listing page-------------------------- -->
+        <section
+            id="visitorListingPage"
+            class="visitor-listing-page bg-normal hide"
+        >
+            <img
+                src="./img/filter.png"
+                class="filter-icon p-fixed"
+                id="filterIcon"
+                alt="filter"
+            />
+            <div class="visitor-listing-page-inner row"></div>
+
+            <!-- ----------------------------------filter page-------------------------------- -->
+            <div
+                class="filter-part bg-primary-default c-text-light p-fixed"
+                id="filterPart"
+            >
+                <div class="filter-part-inner bg-primary-default c-text-light">
+                    <div class="row filter-by">
+                        <p class="mb-0"><b>Filter by</b></p>
+                        <img
+                            src="./img/close.png"
+                            class="close-filter"
+                            alt="close"
+                        />
+                    </div>
+                    <div class="filter">
+                        <p>By Item Title</p>
+                        <input
+                            type="text"
+                            id="filterTitle"
+                            class="filter-title"
+                            placeholder="Search by Item title"
+                        />
+                    </div>
+                    <div class="filter">
+                        <p>By Artist</p>
+                        <div class="inner-filter-artist p-relative">
+                            <input
+                                type="text"
+                                id="chooseArtistFilter"
+                                readonly
+                                class="filter-artist"
+                                placeholder="Choose"
+                            />
+                            <img
+                                src="./img/choose-arrow.png"
+                                alt=""
+                                class="chooseArtistArrowFilter p-absolute"
+                            />
+                            <div
+                                class="
+                                    choose-artist-filter
+                                    c-text-light
+                                    p-absolute
+                                "
+                            ></div>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <p>By Price</p>
+                        <div class="filter-price-inner row">
+                            <div class="col-50">
+                                <label for="filter-price-min">Min: </label>
+                                <input
+                                    type="number"
+                                    id="filterPriceMin"
+                                    placeholder="Min price"
+                                />
+                            </div>
+                            <div class="col-50 row">
+                                <label for="filter-price-max">Max: </label>
+                                <input
+                                    type="number"
+                                    id="filterPriceMax"
+                                    placeholder="Max Price"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <p>By Type</p>
+                        <div class="inner-filter-type p-relative">
+                            <input
+                                type="text"
+                                id="chooseTypeFilter"
+                                readonly
+                                class="filter-type"
+                                placeholder="Choose"
+                            />
+                            <img
+                                src="./img/choose-arrow.png"
+                                alt=""
+                                class="chooseTypeArrowFilter p-absolute"
+                            />
+                            <div
+                                class="
+                                    choose-type-filter
+                                    c-text-light
+                                    p-absolute
+                                "
+                            ></div>
+                        </div>
+                    </div>
+                    <div class="img-filter-done-wrapper">
+                        <img
+                            src="./img/check.png"
+                            class="filter-done"
+                            alt="check"
+                        />
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- -------------------------------auction page----------------------------- -->

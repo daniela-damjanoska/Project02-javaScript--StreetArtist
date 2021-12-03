@@ -123,7 +123,6 @@ const initAuctionPage = () => {
                 if (!localStorage.getItem('artist'))
                     localStorage.removeItem('artistItemsLS');
 
-                // document.querySelector('.auction-items').innerHTML = '';
                 createNoAuctionMsg();
             }
         });
@@ -204,7 +203,7 @@ const initAuctionPage = () => {
                         bidAmountInput.setAttribute('min', bidAmount);
                         bidAmountInput.value = bidAmount + 50;
 
-                        //update the timer
+                        //update the timer(add 1 minute)
                         const end = JSON.parse(localStorage.getItem('endTime')),
                             updateTimer = end + 60000;
 

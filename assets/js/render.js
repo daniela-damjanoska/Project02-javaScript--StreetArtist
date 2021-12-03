@@ -23,9 +23,11 @@ const createArtistVisitorNavbar = (person, icon, elClass) => {
 };
 
 const createSliderImg = (slideTrack, src) => {
-    slideTrack.innerHTML += `<div class="slide">
-    <img src="${src}" class="img-slide" alt="" />
-    </div>`;
+    slideTrack.innerHTML += `
+        <div class="slide">
+            <img src="${src}" class="img-slide" alt="" />
+        </div>
+    `;
 };
 
 const createVisitorPageItem = (
@@ -44,7 +46,7 @@ const createVisitorPageItem = (
             <div class="text-box">
                 <div class="row">
                     <span>${artistName}</span>
-                    <button class="${cssClassTwo}">$${price}</button>
+                    <span class="${cssClassTwo}">$${price}</span>
                 </div>
                 <p>${title}</p>
                 <p class="mb-0">${desc}</p>
@@ -125,7 +127,7 @@ const createArtistPageItem = (
             <div class="text-box bg-light c-text-primary-default">
                 <div class="row">
                     <p class="mb-0">${title}</p>
-                    <button class="bg-primary-default c-text-normal price">$${price}</button>
+                    <span class="bg-primary-default c-text-normal price">$${price}</span>
                 </div>
                 <p>${calcProperTimeFormat(date)}</p>
                 <p class="mb-0">${desc}</p>
@@ -198,8 +200,8 @@ const createDropdownChooseType = (section, arrow) => {
     itemTypes.forEach(
         type =>
             (section.innerHTML += `
-            <span class="chooseType">${type}</span>
-    `)
+                <span class="chooseType">${type}</span>
+            `)
     );
 };
 
@@ -209,7 +211,7 @@ const createDropdownChooseArtist = (section, itemClass) => {
         .then(res => {
             res.forEach(user => {
                 section.innerHTML += `
-                        <span class="${itemClass}" id="${user.id}">${user.name}</span>`;
+                    <span class="${itemClass}" id="${user.id}">${user.name}</span>`;
             });
         });
 };
@@ -309,9 +311,7 @@ const createFilterMessage = () => {
     visitorListingPageInner.innerHTML = `
         <div class="no-filtered-items bg-light">
             <div class="no-filtered-items-inner text-center c-text-primary-default">
-                <p>
-                    There is no item with that search!
-                </p>
+                <p>There is no item with that search!</p>
                 <button class="back-items">Back to items</button>
             </div>
         </div>
