@@ -528,13 +528,21 @@ nav {
     height: 250px;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+.visitor-listing-page
+    .visitor-listing-page-inner
+    .text-box
+    .row
+    span:first-child {
     font-family: 'Reenie Beanie';
     font-size: 4rem;
 }
 
-.visitor-listing-page .visitor-listing-page-inner .text-box .row button,
-.artist-items-page .artist-items-listing .text-box .row button {
+.visitor-listing-page
+    .visitor-listing-page-inner
+    .text-box
+    .row
+    span:last-child,
+.artist-items-page .artist-items-listing .text-box .row span {
     border: none;
     padding: 4px 6px;
     border-radius: 3px;
@@ -1230,16 +1238,24 @@ nav {
         width: 110px;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+    .visitor-listing-page
+        .visitor-listing-page-inner
+        .text-box
+        .row
+        span:first-child {
         font-size: 2.6rem;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner .text-box .row button {
+    .visitor-listing-page
+        .visitor-listing-page-inner
+        .text-box
+        .row
+        span:last-child {
         font-size: 1.1rem;
     }
 
     .visitor-listing-page .show-all {
-        bottom: 10px;
+        bottom: 165px;
         padding: 10px 0;
     }
     /* ----------------------------artist-home-page-styles------------------------- */
@@ -1435,7 +1451,11 @@ nav {
         bottom: 150px;
     }
 
-    .visitor-listing-page .visitor-listing-page-inner .text-box .row span {
+    .visitor-listing-page
+        .visitor-listing-page-inner
+        .text-box
+        .row
+        span:first-child {
         font-size: 2.4rem;
     }
 

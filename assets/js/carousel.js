@@ -1,7 +1,5 @@
 let carouselIdx = 0;
 
-const movingCarouselSlides = () => (carouselIdx++, changeCarouselSlide());
-
 const changeCarouselSlide = () => {
     if (carouselIdx > slides.length - 1) carouselIdx = 0;
     else if (carouselIdx < 0) carouselIdx = slides.length - 1;
@@ -12,11 +10,14 @@ const changeCarouselSlide = () => {
     );
 };
 
+const movingCarouselSlides = () => (carouselIdx++, changeCarouselSlide());
+
 const resetCarouselInterval = () => {
     clearInterval(carouselInterval);
     carouselInterval = setInterval(movingCarouselSlides, 5000);
 };
 
+//render the carousel content
 carouselData.forEach(slide => {
     document.querySelector('.carousel-container').innerHTML += `
         <div class="carousel-slide row">
@@ -46,6 +47,7 @@ slides.forEach(el => (el.style.width = `${slideWidth}px`));
 document.querySelector('.carousel').style.width = `${slideWidth}px`;
 document.querySelector('.carousel-buttons').style.width = `${slideWidth}px`;
 
+//click on arrows
 document.addEventListener('click', e => {
     if (e.target === e.target.parentElement.children[0]) {
         carouselIdx--;

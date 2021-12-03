@@ -23,7 +23,7 @@ const initArtistAddEditPage = () => {
     // manipulating the isPublished checkbox
     isPublishWrapper.addEventListener('click', toggleIsPublished);
 
-    //add and remove items when click on 'Add New Item' / 'Add Item' button in the addEditSection
+    //add items when click on 'Add New Item' / 'Add Item' button in the addEditSection
     addEditSection.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -96,6 +96,15 @@ const initArtistAddEditPage = () => {
         createDropdownChooseType(typeDropDown, changeTypeArrow);
     });
 
+    document.querySelector('#takeSnapshot').addEventListener('click', () => {
+        location.hash = '#artists/items/add/snapshot';
+    });
+
+    document.querySelector('.new-img').addEventListener('click', function () {
+        location.hash = '#artists/items/add/snapshot';
+        canvas.style.opacity = 0;
+    });
+
     document.addEventListener('click', function (e) {
         //click on arrow-up to close the choose type dropdown
         if (e.target.classList.contains('rotate-arrow')) {
@@ -109,12 +118,3 @@ const initArtistAddEditPage = () => {
         }
     });
 };
-
-document.querySelector('#takeSnapshot').addEventListener('click', () => {
-    location.hash = '#artists/items/add/snapshot';
-});
-
-document.querySelector('.new-img').addEventListener('click', function () {
-    location.hash = '#artists/items/add/snapshot';
-    canvas.style.opacity = 0;
-});
